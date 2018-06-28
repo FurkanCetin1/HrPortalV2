@@ -1,0 +1,18 @@
+﻿using HrPortalV2.Models;
+using System;
+using System.Collections.Generic;
+
+namespace HrPortalV2.Data
+{
+    public interface IRepository<T> where T : BaseEntity
+    {
+        IEnumerable<T> GetAll(params string[] nav);
+        IEnumerable<T> GetMany(Func<T, bool> where, params string[] nav);
+        T Get(string id, params string[] nav);
+        void Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        void Remove(T entity);
+        void SaveChanges();
+    }
+}
