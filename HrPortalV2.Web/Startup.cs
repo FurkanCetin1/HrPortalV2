@@ -46,6 +46,9 @@ namespace HrPortalV2.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IResumeService, ResumeService>();
+            services.AddTransient<ICountyService, CountyService>();
+            services.AddTransient<ISectorService, SectorService>();
+            services.AddTransient<IResumeFileService, ResumeFileService>();
             services.AddTransient<IJobService, JobService>();
             services.AddTransient<IJobApplicationService, JobApplicationService>();
             services.AddTransient<IOccupationService, OccupationService>();
