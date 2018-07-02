@@ -2,93 +2,311 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+<link href="/assets/pages/css/search.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+@section Slider {
+    <!-- BEGIN PAGE TITLE -->
+    <div class="row margin-bottom-40 about-header">
+        <div class="col-md-12">
+            <h1>Kariyerine bir + daha</h1>
+            <h2>Aradığınız işi dakikalar için bulun</h2>
+            <button type="button" class="btn btn-danger">Özgeçmişinizi Şimdi Oluşturun</button>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
+}
+
+<!-- END PAGE BREADCRUMBS -->
+<div class="search-page search-content-4">
+    <div class="search-bar bordered">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn green-soft uppercase bold" type="button">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-4 extra-buttons">
+                <button class="btn grey-steel uppercase bold" type="button">Reset Search</button>
+                <button class="btn grey-cararra font-blue" type="button">Advanced Search</button>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
+    <div class="search-table table-responsive">
+        <table class="table table-bordered table-striped table-condensed">
+            <thead class="bg-blue">
+                <tr>
+                    <th>
+                        <a href="javascript:;">Status</a>
+                    </th>
+                    <th>
+                        <a href="javascript:;">Date</a>
+                    </th>
+                    <th>
+                        <a href="javascript:;">Title & Author</a>
+                    </th>
+                    <th>
+                        <a href="javascript:;">Description</a>
+                    </th>
+                    <th>
+                        <a href="javascript:;">Download</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 17, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Admin Reborn</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 17, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Lorem ipsum dolor</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-check font-grey"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 15, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Typi non habent</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 12, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Admin Search Result</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 11, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Mirum est notare</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-check font-grey"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 9, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Admin Reborn</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-check font-grey"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 9, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Admin Reborn</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 6, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Admin Reborn Progress</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="table-status">
+                        <a href="javascript:;">
+                            <i class="icon-arrow-right font-blue"></i>
+                        </a>
+                    </td>
+                    <td class="table-date font-blue">
+                        <a href="javascript:;">October 3, 2015</a>
+                    </td>
+                    <td class="table-title">
+                        <h3>
+                            <a href="javascript:;">Metronic Search Page 5</a>
+                        </h3>
+                        <p>
+                            Last Activity:
+                            <a href="javascript:;">Bob Robson</a> -
+                            <span class="font-grey-cascade">25 mins ago</span>
+                        </p>
+                    </td>
+                    <td class="table-desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy sead euismod dolore tincidunt ut laoreet dolore dolor sit amet </td>
+                    <td class="table-download">
+                        <a href="javascript:;">
+                            <i class="icon-doc font-green-soft"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
+    <div class="search-pagination pagination-rounded">
+        <ul class="pagination">
+            <li class="page-active">
+                <a href="javascript:;"> 1 </a>
+            </li>
+            <li>
+                <a href="javascript:;"> 2 </a>
+            </li>
+            <li>
+                <a href="javascript:;"> 3 </a>
+            </li>
+            <li>
+                <a href="javascript:;"> 4 </a>
+            </li>
         </ul>
     </div>
 </div>
