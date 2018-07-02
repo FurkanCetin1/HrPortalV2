@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using HrPortalV2.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using HrPortalV2.Service;
 
 namespace HrPortalV2.Web
 {
@@ -43,6 +44,8 @@ namespace HrPortalV2.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IMessageService, MessageService>();
+            services.AddTransient<IResumeService, ResumeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
