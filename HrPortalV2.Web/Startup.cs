@@ -46,6 +46,9 @@ namespace HrPortalV2.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IMessageService, MessageService>();
             services.AddTransient<IResumeService, ResumeService>();
+            services.AddTransient<IJobService, JobService>();
+            services.AddTransient<IJobApplicationService, JobApplicationService>();
+            services.AddTransient<IOccupationService, OccupationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
