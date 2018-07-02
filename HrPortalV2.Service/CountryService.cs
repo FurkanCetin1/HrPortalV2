@@ -22,12 +22,12 @@ namespace HrPortalV2.Service
 
         public Country Get(string id)
         {
-            return countryRepository.Get(id, "Country");
+            return countryRepository.Get(id);
         }
 
         public IEnumerable<Country> GetAll()
         {
-            return countryRepository.GetAll("Country");
+            return countryRepository.GetAll();
         }
 
         public void Insert(Country entity)
