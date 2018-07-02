@@ -49,6 +49,12 @@ namespace HrPortalV2.Web
             services.AddTransient<ICountyService, CountyService>();
             services.AddTransient<ISectorService, SectorService>();
             services.AddTransient<IResumeFileService, ResumeFileService>();
+            services.AddTransient<IJobService, JobService>();
+            services.AddTransient<IJobApplicationService, JobApplicationService>();
+            services.AddTransient<IOccupationService, OccupationService>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<ICountryService, CountryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
