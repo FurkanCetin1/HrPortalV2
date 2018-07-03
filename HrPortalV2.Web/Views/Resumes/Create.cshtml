@@ -1,15 +1,11 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Özgeçmiş Oluştur";
 }
 
-<h2>Create</h2>
-
-<h4>Resume</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -29,12 +25,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select asp-for="Gender" class="form-control"></select>
+                <select asp-for="Gender" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Gender))">
+                    <option value="">Cinsiyet Seçiniz</option>
+                </select>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MaritalStatus" class="control-label"></label>
-                <select asp-for="MaritalStatus" class="form-control"></select>
+                <select asp-for="MaritalStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))">
+                    <option value="">Medeni Durumu Seçiniz</option>
+                </select>
                 <span asp-validation-for="MaritalStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -78,7 +78,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="MilitaryStatus" class="control-label"></label>
-                <input asp-for="MilitaryStatus" class="form-control" />
+                <select asp-for="MilitaryStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MilitaryStatus))">
+                    <option value="">Askerlik Durumu Seçiniz</option>
+                </select>
                 <span asp-validation-for="MilitaryStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -117,22 +119,24 @@
             </div>
             <div class="form-group">
                 <label asp-for="OccupationId" class="control-label"></label>
-                <select asp-for="OccupationId" class ="form-control" asp-items="ViewBag.OccupationId"></select>
+                <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
+                    <option value="">Meslek Seçiniz</option>
+                </select>
             </div>
             
-                <input asp-for="CreateDate" class="form-control" />
+                <input asp-for="CreateDate"  type="hidden" />
                
-                <input asp-for="CreatedBy" class="form-control" />
+                <input asp-for="CreatedBy" type="hidden" />
              
-                <input asp-for="UpdateDate" class="form-control" />
+                <input asp-for="UpdateDate" type="hidden" />
 
-                <input asp-for="UpdatedBy" class="form-control" />
+                <input asp-for="UpdatedBy" type="hidden" />
 
 
-                <input asp-for="IPAddress" class="form-control" />
+                <input asp-for="IPAddress" type="hidden" />
 
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Kaydet" class="btn btn-success" /><a asp-action="Index" class="btn btn-danger">İptal</a>
                 </div>
 </form>
     </div>
