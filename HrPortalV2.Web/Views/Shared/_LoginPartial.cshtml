@@ -7,29 +7,132 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            @if (User.IsInRole("Company")) {
-            <li style="margin-left:3px;">
-                <button type="button" onclick="window.location='/Jobs/Create'" class="btn btn-default btn-sm">
-                    <i class="icon-bell"></i>
-                    İlan Yayınla
-                </button>
+            @if (User.IsInRole("Company"))
+            {
+                <li style="margin-left:3px;">
+                    <button type="button" onclick="window.location='/Jobs/Create'" class="btn btn-default btn-sm">
+                        <i class="icon-bell"></i>
+                        İlan Yayınla
+                    </button>
 
-            </li>
+                </li>
             }
-            @if (User.IsInRole("Candidate")) {
-            <li style="margin-left:3px;">
-                <button type="button" onclick="window.location='/Resumes/Create'" class="btn btn-success btn-sm">
-                    <i class="icon-bell"></i>
-                    CV Oluştur
-                </button>
+            @if (User.IsInRole("Candidate"))
+            {
+                <li style="margin-left:3px;">
+                    <button type="button" onclick="window.location='/Resumes/Create'" class="btn btn-success btn-sm">
+                        <i class="icon-bell"></i>
+                        CV Oluştur
+                    </button>
 
-            </li>
+                </li>
             }
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Merhaba @UserManager.GetUserName(User)!</a>
+            <!-- BEGIN INBOX DROPDOWN -->
+            <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span class="circle">3</span>
+                    <span class="corner"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="external">
+                        <h3>
+                            <strong>7 Yeni</strong> Mesajınız Var
+                        </h3>
+                        <a href="app_inbox.html">tümünü göster</a>
+                    </li>
+                    <li>
+                        <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from"> Lisa Wong </span>
+                                        <span class="time">Just Now </span>
+                                    </span>
+                                    <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt="">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from"> Richard Doe </span>
+                                        <span class="time">16 mins </span>
+                                    </span>
+                                    <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                        <img src="../assets/layouts/layout3/img/avatar1.jpg" class="img-circle" alt="">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from"> Bob Nilson </span>
+                                        <span class="time">2 hrs </span>
+                                    </span>
+                                    <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from"> Lisa Wong </span>
+                                        <span class="time">40 mins </span>
+                                    </span>
+                                    <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo">
+                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt="">
+                                    </span>
+                                    <span class="subject">
+                                        <span class="from"> Richard Doe </span>
+                                        <span class="time">46 mins </span>
+                                    </span>
+                                    <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Çıkış</button>
+            <!-- END INBOX DROPDOWN -->
+           
+            <li class="dropdown dropdown-user dropdown-dark">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <img alt="" class="img-circle" src="../assets/layouts/layout3/img/avatar9.jpg">
+                    <span class="username username-hide-mobile">@UserManager.GetUserName(User)</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-default">
+                    <li>
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Profilim">
+                            <i class="icon-user"></i> Profilim
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a asp-area="" asp-controller="Messages" asp-action="Index">
+                            <i class="icon-envelope-open"></i> Mesajlarım
+                            <span class="badge badge-danger"> 3 </span>
+                        </a>
+                    </li>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
+                            <i class="icon-key"></i> Çıkış
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </form>
@@ -39,9 +142,9 @@ else
     <ul class="nav navbar-nav pull-right" style="margin-top:8px;">
 
         <li>
-            <button type="button" onclick="window.location='/Identity/Account/Login'" class="btn btn-default btn-sm">
+            <button type="button" onclick="window.location='/Resumes/Create'" class="btn btn-default btn-sm">
                 <i class="icon-bell"></i>
-                Firma Girişi
+                CV Oluştur
             </button>
 
         </li>
@@ -55,16 +158,10 @@ else
         <li style="margin-left:10px;">
             <button type="button" onclick="window.location='/Identity/Account/Login'" class="btn btn-success btn-sm">
                 <i class="icon-bell"></i>
-                Aday Girişi
+                Üye Girişi
             </button>
 
         </li>
-        <li style="margin-left:3px;">
-            <button type="button" onclick="window.location='/Resumes/Create'" class="btn btn-success btn-sm">
-                <i class="icon-bell"></i>
-                CV Oluştur
-            </button>
 
-        </li>
     </ul>
 }
