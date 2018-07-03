@@ -116,27 +116,27 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="hor-menu  ">
                                 <ul class="nav navbar-nav">
                                     <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown active">
-                                        <a asp-action="Index" asp-controller="Home">
+                                        <a asp-area="" asp-action="Index" asp-controller="Home">
                                             Anasayfa
 
                                         </a>
                                     </li>
                                     <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  ">
-                                        <a asp-action="Index" asp-controller="Jobs">
+                                        <a asp-area="" asp-action="Index" asp-controller="Jobs">
                                             Tüm İş İlanları
 
                                         </a>
 
                                     </li>
                                     <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown">
-                                        <a asp-action="Index" asp-controller="Companies">
+                                        <a asp-area="" asp-action="Index" asp-controller="Companies">
                                             Tüm Firmalar
 
                                         </a>
 
                                     </li>
                                     <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  mega-menu-full">
-                                        <a asp-action="Index" asp-controller="Resumes">
+                                        <a asp-area="" asp-action="Index" asp-controller="Resumes">
                                             Tüm Özgeçmişler
 
                                         </a>
@@ -160,7 +160,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="page-content-wrapper">
                         <!-- BEGIN CONTENT BODY -->
                         <!-- BEGIN PAGE HEAD-->
-                        @if (!(this.ViewContext.RouteData.Values["controller"].ToString() == "Home" && this.ViewContext.RouteData.Values["action"].ToString() == "Index")) { 
+                        @if (!(this.ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && this.ViewContext.RouteData.Values["action"]?.ToString() == "Index")) { 
                         <div class="page-head">
                             <div class="container">
                                 <div class="page-title">
