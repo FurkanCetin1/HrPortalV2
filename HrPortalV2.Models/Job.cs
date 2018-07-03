@@ -22,7 +22,7 @@ namespace HrPortalV2.Models
         [Display(Name = "Bitiş Tarihi")]
         public DateTime EndDate { get; set; }
         public virtual ICollection<JobApplication> JobApplications { get; set; }
-        [Display(Name = "Yayınlandı mı?")]
+        [Display(Name = "Onaylandı mı?")]
         public bool IsApproved { get; set; }
         [Display(Name = "Aktiv mi ?")]
         public bool IsActive { get; set; }

@@ -17,7 +17,7 @@ namespace HrPortalV2.Models
         public string Description { get; set; }
         [Display(Name = "Okundu mu ?")]
         public bool IsRead { get; set; }
-        [Display(Name = "Yayınlandı mı ?")]
+        [Display(Name = "Onaylandı mı ?")]
         public bool IsApproved { get; set; }
     }
 }
