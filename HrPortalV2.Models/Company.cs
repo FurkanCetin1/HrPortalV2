@@ -8,7 +8,7 @@ namespace HrPortalV2.Models
 {
     public class Company:BaseEntity
     {
-        [Display(Name = "Ad")]
+        [Display(Name = "Firma Adı")]
         public string Name { get; set; }
         [Display(Name = "Açıklama")]
         public string Description { get; set; }

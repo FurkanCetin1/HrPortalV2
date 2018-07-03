@@ -8,7 +8,7 @@ namespace HrPortalV2.Models
 {
     public class Job:BaseEntity
     {
-        [Display(Name ="Başlık")]
+        [Display(Name ="İlan Başlığı")]
         public string Title { get; set; }
         [Display(Name = "Açıklama")]
         public string Description { get; set; }
