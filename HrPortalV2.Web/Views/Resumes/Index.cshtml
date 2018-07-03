@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<HrPortalV2.Models.Resume>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tüm Özgeçmişler";
 }
-
-<h2>Özgeçmişler</h2>
 <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
 <table id="tblRecords" class="table">
@@ -180,12 +178,12 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
     <script>
-    $(document).ready(function () {
-        $('#tblRecords').DataTable({
-            responsive: true,
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json"
-            }
-        });
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                responsive: true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json"
+                }
+            });
         });</script>
 }

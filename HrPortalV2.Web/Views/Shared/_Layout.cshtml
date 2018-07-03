@@ -160,11 +160,15 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="page-content-wrapper">
                         <!-- BEGIN CONTENT BODY -->
                         <!-- BEGIN PAGE HEAD-->
+                        @if (!(this.ViewContext.RouteData.Values["controller"].ToString() == "Home" && this.ViewContext.RouteData.Values["action"].ToString() == "Index")) { 
                         <div class="page-head">
                             <div class="container">
-                                
+                                <div class="page-title">
+                                    <h1>@ViewData["Title"]</h1>
+                                </div>
                             </div>
                         </div>
+                        }
                         @RenderSection("Slider", required:false)
                         <!-- END PAGE HEAD-->
                         <!-- BEGIN PAGE CONTENT BODY -->
