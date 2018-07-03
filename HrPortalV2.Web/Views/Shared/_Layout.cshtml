@@ -65,37 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END RESPONSIVE MENU TOGGLER -->
                             <!-- BEGIN TOP NAVIGATION MENU -->
                             <div class="top-menu">
-                                <ul class="nav navbar-nav pull-right" style="margin-top:8px;">
-
-                                    <li>
-                                        <button type="button" onclick="window.location='/Identity/Account/Login'" class="btn btn-default btn-sm">
-                                            <i class="icon-bell"></i>
-                                            Firma Girişi
-                                        </button>
-
-                                    </li>
-                                    <li style="margin-left:3px;">
-                                        <button type="button" onclick="window.location='/Jobs/Create'" class="btn btn-default btn-sm">
-                                            <i class="icon-bell"></i>
-                                            İlan Yayınla
-                                        </button>
-
-                                    </li>
-                                    <li style="margin-left:10px;">
-                                        <button type="button" onclick="window.location='/Identity/Account/Login'" class="btn btn-success btn-sm">
-                                            <i class="icon-bell"></i>
-                                            Aday Girişi
-                                        </button>
-
-                                    </li>
-                                    <li style="margin-left:3px;">
-                                        <button type="button" onclick="window.location='/Resumes/Create'" class="btn btn-success btn-sm">
-                                            <i class="icon-bell"></i>
-                                            CV Oluştur
-                                        </button>
-
-                                    </li>
-                                </ul>
+                                <partial name="_LoginPartial" /> 
                             </div>
                             <!-- END TOP NAVIGATION MENU -->
                         </div>
