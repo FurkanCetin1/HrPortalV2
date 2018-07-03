@@ -10,7 +10,7 @@ namespace HrPortalV2.Models
     {
         [Display(Name="Ad")]
         public string FirstName { get; set; }
-        [Display(Name = "Soyadı")]
+        [Display(Name = "Soyad")]
         public string LastName { get; set; }
         [Display(Name = "Resim")]
         public string Photo { get; set; }
