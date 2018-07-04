@@ -58,11 +58,12 @@ namespace HrPortalV2.Web.Controllers
                 resumeService.Insert(resume);
                 return RedirectToAction(nameof(Edit), new { id = resume.Id, saved = true });
             }
-            ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name");
+            ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View(resume);
         }
         public IActionResult Edit(string id, bool saved)
         {
+            ViewBag.Saved = saved;
             var resume = resumeService.Get(id);
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View(resume);
@@ -93,6 +94,11 @@ namespace HrPortalV2.Web.Controllers
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View();
+        }
+        public ActionResult Delete(string id)
+        {
+            resumeService.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
