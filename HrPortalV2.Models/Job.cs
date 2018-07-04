@@ -18,8 +18,10 @@ namespace HrPortalV2.Models
         [Display(Name = "Firma")]
         public Company Company { get; set; }
         [Display(Name = "Yayın Tarihi")]
+        [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
         [Display(Name = "Bitiş Tarihi")]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         public virtual ICollection<JobApplication> JobApplications { get; set; }
         [Display(Name = "Onaylandı mı?")]

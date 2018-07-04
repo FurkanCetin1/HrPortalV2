@@ -5,6 +5,9 @@
 }
 <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Firma</a>
+</p>
 <table id="tblRecords" class="table">
     <thead>
         <tr>
@@ -35,27 +38,40 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-           
+
             <td>
                 @Html.DisplayFor(modelItem => item.City.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.County.Id)
             </td>
-            
+
             <td>
                 @Html.DisplayFor(modelItem => item.Sector.Id)
             </td>
-           
-           
-            
-            
-           
-            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+
+
+
+
+
+            <td class="text-nowrap">
+                <div class="btn-group pull-right">
+                    <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">
+                        Eylemler
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Düzenle</a>
+                        </li>
+
+                        <li>
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>
+                        </li>
+                    </ul>
+                </div>
+
             </td>
         </tr>
         }
