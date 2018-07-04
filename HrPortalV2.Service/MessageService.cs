@@ -28,6 +28,11 @@ namespace HrPortalV2.Service
             return messageRepository.GetAll();
         }
 
+        public IEnumerable<Message> GetByUserName(string userName)
+        {
+            return messageRepository.GetMany(m => m.To == userName);
+        }
+
         public void Insert(Message entity)
         {
             messageRepository.Insert(entity);
@@ -42,6 +47,7 @@ namespace HrPortalV2.Service
     public interface IMessageService
     {
         IEnumerable<Message> GetAll();
+        IEnumerable<Message> GetByUserName(string userName);
         Message Get(string id);
         void Insert(Message entity);
         void Update(Message entity);
