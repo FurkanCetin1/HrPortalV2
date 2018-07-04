@@ -1,0 +1,128 @@
+﻿@model IEnumerable<HrPortalV2.Models.Resume>
+
+@{
+    ViewData["Title"] = "Özgeçmişlerim";
+}
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<table id="tblRecords" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.TotalExperience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSeekingJob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastEducation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastDepartment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GraduationYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ForeignLanguages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occupation)
+            </th>
+
+            <th class="text-nowrap all">Eylemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-nowrap all">
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalExperience)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsCurrentlyWorking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsSeekingJob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPosition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastEducation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastDepartment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GraduationYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ForeignLanguages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Occupation.Name)
+                </td>
+                <td>
+                    <div class="btn-group pull-right">
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>|
+                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy">Mesaj Gönder</a>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                responsive: true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json"
+                }
+            });
+        });</script>
+}

@@ -100,5 +100,10 @@ namespace HrPortalV2.Web.Controllers
             resumeService.Delete(id);
             return RedirectToAction("Index");
         }
+        public IActionResult MyResumes()
+        {
+            var myresumes = resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
+            return View(myresumes);
+        }
     }
 }
