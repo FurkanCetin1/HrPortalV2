@@ -30,7 +30,6 @@ namespace HrPortalV2.Service
 
         public IEnumerable<Message> GetByTo(IList<string> to)
         {
-            
             return messageRepository.GetMany(m => to.Contains(m.To));
         }
 
