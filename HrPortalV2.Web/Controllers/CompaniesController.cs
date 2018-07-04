@@ -115,6 +115,11 @@ namespace HrPortalV2.Web.Controllers
             counties = countyService.GetAll().Where(r => r.CityId == cityId).OrderBy(o => o.Name).ToList();
             return counties;
         }
+        public IActionResult MyCompanies()
+        {
+            var mycompanies = companyService.GetByUserName(User.Identity.Name);
+            return View(mycompanies);
+        }
 
     }
 }
