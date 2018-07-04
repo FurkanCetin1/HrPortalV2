@@ -4,6 +4,13 @@
     ViewData["Title"] = "Özgeçmiş Düzenle";
 }
 <form asp-action="Edit" enctype="multipart/form-data">
+    @if (ViewBag.Saved == true)
+    {
+        <div class="alert alert-success">
+            Kaydetme işlemi başarıyla gerçekleşti. <a asp-action="Index">Listeye Geri Dön</a>.
+        </div>
+
+    }
     <div class="row">
         <div class="col-md-6">
 
