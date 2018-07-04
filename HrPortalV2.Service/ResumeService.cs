@@ -28,6 +28,10 @@ namespace HrPortalV2.Service
         {
             return resumeRepository.GetAll("ResumeFiles", "JobApplications", "Occupation");
         }
+        public IEnumerable<Resume> GetByUserName(string userName)
+        {
+            return resumeRepository.GetMany(m => m.CreatedBy == userName);
+        }
 
         public void Insert(Resume entity)
         {
@@ -43,6 +47,7 @@ namespace HrPortalV2.Service
     public interface IResumeService
     {
         IEnumerable<Resume> GetAll();
+        IEnumerable<Resume> GetByUserName(string userName);
         Resume Get(string id);
         void Insert(Resume entity);
         void Update(Resume entity);
