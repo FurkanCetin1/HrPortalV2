@@ -30,7 +30,7 @@ namespace HrPortalV2.Service
 
         public IEnumerable<Message> GetByUserName(string userName)
         {
-            return messageRepository.GetMany(m => m.To == userName);
+            return messageRepository.GetMany(m => m.CreatedBy == userName);
         }
 
         public void Insert(Message entity)
