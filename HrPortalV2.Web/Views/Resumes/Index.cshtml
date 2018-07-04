@@ -53,14 +53,14 @@
                 @Html.DisplayNameFor(model => model.Occupation)
             </th>
             
-            <th></th>
+            <th class="text-nowrap all">Eylemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
-            <td>
+            <td class="text-nowrap all">
                 @Html.DisplayFor(modelItem => item.Photo)
             </td>
             <td>
@@ -102,10 +102,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Occupation.Name)
             </td>
-           
             <td>
-                <a asp-action="Create" asp-controller="Messages" asp-route-id="@item.Id">Mesaj Gönder</a> |
+                <div class="btn-group pull-right">
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>|
+                        <a asp-action="Create" asp-controller="Messages" asp-route-id="@item.Id">Mesaj Gönder</a>
+                </div>
             </td>
+            
         </tr>
         }
     </tbody>

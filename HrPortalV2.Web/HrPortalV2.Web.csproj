@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="wwwroot\Uploads\ResumeFiles\" />
+    <Folder Include="wwwroot\Uploads\ResumePhotos\" />
   </ItemGroup>
 
   <ItemGroup>

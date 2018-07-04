@@ -1,9 +1,16 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Özgeçmiş Oluştur";
+    ViewData["Title"] = "Özgeçmiş Düzenle";
 }
-<form asp-action="Create" enctype="multipart/form-data">
+<form asp-action="Edit" enctype="multipart/form-data">
+    @if (ViewBag.Saved == true)
+    {
+        <div class="alert alert-success">
+            Kaydetme işlemi başarıyla gerçekleşti. <a asp-action="Index">Listeye Geri Dön</a>.
+        </div>
+
+    }
     <div class="row">
         <div class="col-md-6">
 
@@ -38,7 +45,7 @@
             <div class="form-group">
                 <label asp-for="MaritalStatus" class="control-label"></label>
                 <select asp-for="MaritalStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))">
-                    <option value="">Medeni Durumu Seçiniz</option>
+                    <option value="">Cinsiyet Seçiniz</option>
                 </select>
                 <span asp-validation-for="MaritalStatus" class="text-danger"></span>
             </div>
@@ -111,12 +118,6 @@
                 <span asp-validation-for="ForeignLanguages" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OccupationId" class="control-label"></label>
-                <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
-                    <option value="">Meslek Seçiniz</option>
-                </select>
-            </div>
-            <div class="form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
@@ -130,26 +131,34 @@
                     </label>
                 </div>
             </div>
-
-
-            <input asp-for="CreateDate" type="hidden" />
-
-            <input asp-for="CreatedBy" type="hidden" />
-
-            <input asp-for="UpdateDate" type="hidden" />
-
-            <input asp-for="UpdatedBy" type="hidden" />
-
-
-            <input asp-for="IPAddress" type="hidden" />
-
             <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-success" /><a asp-action="Index" class="btn btn-danger">İptal</a>
+                <label asp-for="OccupationId" class="control-label"></label>
+                <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId"></select>
+                <span asp-validation-for="OccupationId" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
 
+                <input asp-for="CreateDate" type="hidden" />
+
+                <input asp-for="CreatedBy" type="hidden" />
+
+                <input asp-for="UpdateDate" type="hidden" />
+
+                <input asp-for="UpdatedBy" type="hidden" />
+
+                <input asp-for="IPAddress" type="hidden" />
+
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-success" /><a asp-action="Index" class="btn btn-danger">İptal</a>
+                </div>
+
+            </div>
         </div>
+
     </div>
 </form>
+
 
 
 @section Scripts {
