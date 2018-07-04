@@ -11,49 +11,42 @@
 <table id="tblRecords" class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-         
-           
+
+
             <th>
                 @Html.DisplayNameFor(model => model.City)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.County)
             </th>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.Sector)
             </th>
-            
-           
-            <th></th>
+            <th class="text-nowrap all">Eylemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
         <tr>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.City.Id)
+                @Html.DisplayFor(modelItem => item.City.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.County.Id)
+                @Html.DisplayFor(modelItem => item.County.Name)
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Sector.Id)
+                @Html.DisplayFor(modelItem => item.Sector.Name)
             </td>
-
-
-
-
-
 
             <td class="text-nowrap">
                 <div class="btn-group pull-right">

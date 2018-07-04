@@ -36,7 +36,7 @@ namespace HrPortalV2.Models
         public Sector Sector { get; set; }
         [Display(Name = "Onaylandı mı?")]
         public bool IsApproved { get; set; }
-        [Display(Name = "Aktiv mi?")]
+        [Display(Name = "Aktif mi?")]
         public bool IsActive { get; set; }
     }
 }

@@ -4,8 +4,11 @@
     ViewData["Title"] = "Firmalarım";
 }
 
-
-
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Firma</a>
+</p>
 
 <table id="tblRecords" class="table">
     <thead>
@@ -39,36 +42,62 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.City.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.County.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sector.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsApproved)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.County.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sector.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> 
-                    
-                    <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
-                </td>
-            </tr>
+            <td class="text-nowrap">
+                <div class="btn-group pull-right">
+                    <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">
+                        Eylemler
+                        <i class="fa fa-angle-down"></i>
+                    </button>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Düzenle</a>
+                        </li>
+
+                        <li>
+                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </td>
+        </tr>
         }
     </tbody>
 </table>
+@section Scripts {
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tblRecords').DataTable({
+                responsive: true,
+                "language":
+                    { "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json" }
+            });
+        });
+    </script>
+}
