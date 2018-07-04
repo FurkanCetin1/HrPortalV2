@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HrPortalV2.Models;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +11,29 @@ namespace HrPortalV2.Web.Controllers
     public class MessagesController : Controller
     {
         private readonly IMessageService messageService;
-        public MessagesController(IMessageService messageService)
+        private readonly ICompanyService companyService;
+        public MessagesController(IMessageService messageService, ICompanyService companyService)
         {
             this.messageService = messageService;
+            this.companyService = companyService;
         }
-        public IActionResult MyMessages()
+        public IActionResult MyMessagesSentToMyCompanies()
         {
-            var mymessages = messageService.GetByUserName(User.Identity.Name);
+            var mycompanies = companyService.GetByUserName(User.Identity.Name).Select(c=>c.Id).ToList();
+            var mymessages = messageService.GetByTo(mycompanies);
             return View(mymessages);
         }
-        public IActionResult Create()
+        public IActionResult MyMessagesSentToMyResumes()
         {
-            return View();
+            var mycompanies = companyService.GetByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
+            var mymessages = messageService.GetByTo(mycompanies);
+            return View(mymessages);
+        }
+        public IActionResult Create(string to)
+           
+        {
+            var message = new Message(){ To = to };
+            return View(message);
         }
     }
 }

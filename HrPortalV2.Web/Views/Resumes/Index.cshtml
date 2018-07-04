@@ -105,7 +105,7 @@
             <td>
                 <div class="btn-group pull-right">
                             <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>|
-                        <a asp-action="Create" asp-controller="Messages" asp-route-id="@item.Id">Mesaj Gönder</a>
+                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy">Mesaj Gönder</a>
                 </div>
             </td>
             

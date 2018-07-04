@@ -28,9 +28,9 @@ namespace HrPortalV2.Service
             return messageRepository.GetAll();
         }
 
-        public IEnumerable<Message> GetByUserName(string userName)
+        public IEnumerable<Message> GetByTo(IList<string> to)
         {
-            return messageRepository.GetMany(m => m.To == userName);
+            return messageRepository.GetMany(m => to.Contains(m.To));
         }
 
         public void Insert(Message entity)
@@ -47,7 +47,7 @@ namespace HrPortalV2.Service
     public interface IMessageService
     {
         IEnumerable<Message> GetAll();
-        IEnumerable<Message> GetByUserName(string userName);
+        IEnumerable<Message> GetByTo(IList<string> to);
         Message Get(string id);
         void Insert(Message entity);
         void Update(Message entity);
