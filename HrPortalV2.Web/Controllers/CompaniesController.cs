@@ -93,6 +93,33 @@ namespace HrPortalV2.Web.Controllers
             companyService.Delete(id);
             return RedirectToAction("Index");
         }
+        public IList<City> GetCities(string countryId)
+        {
+            IList<City> cities;
+            if (string.IsNullOrEmpty(countryId))
+            {
+               cities = cityService.GetAll().ToList();
+            }
+            cities = cityService.GetAll().Where(r => r.CountryId == countryId).OrderBy(o => o.Name).ToList();
+            return cities;
+        }
+
+        public IList<County> GetCounties(string cityId)
+        {
+
+            IList<County> counties;
+            if (string.IsNullOrEmpty(cityId))
+            {
+                counties = countyService.GetAll().ToList();
+            }
+            counties = countyService.GetAll().Where(r => r.CityId == cityId).OrderBy(o => o.Name).ToList();
+            return counties;
+        }
+        public IActionResult MyCompanies()
+        {
+            var mycompanies = companyService.GetByUserName(User.Identity.Name);
+            return View(mycompanies);
+        }
 
     }
 }

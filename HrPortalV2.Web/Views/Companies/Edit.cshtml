@@ -21,14 +21,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="CountryId" class="control-label"></label>
-                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId">
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId" onchange="CountryChange(this)">
                     <option value="">Ülke seçiniz</option>
                 </select>
 
             </div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
-                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">   <option value="">Şehir seçiniz</option></select>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId" onchange="CountryChange(this)">   <option value="">Şehir seçiniz</option></select>
             </div>
             <div class="form-group">
                 <label asp-for="CountyId" class="control-label"></label>
@@ -90,5 +90,26 @@
         .catch(error => {
             console.error(error);
         });
+     function CountryChange(elm) {
+            $.get('@Url.Action("GetCities","Companies")', { countryId: $(elm).val() }, function (data) {
+                var $select = $("#CityId");
+                $select.empty();
+                $select.append('<option value="">Şehir seçiniz</option>');
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            });
+        }
+
+        function CityChange(elm) {
+            $.get('@Url.Action("GetCounties","Companies")', { cityId: $(elm).val() }, function (data) {
+                var $select = $("#CountyId");
+                $select.empty();
+                $select.append('<option value="">İlçe seçiniz</option>');
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            });
+        }
 </script>
 }
