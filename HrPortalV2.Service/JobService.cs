@@ -41,7 +41,7 @@ namespace HrPortalV2.Service
 
         public IEnumerable<Job> GetAllByUserName(string userName)
         {
-            return jobRepository.GetMany(m => m.CreatedBy == userName);
+            return jobRepository.GetMany(m => m.CreatedBy == userName, "Company");
         }
     }
 
