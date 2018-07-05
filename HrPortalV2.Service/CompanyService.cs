@@ -29,7 +29,7 @@ namespace HrPortalV2.Service
         {
             return companyRepository.GetAll("Country", "City", "County", "Sector");
         }
-        public IEnumerable<Company> GetByUserName(string userName)
+        public IEnumerable<Company> GetAllByUserName(string userName)
         {
             return companyRepository.GetMany(m => m.CreatedBy == userName);
         }
@@ -47,7 +47,7 @@ namespace HrPortalV2.Service
     public interface ICompanyService
     {
         IEnumerable<Company> GetAll();
-        IEnumerable<Company> GetByUserName(string userName);
+        IEnumerable<Company> GetAllByUserName(string userName);
         Company Get(string id);
         void Insert(Company entity);
         void Update(Company entity);
