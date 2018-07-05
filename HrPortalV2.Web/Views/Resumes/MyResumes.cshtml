@@ -5,51 +5,54 @@
 }
 <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Özgeçmiş</a>
+</p>
 <table id="tblRecords" class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
 
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
 
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.TotalExperience)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsSeekingJob)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastCompany)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastPosition)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastEducation)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastDepartment)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.GraduationYear)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.ForeignLanguages)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Occupation)
             </th>
 
@@ -102,11 +105,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Occupation.Name)
                 </td>
-                <td>
-                    <div class="btn-group pull-right">
-                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>|
-                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy">Mesaj Gönder</a>
-                    </div>
+                <td class="text-nowrap">
+                
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Düzenle</a> <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Sil</a>
+                    
                 </td>
 
             </tr>

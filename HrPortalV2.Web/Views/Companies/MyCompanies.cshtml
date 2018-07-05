@@ -36,7 +36,7 @@
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
 
-            <th></th>
+            <th class="text-nowrap all">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -48,10 +48,10 @@
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.City.Id)
+                @Html.DisplayFor(modelItem => item.City.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.County.Id)
+                @Html.DisplayFor(modelItem => item.County.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
@@ -67,21 +67,10 @@
             </td>
 
             <td class="text-nowrap">
-                <div class="btn-group pull-right">
-                    <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">
-                        Eylemler
-                        <i class="fa fa-angle-down"></i>
-                    </button>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Düzenle</a>
-                        </li>
+                
 
-                        <li>
-                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>
-                        </li>
-                    </ul>
-                </div>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Sil</a>
 
             </td>
         </tr>
