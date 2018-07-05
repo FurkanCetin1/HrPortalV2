@@ -68,5 +68,19 @@ namespace HrPortalV2.Web.Controllers
                 return View(job);
             }
         }
+
+        //Delete
+        public ActionResult Delete(string id)
+        {
+            jobService.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        //MyJobs
+        public IActionResult MyJobs()
+        {
+            var myJobs = jobService.GetAllByUserName(User.Identity.Name).ToList(); 
+            return View(myJobs);
+        }
     }
 }

@@ -14,7 +14,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Company)
             </th>
-            <th></th>
+            <th>Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -28,8 +28,9 @@
                     @Html.DisplayFor(modelItem => item.Company.Name)
                 </td>
                 <td>
-                    <a asp-action="Apply" asp-route-id="@item.Id" class="btn btn-primary">Başvuru Yap</a> |
+                    <a asp-action="Apply" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Başvuru Yap</a>
                 </td>
+                
             </tr>
         }
     </tbody>
