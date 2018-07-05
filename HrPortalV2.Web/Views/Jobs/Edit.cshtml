@@ -1,7 +1,7 @@
 ﻿@model HrPortalV2.Models.Job
 
 @{
-    ViewData["Title"] = "Yeni İş İlanı";
+    ViewData["Title"] = "İş İlanı Düzenle";
 }
 
 
@@ -48,14 +48,14 @@
                     </label>
                 </div>
             </div>
-          
+            <input type="hidden" asp-for="Id" />
             <input asp-for="CreateDate" type="hidden" />
             <input asp-for="CreatedBy" type="hidden" />
             <input asp-for="UpdateDate" type="hidden" />
             <input asp-for="UpdatedBy" type="hidden" />
             <input asp-for="IPAddress" type="hidden" />
             <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-success btn-sm" />  <a asp-action="Index" asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">Geri Dön</a>
+                <input type="submit" value="Kaydet" class="btn btn-success btn-sm" />  <a asp-action="Index" asp-controller="Jobs" asp-area="">Geri Dön</a>
             </div>
         </form>
     </div>

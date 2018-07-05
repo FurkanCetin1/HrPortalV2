@@ -120,6 +120,13 @@ namespace HrPortalV2.Web.Controllers
             var mycompanies = companyService.GetAllByUserName(User.Identity.Name);
             return View(mycompanies);
         }
+        public IActionResult Details(string id)
+        {
+            var company = companyService.Get(id);
+
+            return View(company);
+
+        }
 
     }
 }

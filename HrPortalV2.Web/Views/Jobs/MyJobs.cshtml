@@ -1,25 +1,27 @@
 ﻿@model IEnumerable<HrPortalV2.Models.Job>
 
-@{
+    @{
     ViewData["Title"] = "Tüm İş İlanları";
-}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-<table id="myTable" class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Company)
-            </th>
-            <th>Eylemler</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    }
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <p>
+        <a asp-action="Create" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Yeni İş İlanı</a>
+    </p>
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Company)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
@@ -29,23 +31,22 @@
                 </td>
                 <td>
                     <a asp-action="Apply" asp-route-id="@item.Id" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Başvuru Yap</a> 
-                    <a asp-action="Details" asp-route-id=@item.Id asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">İlan Detayı</a>
                 </td>
-                
             </tr>
-        }
-    </tbody>
-</table>
-@section Scripts{
+            }
+        </tbody>
+    </table>
+    @section Scripts {
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
             $('#myTable').DataTable({
                 responsive: true,
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Turkish.json"
                 }
             });
-        });</script>
-}
+        });
+        </script>
+    }
