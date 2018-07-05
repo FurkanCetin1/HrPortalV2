@@ -26,7 +26,10 @@ namespace HrPortalV2.Web.Controllers
         public ActionResult Create()
         {
             var job = new Job();
+            job.PublishDate = DateTime.Now;
+            job.EndDate = job.PublishDate.AddDays(30);
             return View(job);
+            
         }
 
         [HttpPost]
