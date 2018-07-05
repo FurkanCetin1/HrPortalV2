@@ -102,7 +102,7 @@ namespace HrPortalV2.Web.Controllers
         }
         public IActionResult MyResumes()
         {
-            var myresumes = resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
+            var myresumes = resumeService.GetAllByUserName(User.Identity.Name).ToList(); // resumes
             return View(myresumes);
         }
     }
