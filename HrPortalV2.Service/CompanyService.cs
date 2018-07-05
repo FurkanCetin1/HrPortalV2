@@ -31,7 +31,7 @@ namespace HrPortalV2.Service
         }
         public IEnumerable<Company> GetAllByUserName(string userName)
         {
-            return companyRepository.GetMany(m => m.CreatedBy == userName);
+            return companyRepository.GetMany(m => m.CreatedBy == userName, "Country", "City", "County", "Sector");
         }
 
         public void Insert(Company entity)
