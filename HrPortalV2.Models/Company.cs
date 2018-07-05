@@ -38,5 +38,6 @@ namespace HrPortalV2.Models
         public bool IsApproved { get; set; }
         [Display(Name = "Aktif mi?")]
         public bool IsActive { get; set; }
+        public ICollection<Job> Jobs { get; set; }
     }
 }
