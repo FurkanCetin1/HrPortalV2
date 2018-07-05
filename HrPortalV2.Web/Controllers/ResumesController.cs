@@ -95,6 +95,11 @@ namespace HrPortalV2.Web.Controllers
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View();
         }
+        public IActionResult Details(string id)
+        {
+            var resume = resumeService.Get(id);
+            return View(resume);
+        }
         public ActionResult Delete(string id)
         {
             resumeService.Delete(id);
