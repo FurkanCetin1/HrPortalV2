@@ -28,7 +28,7 @@ namespace HrPortalV2.Service
             return messageRepository.GetAll();
         }
 
-        public IEnumerable<Message> GetByTo(IList<string> to)
+        public IEnumerable<Message> GetAllByTo(IList<string> to)
         {
             return messageRepository.GetMany(m => to.Contains(m.To));
         }
@@ -47,7 +47,7 @@ namespace HrPortalV2.Service
     public interface IMessageService
     {
         IEnumerable<Message> GetAll();
-        IEnumerable<Message> GetByTo(IList<string> to);
+        IEnumerable<Message> GetAllByTo(IList<string> to);
         Message Get(string id);
         void Insert(Message entity);
         void Update(Message entity);

@@ -21,14 +21,14 @@ namespace HrPortalV2.Web.Controllers
         }
         public IActionResult MyMessagesSentToMyCompanies()
         {
-            var mycompanies = companyService.GetByUserName(User.Identity.Name).Select(c=>c.Id).ToList();
-            var mymessages = messageService.GetByTo(mycompanies);
+            var mycompanies = companyService.GetAllByUserName(User.Identity.Name).Select(c=>c.Id).ToList();
+            var mymessages = messageService.GetAllByTo(mycompanies);
             return View(mymessages);
         }
         public IActionResult MyMessagesSentToMyResumes()
         {
-            var myresumes = resumeService.GetByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
-            var mymessages = messageService.GetByTo(myresumes);
+            var myresumes = resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
+            var mymessages = messageService.GetAllByTo(myresumes);
             return View(mymessages);
         }
         public IActionResult Create(string to)

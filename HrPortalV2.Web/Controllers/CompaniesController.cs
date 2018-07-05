@@ -117,7 +117,7 @@ namespace HrPortalV2.Web.Controllers
         }
         public IActionResult MyCompanies()
         {
-            var mycompanies = companyService.GetByUserName(User.Identity.Name);
+            var mycompanies = companyService.GetAllByUserName(User.Identity.Name);
             return View(mycompanies);
         }
 

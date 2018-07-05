@@ -7,7 +7,7 @@ namespace HrPortalV2.Models
 {
     public class Sector:BaseEntity
     {
-        [Display(Name = "Sektor Adı")]
+        [Display(Name = "Sektör Adı")]
         public string Name { get; set; }
     }
 }
