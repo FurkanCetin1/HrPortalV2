@@ -29,10 +29,10 @@ namespace HrPortalV2.Models
         public County County { get; set; }
         [Display(Name = "Adres")]
         public string Address { get; set; }
-        [Display(Name = "Sektor")]
+        [Display(Name = "Sektör")]
         public string SectorId { get; set; }
         [ForeignKey("SectorId")]
-        [Display(Name = "Sektor")]
+        [Display(Name = "Sektör")]
         public Sector Sector { get; set; }
         [Display(Name = "Onaylandı mı?")]
         public bool IsApproved { get; set; }
