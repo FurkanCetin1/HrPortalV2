@@ -8,48 +8,48 @@
 <table id="tblRecords" class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Photo)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
 
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
             
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.TotalExperience)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsSeekingJob)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastCompany)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastPosition)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastEducation)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastDepartment)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.GraduationYear)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.ForeignLanguages)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Occupation)
             </th>
             
@@ -102,10 +102,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Occupation.Name)
             </td>
+
             <td>
-                <div class="btn-group pull-right">
-                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>|
-                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy">Mesaj Gönder</a>
+                <div class="text-nowrap">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Sil</a>
+                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
                 </div>
             </td>
             
