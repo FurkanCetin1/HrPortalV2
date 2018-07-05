@@ -28,5 +28,9 @@ namespace HrPortalV2.Models
         public bool IsApproved { get; set; }
         [Display(Name = "Aktif mi ?")]
         public bool IsActive { get; set; }
+        [Display(Name = "Öne Çıkan")]
+        public bool IsFeatured { get; set; }
+        [Display(Name = "Sıra No")]
+        public int Position { get; set; }
     }
 }
