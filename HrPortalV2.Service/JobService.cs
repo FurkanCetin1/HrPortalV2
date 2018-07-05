@@ -38,11 +38,17 @@ namespace HrPortalV2.Service
         {
             jobRepository.Update(entity);
         }
+
+        public IEnumerable<Job> GetAllByUserName(string userName)
+        {
+            return jobRepository.GetMany(m => m.CreatedBy == userName);
+        }
     }
 
     public interface IJobService
     {
         IEnumerable<Job> GetAll();
+        IEnumerable<Job> GetAllByUserName(string userName);
         Job Get(string id);
         void Insert(Job entity);
         void Update(Job entity);

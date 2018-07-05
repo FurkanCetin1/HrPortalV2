@@ -23,7 +23,7 @@ namespace HrPortalV2.Web.Controllers
         }
 
         //Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var job = new Job();
             job.PublishDate = DateTime.Now;
@@ -34,7 +34,7 @@ namespace HrPortalV2.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Job job)
+        public IActionResult Create(Job job)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace HrPortalV2.Web.Controllers
         }
 
         //Edit
-        public ActionResult Edit(string id, bool saved)
+        public IActionResult Edit(string id, bool saved)
         {
             var job = jobService.Get(id);
             return View(job);
@@ -56,7 +56,7 @@ namespace HrPortalV2.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Job job)
+        public IActionResult Edit(int id, Job job)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +67,28 @@ namespace HrPortalV2.Web.Controllers
             {
                 return View(job);
             }
+        }
+
+        //Delete
+        public IActionResult Delete(string id)
+        {
+            jobService.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        //MyJobs
+        public IActionResult MyJobs()
+        {
+            var myJobs = jobService.GetAllByUserName(User.Identity.Name).ToList(); 
+            return View(myJobs);
+        }
+
+        //Details
+        public IActionResult Details(string id)
+        {
+            var job = jobService.Get(id);
+            return View(job);
+
         }
     }
 }
