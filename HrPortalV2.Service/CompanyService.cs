@@ -22,7 +22,7 @@ namespace HrPortalV2.Service
 
         public Company Get(string id)
         {
-            return companyRepository.Get(id, "Country", "City", "County", "Sector");
+            return companyRepository.Get(id, "Country", "City", "County", "Sector", "Jobs");
         }
 
         public IEnumerable<Company> GetAll()
