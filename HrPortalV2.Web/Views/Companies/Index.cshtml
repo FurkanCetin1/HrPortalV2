@@ -5,9 +5,7 @@
 }
 <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni Firma</a>
-</p>
+
 <table id="tblRecords" class="table">
     <thead>
         <tr>
@@ -49,20 +47,12 @@
             </td>
 
             <td class="text-nowrap">
-                <div class="btn-group pull-right">
-                    <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">
-                        Eylemler
-                        <i class="fa fa-angle-down"></i>
-                    </button>
-                    <ul class="dropdown-menu pull-right">
-                        <li>
-                            <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i> Düzenle</a>
-                        </li>
+                <div class="text-nowrap">
 
-                        <li>
-                            <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash"></i> Sil</a>
-                        </li>
-                    </ul>
+                    <a asp-action="Details" asp-controller="Companies" asp-route-Id="@item.Id" class="btn btn-default btn-sm">Firma Detayı</a>
+
+                    <a asp-action="Create" asp-controller="Companies" asp-route-Id="@item.CreatedBy" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
+
                 </div>
 
             </td>

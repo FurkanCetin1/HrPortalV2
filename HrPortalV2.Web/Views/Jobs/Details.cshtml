@@ -1,0 +1,181 @@
+﻿@model HrPortalV2.Models.Job
+
+@{
+    ViewData["Title"] = "İlan Detayı";
+}
+<link href="/assets/pages/css/blog.min.css" rel="stylesheet" type="text/css" />
+<div class="page-content-inner">
+    <div class="blog-page blog-content-2">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="blog-single-content bordered blog-container">
+                    <div class="blog-single-head">
+                        <h1 class="blog-single-head-title">@Model.Title</h1>
+                        <div class="blog-single-head-date">
+                            <i class="icon-calendar font-blue"></i>
+                            <a href="javascript:;">@string.Format("{0:dd.MM.yyyy}", Model.PublishDate)</a>
+                        </div>
+                    </div>
+                   
+                    <div class="blog-single-desc">
+                        <p>
+                         @Html.Raw(Model.Description)
+                        </p>
+                    </div>
+                    
+                    <div class="blog-comments">
+                        <h3 class="sbold blog-comments-title">Comments(30)</h3>
+                        <div class="c-comment-list">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" alt="" src="../assets/pages/img/avatars/team1.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#">Sean</a> on
+                                        <span class="c-date">23 May 2015, 10:40AM</span>
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" alt="" src="../assets/pages/img/avatars/team3.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#">Strong Strong</a> on
+                                        <span class="c-date">21 May 2015, 11:40AM</span>
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object" alt="" src="../assets/pages/img/avatars/team4.jpg">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                <a href="#">Emma Stone</a> on
+                                                <span class="c-date">30 May 2015, 9:40PM</span>
+                                            </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object" alt="" src="../assets/pages/img/avatars/team7.jpg">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="#">Nick Nilson</a> on
+                                        <span class="c-date">30 May 2015, 9:40PM</span>
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="blog-single-sidebar bordered blog-container">
+                    <div>
+                       <h4>İlan Detayları</h4>
+                    </div>
+                    <hr />
+                    <div class="blog-single-sidebar-recent">
+                        <p>
+                            <strong>Yayınlanma Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.PublishDate)
+                        </p>
+                        <p>
+                            <strong>Yayın Bitiş Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.EndDate)
+                        </p>
+                        <p>
+                            <strong>Oluşturulma Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.CreateDate)
+                        </p>
+                        <p>
+                            <strong>Firma:</strong><br />@Model.Company?.Name
+                        </p>
+
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+
+<div>
+    <h4>İş İlanı</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Company.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PublishDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsApproved)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Apply" asp-route-id="@Model.Id" asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">Başvur</a>
+    <a asp-action="Index" asp-controller="Jobs" asp-area="">Geri Dön</a>
+</div>
+-->

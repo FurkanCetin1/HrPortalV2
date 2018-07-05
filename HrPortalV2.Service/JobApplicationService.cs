@@ -38,10 +38,20 @@ namespace HrPortalV2.Service
         {
             jobApplicationRepository.Update(entity);
         }
+        public IEnumerable<JobApplication> GetAllByJobs(IList<string> jobIds)
+        {
+            return jobApplicationRepository.GetMany(j => jobIds.Contains(j.JobId));
+        }
+        public IEnumerable<JobApplication> GetAllByUserName(string userName)
+        {
+            return jobApplicationRepository.GetMany(j => j.CreatedBy == userName);
+        }
     }
 
     public interface IJobApplicationService
     {
+        IEnumerable<JobApplication> GetAllByJobs(IList<string> jobsIds); // ilanlarıma başvuranlar
+        IEnumerable<JobApplication> GetAllByUserName(string userName); // başvurularım
         IEnumerable<JobApplication> GetAll();
         JobApplication Get(string id);
         void Insert(JobApplication entity);

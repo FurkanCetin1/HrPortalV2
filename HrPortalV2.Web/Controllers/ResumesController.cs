@@ -56,7 +56,7 @@ namespace HrPortalV2.Web.Controllers
                     resume.Photo = File.FileName;
                 }
                 resumeService.Insert(resume);
-                return RedirectToAction(nameof(Edit), new { id = resume.Id, saved = true });
+                return RedirectToAction(nameof(MyResumes), new { id = resume.Id, saved = true });
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View(resume);
