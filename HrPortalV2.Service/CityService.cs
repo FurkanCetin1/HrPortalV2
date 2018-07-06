@@ -30,6 +30,11 @@ namespace HrPortalV2.Service
             return cityRepository.GetAll("Country");
         }
 
+        public IEnumerable<City> GetAllByCountryId(string countryId)
+        {
+            return cityRepository.GetMany(c => c.CountryId == countryId);
+        }
+
         public void Insert(City entity)
         {
             cityRepository.Insert(entity);
@@ -43,6 +48,7 @@ namespace HrPortalV2.Service
     public interface ICityService
     {
         IEnumerable<City> GetAll();
+        IEnumerable<City> GetAllByCountryId(string countryId);
         City Get(string id);
         void Insert(City entity);
         void Update(City entity);

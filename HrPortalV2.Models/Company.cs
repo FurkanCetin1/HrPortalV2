@@ -39,5 +39,19 @@ namespace HrPortalV2.Models
         [Display(Name = "Aktif mi?")]
         public bool IsActive { get; set; }
         public ICollection<Job> Jobs { get; set; }
+
+        [Display(Name="Telefon")]
+        public string Phone { get; set; }
+        [Display(Name="E-Posta")]
+        public string Email { get; set; }
+        [Display(Name="Yetkili Adı")]
+        public string ContactName { get; set; }
+
+        [Display(Name="Logo")]
+        public string Logo { get; set; }
+        [Display(Name="Web Sitesi")]
+        public string Website { get; set; }
+
+
     }
 }

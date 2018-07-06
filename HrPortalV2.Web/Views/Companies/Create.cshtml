@@ -8,7 +8,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -16,8 +16,18 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input asp-for="Logo" type="hidden" />
+                <label asp-for="Logo" class="control-label"></label>
+                @if (!string.IsNullOrEmpty(Model.Logo))
+                {
+                    <img src="~/Uploads/@Model.Logo" width="50" />
+                }
+                <input name="File" type="file" class="form-control" />
+                <span asp-validation-for="Logo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control" ></textarea>
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,23 +46,40 @@
                 <select asp-for="CountyId" class="form-control" asp-items="ViewBag.CountyId">   <option value="">İlçe seçiniz</option></select>
             </div>
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <textarea asp-for="Address" class="form-control" ></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="SectorId" class="control-label"></label>
                 <select asp-for="SectorId" class="form-control" asp-items="ViewBag.SectorId"> <option value="">Sektor seçiniz</option></select>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
-                    </label>
-                </div>
+                <label asp-for="Address" class="control-label"></label>
+                <textarea asp-for="Address" class="form-control"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control">
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Website" class="control-label"></label>
+                <input asp-for="Website" class="form-control">
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactName" class="control-label"></label>
+                <input asp-for="ContactName" class="form-control">
+                <span asp-validation-for="ContactName" class="text-danger"></span>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div>
                     <label>
                         <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                     </label>
@@ -79,6 +106,7 @@
 
             <div class="form-group">
                 <input type="submit" value="Kaydet" class="btn btn-success" />
+                <a asp-action="MyCompanies" asp-area="" asp-controller="Companies" class="btn btn-danger btn-sm">İptal</a>
             </div>
         </form>
     </div>

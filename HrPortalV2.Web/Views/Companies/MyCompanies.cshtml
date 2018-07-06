@@ -16,7 +16,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-
+            <th>@Html.DisplayNameFor(model => model.Logo)</th>
             <th>
                 @Html.DisplayNameFor(model => model.City)
             </th>
@@ -24,11 +24,14 @@
                 @Html.DisplayNameFor(model => model.County)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Sector)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Phone)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.ContactName)</th>
             <th>
                 @Html.DisplayNameFor(model => model.IsApproved)
             </th>
@@ -46,7 +49,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-
+            <td><img src="~/Uploads/@item.Logo" width="50" /></td>
             <td>
                 @Html.DisplayFor(modelItem => item.City.Name)
             </td>
@@ -54,11 +57,14 @@
                 @Html.DisplayFor(modelItem => item.County.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Sector.Id)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.ContactName)</td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsApproved)
             </td>

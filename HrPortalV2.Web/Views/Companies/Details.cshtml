@@ -11,66 +11,89 @@
                 <div class="blog-single-content bordered blog-container">
                     <div class="blog-single-head">
                         <h1 class="blog-single-head-title">@Model.Name</h1>
-
+                        @if (!string.IsNullOrEmpty(Model.Logo))
+                        {
+                            <img src="~/Uploads/@Model.Logo" width="50" class="pull-right" />
+                        }
                     </div>
 
                     <div class="blog-single-desc">
 
                         @Html.Raw(Model.Description)
-
-                    </div>
-
-                    <div class="blog-comments">
-                        <h3 class="sbold blog-comments-title">Firmanın İş İlanları</h3>
-                        <table id="myTable" class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        İlan Başlığı
-                                    </th>
-
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Jobs)
-                                {
+                        <br />
+                        <fieldset>
+                            
+                            <legend>İletişim Bilgileri</legend>
+                            <ul>
+                                <li>
+                                    <strong>Yetkili Adı:</strong>
+                                    @Model.ContactName
+                                </li>
+                                <li>
+                                    <strong>Web Sitesi:</strong>
+                                    <a href="@Model.Website">@Model.Website</a>
+                                </li>
+                                <li>
+                                    <strong>Adres:</strong>
+                                    @Model.Address
+                                    @Model.County.Name/@Model.City.Name
+                                    @Model.Country.Name
+                                </li>
+                                
+                            </ul>
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>Firmanın İlanları</legend>
+                            <table id="myTable" class="table">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Title)
-                                        </td>
+                                        <th>
+                                            İlan Başlığı
+                                        </th>
 
-                                        <td>
-                                            <a asp-action="Apply" asp-route-id="@item.Id" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Başvuru Yap</a>
-                                        </td>
+                                       
                                     </tr>
-                                }
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Jobs)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
 
-
+                                            <td>
+                                                <a asp-action="Apply" asp-route-id="@item.Id" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Başvuru Yap</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            
+                        </fieldset>
                     </div>
 
+                    
                 </div>
 
             </div>
             <div class="col-lg-3">
                 <div class="blog-single-sidebar bordered blog-container">
                     <div>
-                        <h4>İlan Detayları</h4>
+                        <h4>Firma Detayları</h4>
                     </div>
                     <hr />
                     <div class="blog-single-sidebar-recent">
                         <p>
-                            <strong>Yayınlanma Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.CreateDate)
+                            <strong>Sektör:</strong><br />@Model.Sector?.Name
                         </p>
-                        <p>
-                            <strong>Yayın Bitiş Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.UpdateDate)
-                        </p>
+                        
+                        
                         <p>
                             <strong>Oluşturulma Tarihi:</strong><br />@string.Format("{0:dd.MM.yyyy}", Model.CreateDate)
                         </p>
-                        >
+                        
 
                     </div>
 

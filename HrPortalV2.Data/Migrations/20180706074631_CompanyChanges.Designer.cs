@@ -4,14 +4,16 @@ using HrPortalV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HrPortalV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180706074631_CompanyChanges")]
+    partial class CompanyChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,8 +76,6 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<bool>("IsApproved");
 
-                    b.Property<string>("Logo");
-
                     b.Property<string>("Name");
 
                     b.Property<string>("Phone");
@@ -85,8 +85,6 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<DateTime>("UpdateDate");
 
                     b.Property<string>("UpdatedBy");
-
-                    b.Property<string>("Website");
 
                     b.HasKey("Id");
 

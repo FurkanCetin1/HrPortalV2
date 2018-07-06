@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -16,14 +19,15 @@ namespace HrPortalV2.Web.Controllers
         private readonly ICountryService countryService;
         private readonly ICityService cityService;
         private readonly ISectorService sectorService;
-        public CompaniesController(ICompanyService companyService, ICountyService countyService, ICountryService countryService, ICityService cityService, ISectorService sectorService)
+        private readonly IHostingEnvironment _environment;
+        public CompaniesController(ICompanyService companyService, ICountyService countyService, ICountryService countryService, ICityService cityService, ISectorService sectorService, IHostingEnvironment environment)
         {
             this.companyService = companyService;
             this.countyService = countyService;
             this.countryService = countryService;
             this.cityService = cityService;
             this.sectorService = sectorService;
-
+            this._environment = environment;
         }
         public IActionResult Index()
         {
@@ -32,30 +36,52 @@ namespace HrPortalV2.Web.Controllers
         }
         public ActionResult Create()
         {
+            
 
             var company = new Company();
             ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
-            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name");
-            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name");
+            
+            
             ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name");
             return View(company);
         }
         // POST: City/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Company company)
+        public async Task<ActionResult> Create(Company company, IFormFile File)
         {
             if (ModelState.IsValid)
             {
+                
+                if (File != null && File.Length > 0)
+                {
+                    // upload işlemi yapmak için konum belirle
+                    string path = Path.Combine(_environment.WebRootPath, "Uploads", File.FileName);
+
+                    // uploads dizini yoksa oluştur
+                    if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "Uploads")))
+                    {
+                        Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "Uploads"));
+                    }
+
+                    // belirlenen konuma upload yapılır
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await File.CopyToAsync(stream);
+                    }
+
+                    // dosya adı entity'e atanır
+                    company.Logo = File.FileName;
+                }
                 companyService.Insert(company);
                 return RedirectToAction(nameof(Edit), new { id = company.Id, saved = true });
             }
             else
             {
                 ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", company.CountryId);
-                ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name", company.CountyId);
-                ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name", company.CountryId);
-                ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.CountryId);
+                ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(company.CountryId), "Id", "Name", company.CityId);
+                ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(company.CityId), "Id", "Name", company.CountyId);
+                ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
                 return View(company);
             }
         }
@@ -64,26 +90,48 @@ namespace HrPortalV2.Web.Controllers
             var company = companyService.Get(id);
             ViewBag.Saved = saved;
             ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", company.CountryId);
-            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name", company.CountyId);
-            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name", company.CountryId);
-            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.CountryId);
+            ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(company.CountryId), "Id", "Name", company.CityId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(company.CityId), "Id", "Name", company.CountyId);
+            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
             return View(company);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(String id, Company company)
+        public async Task<ActionResult> Edit(String id, Company company, IFormFile File)
         {
             if (ModelState.IsValid)
             {
+                
+                if (File != null && File.Length > 0)
+                {
+                    // upload işlemi yapmak için konum belirle
+                    string path = Path.Combine(_environment.WebRootPath, "Uploads", File.FileName);
+
+                    // uploads dizini yoksa oluştur
+                    if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "Uploads")))
+                    {
+                        Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "Uploads"));
+                    }
+
+                    // belirlenen konuma upload yapılır
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await File.CopyToAsync(stream);
+                    }
+
+                    // dosya adı entity'e atanır
+
+                    company.Logo = File.FileName;
+                }
                 companyService.Update(company);
                 return RedirectToAction(nameof(Edit), new { id = company.Id, saved = true });
             }
             else
             {
                 ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", company.CountryId);
-                ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name", company.CountyId);
-                ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name", company.CountryId);
-                ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.CountryId);
+                ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(company.CountryId), "Id", "Name", company.CityId);
+                ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(company.CityId), "Id", "Name", company.CountyId);
+                ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
                 return View(countryService);
             }
            
