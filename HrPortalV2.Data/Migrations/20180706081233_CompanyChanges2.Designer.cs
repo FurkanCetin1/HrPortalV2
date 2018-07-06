@@ -4,14 +4,16 @@ using HrPortalV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HrPortalV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180706081233_CompanyChanges2")]
+    partial class CompanyChanges2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,31 +282,11 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AddressId");
-
-                    b.Property<string>("Behance");
-
-                    b.Property<string>("Blog");
-
-                    b.Property<string>("CityId");
-
-                    b.Property<string>("CountryId");
-
-                    b.Property<string>("CountyId");
-
-                    b.Property<string>("Courses");
-
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("CreatedBy");
 
-                    b.Property<string>("Dribble");
-
-                    b.Property<string>("DrivingLicense");
-
                     b.Property<string>("Email");
-
-                    b.Property<string>("Facebook");
 
                     b.Property<string>("FirstName");
 
@@ -312,15 +294,9 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<int>("Gender");
 
-                    b.Property<string>("GitHub");
-
                     b.Property<int>("GraduationYear");
 
-                    b.Property<string>("Hobbies");
-
                     b.Property<string>("IPAddress");
-
-                    b.Property<string>("Instagram");
 
                     b.Property<bool>("IsActive");
 
@@ -328,13 +304,7 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<bool>("IsCurrentlyWorking");
 
-                    b.Property<bool>("IsDisabled");
-
                     b.Property<bool>("IsSeekingJob");
-
-                    b.Property<bool>("IsSubsidized");
-
-                    b.Property<bool>("IsTravelDisabled");
 
                     b.Property<string>("LastCompany");
 
@@ -346,45 +316,23 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<string>("LastPosition");
 
-                    b.Property<string>("LinkedIn");
-
                     b.Property<int>("MaritalStatus");
 
                     b.Property<int?>("MilitaryStatus");
 
                     b.Property<string>("MobilePhone");
 
-                    b.Property<string>("Objective");
-
                     b.Property<string>("OccupationId");
 
                     b.Property<string>("Photo");
 
-                    b.Property<string>("Projects");
-
-                    b.Property<string>("Skills");
-
                     b.Property<int>("TotalExperience");
-
-                    b.Property<string>("Twitter");
 
                     b.Property<DateTime>("UpdateDate");
 
                     b.Property<string>("UpdatedBy");
 
-                    b.Property<bool>("UsingCigarette");
-
-                    b.Property<string>("Youtube");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("CityId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("CountyId");
 
                     b.HasIndex("OccupationId");
 
@@ -657,22 +605,6 @@ namespace HrPortalV2.Data.Migrations
 
             modelBuilder.Entity("HrPortalV2.Models.Resume", b =>
                 {
-                    b.HasOne("HrPortalV2.Models.City", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
-                    b.HasOne("HrPortalV2.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId");
-
-                    b.HasOne("HrPortalV2.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId");
-
-                    b.HasOne("HrPortalV2.Models.County", "County")
-                        .WithMany()
-                        .HasForeignKey("CountyId");
-
                     b.HasOne("HrPortalV2.Models.Occupation", "Occupation")
                         .WithMany()
                         .HasForeignKey("OccupationId");

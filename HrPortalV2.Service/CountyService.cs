@@ -29,6 +29,11 @@ namespace HrPortalV2.Service
             return countyRepository.GetAll("City");
         }
 
+        public IEnumerable<County> GetAllByCityId(string cityId)
+        {
+            return countyRepository.GetMany(c => c.CityId == cityId);
+        }
+
         public void Insert(County entity)
         {
             countyRepository.Insert(entity);
@@ -42,6 +47,7 @@ namespace HrPortalV2.Service
     public interface ICountyService
     {
         IEnumerable<County> GetAll();
+        IEnumerable<County> GetAllByCityId(string countyId);
         County Get(string id);
         void Insert(County entity);
         void Update(County entity);
