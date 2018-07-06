@@ -12,17 +12,17 @@ namespace HrPortalV2.Models
         public string FirstName { get; set; }
         [Display(Name = "Soyad")]
         public string LastName { get; set; }
-        [Display(Name = "Resim")]
+        [Display(Name = "Fotoğraf")]
         public string Photo { get; set; }
         [Display(Name = "Cinsiyet")]
         public Gender Gender { get; set; }
         [Display(Name = "Medeni Durum")]
         public MaritalStatus MaritalStatus { get; set; }
-        [Display(Name = "Telefon Numarası")]
+        [Display(Name = "Cep Telefonu")]
         public string MobilePhone { get; set; } //
-        [Display(Name = "E-Mail")]
+        [Display(Name = "E-Posta")]
         public string Email { get; set; } //
-        [Display(Name = "Toplam Deneyim")]
+        [Display(Name = "Toplam Deneyim (Yıl)")]
         public int TotalExperience { get; set; }
         [Display(Name = "Şu Anda Çalışıyor Mu?")]
         public bool IsCurrentlyWorking { get; set; }
@@ -42,7 +42,7 @@ namespace HrPortalV2.Models
         public int GraduationYear { get; set; }
         [Display(Name = "Yabancı Diller")]
         public string ForeignLanguages { get; set; }
-        [Display(Name = "Öz Geçmiş Dosyaları")]
+        [Display(Name = "Özgeçmiş Dosyaları")]
         public virtual ICollection<ResumeFile> ResumeFiles { get; set; }
         [Display(Name = "Onaylandı Mı?")]
         public bool IsApproved { get; set; }
@@ -52,6 +52,7 @@ namespace HrPortalV2.Models
         public virtual ICollection<JobApplication> JobApplications { get; set; }
         [Display(Name = "Meslek")]
         public string OccupationId { get; set; }
+        [Display(Name = "Meslek")]
         [ForeignKey("OccupationId")]
         public Occupation Occupation { get; set; }
     }
