@@ -102,23 +102,25 @@
                     <span asp-validation-for="TotalExperience" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="LastCompany" class="control-label"></label>
-                    <input asp-for="LastCompany" class="form-control" />
-                    <span asp-validation-for="LastCompany" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="LastPosition" class="control-label"></label>
-                    <input asp-for="LastPosition" class="form-control" />
-                    <span asp-validation-for="LastPosition" class="text-danger"></span>
-                </div>
-                <div class="form-group">
                     <label asp-for="OccupationId" class="control-label"></label>
                     <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
                         <option value="">Meslek Seçiniz</option>
                     </select>
                 </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="LastCompany" class="control-label"></label>
+                    <input asp-for="LastCompany" class="form-control" />
+                    <span asp-validation-for="LastCompany" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastPosition" class="control-label"></label>
+                    <input asp-for="LastPosition" class="form-control" />
+                    <span asp-validation-for="LastPosition" class="text-danger"></span>
+                </div>
+
             </div>
         </div>
     </fieldset>
@@ -171,6 +173,19 @@
     </fieldset>
     <br />
     <fieldset>
+        <legend>Projeler ve Yetkinlikler</legend>
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </fieldset>
+    <br />
+
+    <fieldset>
         <legend>Özgeçmiş Dosyaları</legend>
         <div class="row">
             <div class="col-md-6">
@@ -204,7 +219,7 @@
             <div class="col-md-6">
 
                 <div class="form-group">
-                    <div >
+                    <div>
                         <label>
                             <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
                         </label>
