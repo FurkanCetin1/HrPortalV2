@@ -19,11 +19,19 @@ namespace HrPortalV2.Models
         [Display(Name = "Medeni Durum")]
         public MaritalStatus MaritalStatus { get; set; }
         [Display(Name = "Cep Telefonu")]
-        public string MobilePhone { get; set; } //
+        public string MobilePhone { get; set; } 
         [Display(Name = "E-Posta")]
-        public string Email { get; set; } //
+        public string Email { get; set; } 
         [Display(Name = "Toplam Deneyim (Yıl)")]
         public int TotalExperience { get; set; }
+        [Display(Name = "Sigara Kullanıyor Mu?")]
+        public bool UsingCigarette{ get; set; }
+        [Display(Name = "Seyahat Engeli Var Mı?")]
+        public bool IsTravelDisabled { get; set; }
+        [Display(Name = "Engelli Mi")]
+        public bool IsDisabled{ get; set; }
+        [Display(Name = "Tevşikli Mi?")]
+        public bool IsSubsidized { get; set; }
         [Display(Name = "Şu Anda Çalışıyor Mu?")]
         public bool IsCurrentlyWorking { get; set; }
         [Display(Name = "İş Arıyor Mu?")]
@@ -55,5 +63,44 @@ namespace HrPortalV2.Models
         [Display(Name = "Meslek")]
         [ForeignKey("OccupationId")]
         public Occupation Occupation { get; set; }
+        [Display(Name = "Hedef")]
+        public string Objective { get; set; }
+        [Display(Name = "Ülke")]
+        public string CountryId { get; set; }
+        [ForeignKey("CountryId")]
+        [Display(Name = "Ülke")]
+        public Country Country { get; set; }
+        [Display(Name = "Şehir")]
+        public string CityId { get; set; }
+        [ForeignKey("CityId")]
+        [Display(Name = "Şehir")]
+        public City City { get; set; }
+        [Display(Name = "İlçe")]
+        public string CountyId { get; set; }
+        [ForeignKey("CountyId")]
+        [Display(Name = "İlçe")]
+        public County County{ get; set; }
+        [Display(Name = "Adres")]
+        public City Address { get; set; }
+        [Display(Name = "Projeler")]
+        public string Projects { get; set; }
+        [Display(Name = "Yetkinlikler")]
+        public string Skills { get; set; }
+        [Display(Name = "Hobiler")]
+        public string Hobbies { get; set; }
+        [Display(Name = "Sürücü Belgesi")]
+        public string DrivingLicense { get; set; }
+        [Display(Name = "Seminer ve Kurslar")]
+        public string Courses { get; set; }
+
+        public string Blog { get; set; }
+        public string LinkedIn { get; set; }
+        public string GitHub { get; set; }
+        public string Dribble { get; set; }
+        public string Behance { get; set; }
+        public string Youtube { get; set; }
+        public string Instagram { get; set; }
+        public string Facebook { get; set; }
+        public string Twitter { get; set; }
     }
 }

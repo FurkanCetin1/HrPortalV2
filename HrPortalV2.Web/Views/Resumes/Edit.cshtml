@@ -37,13 +37,6 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="MaritalStatus" class="control-label"></label>
-                    <select asp-for="MaritalStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))">
-                        <option value="">Medeni Durumu Seçiniz</option>
-                    </select>
-                    <span asp-validation-for="MaritalStatus" class="text-danger"></span>
-                </div>
-                <div class="form-group">
                     <input asp-for="Photo" type="hidden" />
                     <label asp-for="Photo" class="control-label"></label>
                     @if (!string.IsNullOrEmpty(Model.Photo))
@@ -53,6 +46,13 @@
 
                     <input name="File" type="file" class="form-control" />
                     <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MaritalStatus" class="control-label"></label>
+                    <select asp-for="MaritalStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))">
+                        <option value="">Medeni Durumu Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="MaritalStatus" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="MilitaryStatus" class="control-label"></label>

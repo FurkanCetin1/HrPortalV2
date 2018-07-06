@@ -81,6 +81,24 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId" onchange="CountryChange(this)">
+                    <option value="">Ülke seçiniz</option>
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId" onchange="CityChange(this)">   <option value="">Şehir seçiniz</option></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountyId" class="control-label"></label>
+                <select asp-for="CountyId" class="form-control" asp-items="ViewBag.CountyId">   <option value="">İlçe seçiniz</option></select>
+            </div>
+
+
         </div>
     </fieldset>
     <br />
@@ -100,7 +118,7 @@
                         <option value="">Meslek Seçiniz</option>
                     </select>
                 </div>
-               
+
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -156,12 +174,14 @@
     <fieldset>
         <legend>Seminer ve Kurslar</legend>
         <div class="row">
-            <div class="col-md-6">
-
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Courses" class="control-label"></label>
+                    <textarea asp-for="Courses" class="form-control"></textarea>
+                    <span asp-validation-for="Courses" class="text-danger"></span>
+                </div>
             </div>
-            <div class="col-md-6">
 
-            </div>
         </div>
     </fieldset>
     <br />
@@ -169,9 +189,19 @@
         <legend>Projeler ve Yetkinlikler</legend>
         <div class="row">
             <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Projects" class="control-label"></label>
+                    <textarea asp-for="Projects" class="form-control"></textarea>
+                    <span asp-validation-for="Projects" class="text-danger"></span>
+                </div>
 
             </div>
             <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Skills" class="control-label"></label>
+                    <textarea asp-for="Skills" class="form-control"></textarea>
+                    <span asp-validation-for="Skills" class="text-danger"></span>
+                </div>
 
             </div>
         </div>
@@ -188,11 +218,76 @@
             </div>
         </div>
     </fieldset>
-
+    <br />
+    <fieldset>
+        <legend>Sosyal Medya Hesapları</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Blog" class="control-label"></label>
+                    <input asp-for="Blog" class="form-control" />
+                    <span asp-validation-for="Blog" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkedIn" class="control-label"></label>
+                    <input asp-for="LinkedIn" class="form-control" />
+                    <span asp-validation-for="LinkedIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GitHub" class="control-label"></label>
+                    <input asp-for="GitHub" class="form-control" />
+                    <span asp-validation-for="GitHub" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Dribble" class="control-label"></label>
+                    <input asp-for="Dribble" class="form-control" />
+                    <span asp-validation-for="Dribble" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Behance" class="control-label"></label>
+                    <input asp-for="Behance" class="form-control" />
+                    <span asp-validation-for="Behance" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Youtube" class="control-label"></label>
+                    <input asp-for="Youtube" class="form-control" />
+                    <span asp-validation-for="Youtube" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Instagram" class="control-label"></label>
+                    <input asp-for="Instagram" class="form-control" />
+                    <span asp-validation-for="Instagram" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Facebook" class="control-label"></label>
+                    <input asp-for="Facebook" class="form-control" />
+                    <span asp-validation-for="Facebook " class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Twitter" class="control-label"></label>
+                    <input asp-for="Twitter" class="form-control" />
+                    <span asp-validation-for="Twitter" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <br />
     <fieldset>
         <legend>Diğer Bilgiler</legend>
         <div class="row">
             <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DrivingLicense" class="control-label"></label>
+                    <input asp-for="DrivingLicense" class="form-control" />
+                    <span asp-validation-for="DrivingLicense" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Hobbies" class="control-label"></label>
+                    <input asp-for="Hobbies" class="form-control" />
+                    <span asp-validation-for="Hobbies" class="text-danger"></span>
+                </div>
                 <div class="form-group">
                     <div>
                         <label>
@@ -200,12 +295,25 @@
                         </label>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div>
                         <label>
                             <input asp-for="IsSeekingJob" /> @Html.DisplayNameFor(model => model.IsSeekingJob)
                         </label>
                     </div>
+                    <div>
+                        <label>
+                            <input asp-for="IsTravelDisabled" /> @Html.DisplayNameFor(model => model.IsTravelDisabled)
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input asp-for="UsingCigarette" /> @Html.DisplayNameFor(model => model.UsingCigarette)
+                        </label>
+                    </div>
+
+
                 </div>
             </div>
             <div class="col-md-6">
@@ -223,6 +331,17 @@
                             <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                         </label>
                     </div>
+                    <div>
+                        <label>
+                            <input asp-for="IsDisabled" /> @Html.DisplayNameFor(model => model.IsDisabled)
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input asp-for="IsSubsidized" /> @Html.DisplayNameFor(model => model.IsSubsidized)
+                        </label>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -251,4 +370,30 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
+    <script>
+       
+        function CountryChange(elm) {
+            $.get('@Url.Action("GetCities","Companies")', { countryId: $(elm).val() }, function (data) {
+                var $select = $("#CityId");
+                $select.empty();
+                $select.append('<option value="">Şehir seçiniz</option>');
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            });
+        }
+
+        function CityChange(elm) {
+            $.get('@Url.Action("GetCounties","Companies")', { cityId: $(elm).val() }, function (data) {
+                var $select = $("#CountyId");
+                $select.empty();
+                $select.append('<option value="">İlçe seçiniz</option>');
+                $.each(data, function (key, value) {
+                    $select.append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            });
+        }
+
+    </script>
 }
