@@ -11,12 +11,15 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="From" class="control-label"></label>
-                <input asp-for="From" class="form-control" />
+                <select asp-for="From" class="form-control" asp-items="ViewBag.MyCompanies">
+                    <option value="">Firmanızı Seçiniz</option>
+                </select>
                 <span asp-validation-for="From" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="To" class="control-label"></label>
-                <input asp-for="To" class="form-control" />
+                <label asp-for="ToName" class="control-label"></label>
+                <input asp-for="To" type="hidden" />
+                <input asp-for="ToName" class="form-control" />
                 <span asp-validation-for="To" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,23 +29,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea rows="8" asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsRead" /> @Html.DisplayNameFor(model => model.IsRead)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
-                    </label>
-                </div>
-            </div>
+            
+            
           
                 <input asp-for="CreateDate" type="hidden" />
 
