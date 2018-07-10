@@ -62,8 +62,8 @@ namespace HrPortalV2.Data
 
             // add sample country, city and county
             modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(turkeyCountry);
-            modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(istanbulCity);
-            modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(kadikoyCounty);
+            modelBuilder.Entity<HrPortalV2.Models.City>().HasData(istanbulCity);
+            modelBuilder.Entity<HrPortalV2.Models.County>().HasData(kadikoyCounty);
 
         }
     }
