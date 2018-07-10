@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -24,7 +25,7 @@ namespace HrPortalV2.Web.Controllers
             var jobs = jobService.GetAll(); 
             return View(jobs);
         }
-
+        [Authorize(Roles = "Company")]
         //Create
         public IActionResult Create()
         {
@@ -35,7 +36,7 @@ namespace HrPortalV2.Web.Controllers
             return View(job);
             
         }
-
+        [Authorize(Roles = "Company")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Job job)
@@ -50,7 +51,7 @@ namespace HrPortalV2.Web.Controllers
                 return View(job);
             }
         }
-
+        [Authorize(Roles = "Company")]
         //Edit
         public IActionResult Edit(string id, bool saved)
         {
@@ -59,7 +60,7 @@ namespace HrPortalV2.Web.Controllers
             ViewBag.CompanyId = new SelectList(companyService.GetAll(), "Id", "Name");
             return View(job);
         }
-
+        [Authorize(Roles = "Company")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(string id, Job job)
@@ -74,14 +75,14 @@ namespace HrPortalV2.Web.Controllers
                 return View(job);
             }
         }
-
+        [Authorize(Roles = "Company")]
         //Delete
         public IActionResult Delete(string id)
         {
             jobService.Delete(id);
             return RedirectToAction("MyJobs");
         }
-
+        [Authorize(Roles = "Company")]
         //MyJobs
         public IActionResult MyJobs()
         {

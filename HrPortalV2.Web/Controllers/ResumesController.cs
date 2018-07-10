@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,12 +29,14 @@ namespace HrPortalV2.Web.Controllers
             var resumes = resumeService.GetAll();
             return View(resumes);
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult Create()
         {
             var resume = new Resume();
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name");
             return View(resume);
         }
+        [Authorize(Roles = "Candidate")]
         [HttpPost]
         public async Task<IActionResult> Create(Resume resume, IFormFile File)
         {
@@ -61,6 +64,7 @@ namespace HrPortalV2.Web.Controllers
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View(resume);
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult Edit(string id, bool saved)
         {
             ViewBag.Saved = saved;
@@ -68,6 +72,7 @@ namespace HrPortalV2.Web.Controllers
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
             return View(resume);
         }
+        [Authorize(Roles = "Candidate")]
         [HttpPost]
         public async Task<IActionResult> Edit(Resume resume, IFormFile File)
         {
@@ -100,11 +105,13 @@ namespace HrPortalV2.Web.Controllers
             var resume = resumeService.Get(id);
             return View(resume);
         }
+        [Authorize(Roles = "Candidate")]
         public ActionResult Delete(string id)
         {
             resumeService.Delete(id);
             return RedirectToAction("MyResumes");
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult MyResumes()
         {
             var myresumes = resumeService.GetAllByUserName(User.Identity.Name).ToList(); // resumes
