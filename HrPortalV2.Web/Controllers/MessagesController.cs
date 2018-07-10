@@ -6,6 +6,7 @@ using HrPortalV2.Models;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
@@ -35,10 +36,34 @@ namespace HrPortalV2.Web.Controllers
             return View(mymessages);
         }
         public IActionResult Create(string to)
-           
         {
-            var message = new Message(){ To = to };
+            var toName = "";
+            if (User.IsInRole("Company"))
+            {
+                var resume = resumeService.Get(to);
+                toName = resume.FirstName + " " + resume.LastName;
+            }
+            var message = new Message(){ To = to, ToName = toName };
+            ViewBag.MyCompanies = new SelectList(companyService.GetAllByUserName(User.Identity.Name), "Id", "Name");
             return View(message);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Message message)
+        {
+            if (ModelState.IsValid)
+            {
+                message.FromName = companyService.Get(message.From).Name;
+                messageService.Insert(message);
+                return RedirectToAction("Success");
+            }
+
+            return View(message);
+        }
+
+        public IActionResult Success()
+        {
+            return View();
         }
     }
 }

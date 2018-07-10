@@ -105,8 +105,8 @@
 
             <td>
                 <div class="text-nowrap">
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Sil</a>
-                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.CreatedBy" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Resumes" class="btn btn-success btn-sm"><i class="fa fa-trash"></i>Özgeçmiş Detayı</a>
+                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
                 </div>
             </td>
             
