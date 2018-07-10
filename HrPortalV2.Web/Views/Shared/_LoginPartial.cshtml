@@ -119,56 +119,76 @@
                             <i class="icon-user"></i> Profilim
                         </a>
                     </li>
+                    @if (User.IsInRole("Company"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyCompanies">
+                                <i class="icon-envelope-open"></i> Mesajlarım
+                                <span class="badge badge-danger"> 3 </span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Candidate"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyResumes">
+                                <i class="icon-envelope-open"></i> Mesajlarım
+                                <span class="badge badge-danger"> 3 </span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Candidate"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Resumes" asp-action="MyResumes">
+                                <i class="icon-envelope-open"></i> Özgeçmişlerim
 
-                    <li>
-                        <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyCompanies">
-                            <i class="icon-envelope-open"></i> Mesajlarım (Firma için)
-                            <span class="badge badge-danger"> 3 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyResumes">
-                            <i class="icon-envelope-open"></i> Mesajlarım (Aday için)
-                            <span class="badge badge-danger"> 3 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Resumes" asp-action="MyResumes">
-                            <i class="icon-envelope-open"></i> Özgeçmişlerim
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Candidate"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="JobApplications" asp-action="MyJobApplications">
+                                <i class="icon-envelope-open"></i> Başvurularım
 
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="JobApplications" asp-action="MyJobApplications">
-                            <i class="icon-envelope-open"></i> Başvurularım
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Company"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Jobs" asp-action="MyJobs">
+                                <i class="icon-envelope-open"></i> İş İlanlarım
 
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Jobs" asp-action="MyJobs">
-                            <i class="icon-envelope-open"></i> İş İlanlarım
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Company"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Companies" asp-action="MyCompanies">
+                                <i class="icon-envelope-open"></i> Firmalarım
 
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="Companies" asp-action="MyCompanies">
-                            <i class="icon-envelope-open"></i> Firmalarım
-
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-area="" asp-controller="JobApplications" asp-action="MyJobApplicants">
-                            <i class="icon-envelope-open"></i> Başvuranlar
-                            <span class="badge badge-danger"> 3 </span>
-                        </a>
-                    </li>
-                    <li class="divider"> </li>
-                    <li>
-                        <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
-                            <i class="icon-key"></i> Çıkış
-                        </a>
-                    </li>
-                </ul>
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole("Company"))
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="JobApplications" asp-action="MyJobApplicants">
+                                <i class="icon-envelope-open"></i> Başvuranlar
+                                <span class="badge badge-danger"> 3 </span>
+                            </a>
+                        </li>
+                    }
+                        <li class="divider"> </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
+                                <i class="icon-key"></i> Çıkış
+                            </a>
+                        </li>
+                    </ul>
             </li>
         </ul>
     </form>
