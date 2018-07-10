@@ -8,6 +8,8 @@ namespace HrPortalV2.Models
 {
     public class Resume:BaseEntity
     {
+        [Display(Name = "Özgeçmiş Adı")]
+        public string ResumeName { get; set; }
         [Display(Name="Ad")]
         public string FirstName { get; set; }
         [Display(Name = "Soyad")]

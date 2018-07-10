@@ -14,11 +14,15 @@ namespace HrPortalV2.Web.Controllers
     {
         private readonly IJobService jobService;
         private readonly ICompanyService companyService;
+        private readonly IResumeService resumeService;
+        private readonly IJobApplicationService jobApplicationService;
 
-        public JobsController(IJobService jobService, ICompanyService companyService)
+        public JobsController(IJobService jobService, ICompanyService companyService, IResumeService resumeService, IJobApplicationService jobApplicationService)
         {
             this.jobService = jobService;
             this.companyService = companyService;
+            this.resumeService = resumeService;
+            this.jobApplicationService = jobApplicationService;
         }
         public IActionResult Index()
         {
@@ -97,5 +101,28 @@ namespace HrPortalV2.Web.Controllers
             return View(job);
 
         }
+        public IActionResult Apply(string id)
+        {
+            var ja = new JobApplication() { JobId = id };
+            ViewBag.MyResumes = new SelectList(resumeService.GetAllByUserName(User.Identity.Name), "Id", "ResumeName");
+            return View(ja);
+        }
+        [HttpPost]
+        public IActionResult Apply(JobApplication ja)
+        {
+            if (ModelState.IsValid)
+            {
+                jobApplicationService.Insert(ja);
+                return RedirectToAction("Success");
+            }
+            return View(ja);
+
+        }
+
+        public IActionResult Success()
+        {
+            return View();
+        }
+        
     }
 }
