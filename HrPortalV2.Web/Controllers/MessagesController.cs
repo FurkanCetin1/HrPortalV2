@@ -40,5 +40,22 @@ namespace HrPortalV2.Web.Controllers
             var message = new Message(){ To = to };
             return View(message);
         }
+
+        [HttpPost]
+        public IActionResult Create(Message message)
+        {
+            if (ModelState.IsValid)
+            {
+                messageService.Insert(message);
+                return RedirectToAction("Success");
+            }
+
+            return View(message);
+        }
+
+        public IActionResult Success()
+        {
+            return View();
+        }
     }
 }
