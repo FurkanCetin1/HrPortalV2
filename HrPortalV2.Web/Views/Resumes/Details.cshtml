@@ -36,167 +36,252 @@
                         </div>
                         <div class="col-md-9">
                             <div class="row">
-                                <div class="col-md-8 profile-info">
+                                <div class="col-md-12 profile-info bold">
                                     <h1 class="font-green sbold uppercase"> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h1>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam
-                                        tincidunt erat volutpat.
-                                    </p>
-                                    <p>
-                                        <a href="javascript:;"> www.mywebsite.com </a>
-                                    </p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <i class="fa fa-map-marker"></i> Spain
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-calendar"></i> 18 Jan 1982
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-briefcase"></i> Design
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-star"></i> Top Seller
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-heart"></i> BASE Jumping
-                                        </li>
-                                    </ul>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                <tr>
-                                                    <th class="text-nowrap all">
-                                                        <label asp-for="FirstName" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap all">
-                                                        <label asp-for="LastName" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap all">
-                                                        <label asp-for="MobilePhone" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="Gender" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="MaritalStatus" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="Email" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="TotalExperience" class="control-label bold"></label>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td><text>@Html.DisplayFor(model => model.FirstName)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.LastName)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.MobilePhone)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.Gender)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.MaritalStatus)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.Email)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.TotalExperience)</text></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                <tr>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="IsCurrentlyWorking" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="IsSeekingJob" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="LastCompany" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="LastPosition" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="LastEducation" class="control-label bold"></label>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td><text>@Html.DisplayFor(model => model.IsCurrentlyWorking)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.IsSeekingJob)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.LastCompany)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.LastPosition)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.LastEducation)</text></td>
-                                                    </tr>
-                                            </table>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <table class="table table-striped table-bordered table-advance table-hover">
-                                                <tr>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="LastDepartment" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="GraduationYear" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="ForeignLanguages" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="IsApproved" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="IsActive" class="control-label bold"></label>
-                                                    </th>
-                                                    <th class="text-nowrap">
-                                                        <label asp-for="Occupation" class="control-label bold"></label>
-                                                    </th>
-
-                                                </tr>
-
-                                               <tr>
-                                                    <td><text>@Html.DisplayFor(model => model.LastDepartment)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.GraduationYear)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.ForeignLanguages)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.IsApproved)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.IsActive)</text></td>
-                                                    <td><text>@Html.DisplayFor(model => model.Occupation)</text></td>
-                                                </tr>
-                                            </table>
+                                           @Model.Objective
                                         </div>
                                     </div>
                                 </div>
-                                <!--end col-md-8-->
-                                <div class="col-md-4">
-                                    <div class="portlet sale-summary">
-                                        <div class="portlet-title">
-                                            <div class="caption font-red sbold"> Yetkinlikler </div>
-                                            <div class="tools">
-                                                <a class="reload" href="javascript:;"> </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <legend>Kişisel Bilgiler</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Medeni Durum</strong><br />
+                                                    @Html.DisplayFor(model => model.MaritalStatus)
+                                                </p>
+                                                <p>
+                                                    <strong>Cinsiyet</strong><br />
+                                                    @Html.DisplayFor(model => model.Gender)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Askerlik Durumu</strong><br />
+                                                    @Html.DisplayFor(model=>model.MilitaryStatus)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
                                             </div>
                                         </div>
-                                        <div class="portlet-body">
-                                            <ul class="list-unstyled">
-                                                <li>
-                                                    <span class="sale-info">
-                                                        TODAY SOLD
-                                                        <i class="fa fa-img-up"></i>
-                                                    </span>
-                                                    <span class="sale-num"> 23 </span>
-                                                </li>
-                                                <li>
-                                                    <span class="sale-info">
-                                                        WEEKLY SALES
-                                                        <i class="fa fa-img-down"></i>
-                                                    </span>
-                                                    <span class="sale-num"> 87 </span>
-                                                </li>
-                                                <li>
-                                                    <span class="sale-info"> TOTAL SOLD </span>
-                                                    <span class="sale-num"> 2377 </span>
-                                                </li>
-                                            </ul>
+                                        
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>İletişim Bilgileri</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Telefon</strong><br />
+                                                    @Html.DisplayFor(model => model.MobilePhone)
+                                                </p>
+                                                <p>
+                                                    <strong>E-mail</strong><br />
+                                                    @Html.DisplayFor(model => model.Email)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Ülke</strong><br />
+                                                    @Html.DisplayFor(model => model.Country)
+                                                </p>
+                                                <p>
+                                                    <strong>Şehir</strong><br />
+                                                    @Html.DisplayFor(model => model.City)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>İlçe</strong><br />
+                                                    @Html.DisplayFor(model=>model.Country)
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>İş Deneyimleri</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Toplam Deneyim</strong><br />
+                                                    @Html.DisplayFor(model => model.TotalExperience)
+                                                </p>
+                                                <p>
+                                                    <strong>Meslek</strong><br />
+                                                    @Html.DisplayFor(model => model.Occupation)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Son Çalıştığı Firma</strong><br />
+                                                    @Html.DisplayFor(model => model.LastCompany)
+                                                </p>
+                                                <p>
+                                                    <strong>Son Çalıştığı Firma</strong><br />
+                                                    @Html.DisplayFor(model => model.LastPosition)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Eğitim Bilgileri</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Mezun Olduğu Okul</strong><br />
+                                                    @Html.DisplayFor(model=>model.LastEducation)
+                                                </p>
+                                                <p>
+                                                    <strong>Mezun Olduğu Bölüm</strong><br />
+                                                    @Html.DisplayFor(model=>model.LastDepartment)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Mezuniyet Yılı</strong><br />
+                                                    @Html.DisplayFor(model=>model.GraduationYear)
+                                                </p>
+                                                <p>
+                                                    <strong>Yabancı Diller</strong><br />
+                                                    @Html.DisplayFor(model=>model.ForeignLanguages)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Seminer Ve Kurslar</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Seminer Ve Kurslar</strong><br />
+                                                    @Html.DisplayFor(model => model.Courses)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Özgeçmiş Dosyaları</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Sosyal Medya Hesapları</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Blog</strong><br />
+                                                    @Html.DisplayFor(model => model.Blog)
+                                                </p>
+                                                <p>
+                                                    <strong>Linkedin</strong><br />
+                                                    @Html.DisplayFor(model => model.LinkedIn)
+                                                </p>
+                                                <p>
+                                                    <strong>Github</strong><br />
+                                                    @Html.DisplayFor(model => model.GitHub)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Dribble</strong><br />
+                                                    @Html.DisplayFor(model=>model.Dribble)
+                                                </p>
+                                                <p>
+                                                    <strong>Behance</strong><br />
+                                                    @Html.DisplayFor(model=>model.Behance)
+                                                </p>
+                                                <p>
+                                                    <strong>Youtube</strong><br />
+                                                    @Html.DisplayFor(model=>model.Youtube)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Instegram</strong><br />
+                                                    @Html.DisplayFor(model=>model.Instagram)
+                                                </p>
+                                                <p>
+                                                    <strong>Facebook</strong><br />
+                                                    @Html.DisplayFor(model=>model.Facebook)
+                                                </p>
+                                                <p>
+                                                    <strong>Twitter</strong><br />
+                                                    @Html.DisplayFor(model=>model.Twitter)
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Diğer Bilgiler</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Şu Anda Çalışıyor Mu?</strong>
+                                                    @Html.DisplayFor(model => model.IsCurrentlyWorking)
+                                                </p>
+                                                <p>
+                                                    <strong>İş Arıyor Mu?</strong>
+                                                    @Html.DisplayFor(model => model.IsSeekingJob)
+                                                </p>
+                                                <p>
+                                                    <strong>Seyehat Engeli Var Mı?</strong>
+                                                    @Html.DisplayFor(model => model.IsTravelDisabled)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Sigara Kullanıyor Mu?</strong>
+                                                    @Html.DisplayFor(model => model.UsingCigarette)
+                                                </p>
+                                                <p>
+                                                    <strong>Onaylandı Mı?</strong>
+                                                    @Html.DisplayFor(model => model.IsApproved)
+                                                </p>
+                                                <p>
+                                                    <strong>Aktif Mi?</strong>
+                                                    @Html.DisplayFor(model => model.IsActive)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Engelli Mi?</strong>
+                                                    @Html.DisplayFor(model => model.IsDisabled)
+                                                </p>
+                                                <p>
+                                                    <strong>Teşvikli Mi?</strong>
+                                                    @Html.DisplayFor(model => model.IsSubsidized)
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                                <!--end col-md-4-->
                             </div>
                             
                                 <!--end row-->

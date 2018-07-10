@@ -30,7 +30,7 @@ namespace HrPortalV2.Models
         public bool IsTravelDisabled { get; set; }
         [Display(Name = "Engelli Mi")]
         public bool IsDisabled{ get; set; }
-        [Display(Name = "Tevşikli Mi?")]
+        [Display(Name = "Teşvikli Mi?")]
         public bool IsSubsidized { get; set; }
         [Display(Name = "Şu Anda Çalışıyor Mu?")]
         public bool IsCurrentlyWorking { get; set; }

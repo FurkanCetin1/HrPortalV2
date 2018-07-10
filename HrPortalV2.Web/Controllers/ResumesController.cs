@@ -103,7 +103,7 @@ namespace HrPortalV2.Web.Controllers
         public ActionResult Delete(string id)
         {
             resumeService.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("MyResumes");
         }
         public IActionResult MyResumes()
         {
