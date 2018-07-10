@@ -38,7 +38,7 @@ namespace HrPortalV2.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -70,7 +70,12 @@ namespace HrPortalV2.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                    .CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                    .Database.EnsureCreated();
+            }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

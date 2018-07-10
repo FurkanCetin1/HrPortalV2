@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrPortalV2.Web.Controllers
@@ -19,12 +20,14 @@ namespace HrPortalV2.Web.Controllers
             this.companyService = companyService;
             this.resumeService = resumeService;
         }
+        [Authorize(Roles = "Company")]
         public IActionResult MyMessagesSentToMyCompanies()
         {
             var mycompanies = companyService.GetAllByUserName(User.Identity.Name).Select(c=>c.Id).ToList();
             var mymessages = messageService.GetAllByTo(mycompanies);
             return View(mymessages);
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult MyMessagesSentToMyResumes()
         {
             var myresumes = resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes

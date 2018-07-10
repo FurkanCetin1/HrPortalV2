@@ -55,48 +55,34 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <a href="javascript:;">
-                            <img src="~/Uploads/CompanyLogos/logo_bilgikoleji.png" alt="Bilgi Koleji" width="80" />
-                        </a>
-                    </td>
-                    <td >
-                        <a href="http://www.bilgikoleji.com">Bilgi Koleji</a>
-                    </td>
-                    <td >
-                        <strong>
-                            <a asp-action="Details" asp-controller="Jobs">Robotik ve Kodlama Öğretmeni</a>
-                        </strong>
-                    </td>
-                    <td > İstanbul (Anadolu) </td>
-                    <td >
-                        <a asp-action="Apply" asp-controller="Jobs" class="btn btn-sm btn-primary">
-                            Başvur
-                        </a>
-                        <a asp-action="Create" asp-controller="Messages" class="btn btn-sm btn-success">
-                            Mesaj Gönder
-                        </a>
-                    </td>
-                </tr>
-                
+                @foreach (var item in (IEnumerable<HrPortalV2.Models.Job>)ViewBag.FeaturedJobs)
+                {
+                    <tr>
+                        <td>
+                            <a href="javascript:;">
+                                <img src="~/Uploads/CompanyLogos/@item.Company?.Logo" alt="@item.Company?.Name" width="80" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@item.Company?.Website" target="_blank">@item.Company?.Name</a>
+                        </td>
+                        <td>
+                            <strong>
+                                <a asp-action="Details" asp-controller="Jobs" asp-route-id="@item.Id">@item.Title</a>
+                            </strong>
+                        </td>
+                        <td> @item.Company?.County?.Name </td>
+                        <td>
+                            <a asp-action="Apply" asp-controller="Jobs" asp-route-jobid="@item.Id" class="btn btn-sm btn-primary">
+                                Başvur
+                            </a>
+                            <a asp-action="Create" asp-controller="Messages" asp-route-companyid="@item.CompanyId" class="btn btn-sm btn-success">
+                                Mesaj Gönder
+                            </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
-    </div>
-    <div class="search-pagination pagination-rounded">
-        <ul class="pagination">
-            <li class="page-active">
-                <a href="javascript:;"> 1 </a>
-            </li>
-            <li>
-                <a href="javascript:;"> 2 </a>
-            </li>
-            <li>
-                <a href="javascript:;"> 3 </a>
-            </li>
-            <li>
-                <a href="javascript:;"> 4 </a>
-            </li>
-        </ul>
     </div>
 </div>

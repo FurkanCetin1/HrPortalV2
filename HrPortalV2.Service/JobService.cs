@@ -29,6 +29,11 @@ namespace HrPortalV2.Service
             return jobRepository.GetAll("Company", "JobApplications");
         }
 
+        public IEnumerable<Job> GetFeaturedJobs()
+        {
+            return jobRepository.GetMany(j=>j.IsFeatured == true && j.IsActive == true && j.PublishDate <=DateTime.Now && DateTime.Now<=j.EndDate, o=>o.Position,false,"Company","Company.County");
+        }
+
         public void Insert(Job entity)
         {
             jobRepository.Insert(entity);
@@ -41,13 +46,14 @@ namespace HrPortalV2.Service
 
         public IEnumerable<Job> GetAllByUserName(string userName)
         {
-            return jobRepository.GetMany(m => m.CreatedBy == userName, "Company");
+            return jobRepository.GetMany(m => m.CreatedBy == userName, o=>o.EndDate, true, "Company");
         }
     }
 
     public interface IJobService
     {
         IEnumerable<Job> GetAll();
+        IEnumerable<Job> GetFeaturedJobs();
         IEnumerable<Job> GetAllByUserName(string userName);
         Job Get(string id);
         void Insert(Job entity);
