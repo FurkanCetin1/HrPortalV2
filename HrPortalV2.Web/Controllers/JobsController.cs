@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
     public class JobsController : Controller
     {
         private readonly IJobService jobService;
+        private readonly ICompanyService companyService;
 
-        public JobsController(IJobService jobService)
+        public JobsController(IJobService jobService, ICompanyService companyService)
         {
             this.jobService = jobService;
+            this.companyService = companyService;
         }
         public IActionResult Index()
         {
@@ -26,6 +29,7 @@ namespace HrPortalV2.Web.Controllers
         public IActionResult Create()
         {
             var job = new Job();
+            ViewBag.CompanyId = new SelectList(companyService.GetAll(), "Id", "Name");
             job.PublishDate = DateTime.Now;
             job.EndDate = job.PublishDate.AddDays(30);
             return View(job);
@@ -51,17 +55,19 @@ namespace HrPortalV2.Web.Controllers
         public IActionResult Edit(string id, bool saved)
         {
             var job = jobService.Get(id);
+            ViewBag.Saved = saved;
+            ViewBag.CompanyId = new SelectList(companyService.GetAll(), "Id", "Name");
             return View(job);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Job job)
+        public IActionResult Edit(string id, Job job)
         {
             if (ModelState.IsValid)
             {
                 jobService.Update(job);
-                return RedirectToAction(nameof(Edit), new { id = job.Id });
+                return RedirectToAction(nameof(Edit), new { id = job.Id, saved = true });
             }
             else
             {
@@ -73,7 +79,7 @@ namespace HrPortalV2.Web.Controllers
         public IActionResult Delete(string id)
         {
             jobService.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("MyJobs");
         }
 
         //MyJobs
