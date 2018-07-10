@@ -32,7 +32,7 @@ namespace HrPortalV2.Service
 
         public IEnumerable<City> GetAllByCountryId(string countryId)
         {
-            return cityRepository.GetMany(c => c.CountryId == countryId);
+            return cityRepository.GetMany(c => c.CountryId == countryId, o=>o.Name);
         }
 
         public void Insert(City entity)

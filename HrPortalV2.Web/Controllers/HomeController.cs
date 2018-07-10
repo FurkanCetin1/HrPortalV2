@@ -5,13 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HrPortalV2.Web.Models;
+using HrPortalV2.Service;
 
 namespace HrPortalV2.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IJobService jobService;
+        public HomeController(IJobService jobService)
+        {
+            this.jobService = jobService;
+        }
         public IActionResult Index()
         {
+            ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
             return View();
         }
 

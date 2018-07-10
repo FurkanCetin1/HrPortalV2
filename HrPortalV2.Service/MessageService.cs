@@ -30,7 +30,7 @@ namespace HrPortalV2.Service
 
         public IEnumerable<Message> GetAllByTo(IList<string> to)
         {
-            return messageRepository.GetMany(m => to.Contains(m.To));
+            return messageRepository.GetMany(m => to.Contains(m.To), o=>o.CreateDate, true);
         }
 
         public void Insert(Message entity)

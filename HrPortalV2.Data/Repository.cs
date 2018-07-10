@@ -28,12 +28,20 @@ namespace HrPortalV2.Data
                 query = query.Include(n);
             return query.AsEnumerable();
         }
-        public IEnumerable<T> GetMany(Func<T, bool> where, params string[] nav)
+        public IEnumerable<T> GetMany(Func<T, bool> where, Func<T, object> orderby, bool desc = false, params string[] nav)
         {
             var query = entities.AsQueryable();
             foreach (var n in nav)
                 query = query.Include(n);
-            return query.Where(where).AsEnumerable();
+            query = query.Where(where).AsQueryable();
+            if (desc == false)
+            {
+                query = query.OrderBy(orderby).AsQueryable();
+            } else
+            {
+                query = query.OrderByDescending(orderby).AsQueryable();
+            }
+            return query.AsEnumerable();
         }
 
         public T Get(string id, params string[] nav)

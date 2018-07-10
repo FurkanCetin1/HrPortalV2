@@ -31,7 +31,7 @@ namespace HrPortalV2.Service
 
         public IEnumerable<County> GetAllByCityId(string cityId)
         {
-            return countyRepository.GetMany(c => c.CityId == cityId);
+            return countyRepository.GetMany(c => c.CityId == cityId, o=>o.Name);
         }
 
         public void Insert(County entity)
