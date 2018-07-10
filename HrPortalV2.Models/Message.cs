@@ -9,8 +9,12 @@ namespace HrPortalV2.Models
     {
         [Display(Name = "Kimden")]
         public string From { get; set; } // companyId or resumeId
+        [Display(Name = "Kimden")]
+        public string FromName { get; set; }
         [Display(Name = "Kime")]
         public string To { get; set; } // companyId or resumeId
+        [Display(Name = "Kime")]
+        public string ToName { get; set; }
         [Display(Name = "Başlık")]
         public string Title { get; set; }
         [Display(Name = "Açıklama")]

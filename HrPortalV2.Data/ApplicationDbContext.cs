@@ -28,11 +28,42 @@ namespace HrPortalV2.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // veritabanına varsayılan üye rollerini ekliyoruz
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Admin", ConcurrencyStamp = "Admin", NormalizedName = "ADMIN" });
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Company", ConcurrencyStamp = "Company", NormalizedName = "COMPANY" });
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Candidate", ConcurrencyStamp = "Candidate", NormalizedName = "CANDIDATE" });
-            modelBuilder.Entity<HrPortalV2.Models.Sector>().HasData(new HrPortalV2.Models.Sector { Id = "1", Name = "Eğitim", CreateDate=DateTime.Now, CreatedBy="username", UpdateDate=DateTime.Now, UpdatedBy="username", IPAddress="127.0.0.1" });
+            
+            // create roles and users
+            var adminRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Admin", ConcurrencyStamp = "Admin", NormalizedName = "ADMIN" };
+            var companyRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Company", ConcurrencyStamp = "Company", NormalizedName = "COMPANY" };
+            var candidateRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Candidate", ConcurrencyStamp = "Candidate", NormalizedName = "CANDIDATE" };
+            var adminUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "admin@bilisimegitim.com", NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", UserName = "admin@bilisimegitim.com", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+            var companyUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "firma@bilisimegitim.com", NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", UserName = "firma@bilisimegitim.com", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+            var candidateUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "aday@bilisimegitim.com", NormalizedEmail = "ADAY@BILISIMEGITIM.COM", UserName = "aday@bilisimegitim.com", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+
+            // add roles
+            modelBuilder.Entity<IdentityRole>().HasData(adminRole);
+            modelBuilder.Entity<IdentityRole>().HasData(companyRole);
+            modelBuilder.Entity<IdentityRole>().HasData(candidateRole);
+
+            // add users
+            modelBuilder.Entity<IdentityUser>().HasData(adminUser);
+            modelBuilder.Entity<IdentityUser>().HasData(companyUser);
+            modelBuilder.Entity<IdentityUser>().HasData(candidateUser);
+
+            // add user roles
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = adminRole.Id });
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = companyUser.Id, RoleId = companyRole.Id });
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = candidateUser.Id, RoleId = candidateRole.Id });
+
+            // add Eğitim sector
+            modelBuilder.Entity<HrPortalV2.Models.Sector>().HasData(new HrPortalV2.Models.Sector { Id = "1", Name = "Eğitim", CreateDate=DateTime.Now, CreatedBy=adminUser.UserName, UpdateDate=DateTime.Now, UpdatedBy= adminUser.UserName, IPAddress="127.0.0.1" });
+
+            // create sample country, city and county
+            var turkeyCountry = new HrPortalV2.Models.Country { Id = Guid.NewGuid().ToString(), Name = "Türkiye", CreateDate = DateTime.Now, CreatedBy = adminUser.UserName, UpdateDate = DateTime.Now, UpdatedBy = adminUser.UserName, IPAddress = "127.0.0.1" };
+            var istanbulCity = new HrPortalV2.Models.City { Id = Guid.NewGuid().ToString(), Name = "İstanbul", CountryId=turkeyCountry.Id, CreateDate = DateTime.Now, CreatedBy = adminUser.UserName, UpdateDate = DateTime.Now, UpdatedBy = adminUser.UserName, IPAddress = "127.0.0.1" };
+            var kadikoyCounty = new HrPortalV2.Models.County { Id = Guid.NewGuid().ToString(), Name = "Kadıköy", CityId = istanbulCity.Id, CreateDate = DateTime.Now, CreatedBy = adminUser.UserName, UpdateDate = DateTime.Now, UpdatedBy = adminUser.UserName, IPAddress = "127.0.0.1" };
+
+            // add sample country, city and county
+            modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(turkeyCountry);
+            modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(istanbulCity);
+            modelBuilder.Entity<HrPortalV2.Models.Country>().HasData(kadikoyCounty);
 
         }
     }

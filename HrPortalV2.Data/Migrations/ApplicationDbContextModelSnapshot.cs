@@ -121,6 +121,12 @@ namespace HrPortalV2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new { Id = "d9bb3783-0ccb-4520-bcec-24a147b9e573", CreateDate = new DateTime(2018, 7, 10, 10, 41, 24, 14, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Türkiye", UpdateDate = new DateTime(2018, 7, 10, 10, 41, 24, 14, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" },
+                        new { Id = "fa2f03ab-ce5a-424a-b762-b0e64949ab1c", CreateDate = new DateTime(2018, 7, 10, 10, 41, 24, 14, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "İstanbul", UpdateDate = new DateTime(2018, 7, 10, 10, 41, 24, 14, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" },
+                        new { Id = "497c2db2-d1df-4a3b-8c19-7546bbc5339a", CreateDate = new DateTime(2018, 7, 10, 10, 41, 24, 15, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 7, 10, 10, 41, 24, 15, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                    );
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.County", b =>
@@ -234,6 +240,8 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<string>("From");
 
+                    b.Property<string>("FromName");
+
                     b.Property<string>("IPAddress");
 
                     b.Property<bool>("IsApproved");
@@ -243,6 +251,8 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Title");
 
                     b.Property<string>("To");
+
+                    b.Property<string>("ToName");
 
                     b.Property<DateTime>("UpdateDate");
 
@@ -437,6 +447,10 @@ namespace HrPortalV2.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sectors");
+
+                    b.HasData(
+                        new { Id = "1", CreateDate = new DateTime(2018, 7, 10, 10, 41, 24, 13, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Eğitim", UpdateDate = new DateTime(2018, 7, 10, 10, 41, 24, 14, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -461,6 +475,12 @@ namespace HrPortalV2.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new { Id = "af1b74b1-f2ce-45fc-8925-a25fa6c5e37b", ConcurrencyStamp = "Admin", Name = "Admin", NormalizedName = "ADMIN" },
+                        new { Id = "b5061790-2653-431b-b178-55f31c0cd621", ConcurrencyStamp = "Company", Name = "Company", NormalizedName = "COMPANY" },
+                        new { Id = "ac820403-5ea9-4419-a0bc-93843f3a8219", ConcurrencyStamp = "Candidate", Name = "Candidate", NormalizedName = "CANDIDATE" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -532,6 +552,12 @@ namespace HrPortalV2.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new { Id = "9d586ec6-4c25-4756-a462-6d1fd96f60cd", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "admin@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "admin@bilisimegitim.com" },
+                        new { Id = "da95db0c-6479-4e7e-9a63-984df74d847d", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "firma@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "firma@bilisimegitim.com" },
+                        new { Id = "fb3ea82b-0ca3-4d7d-8f78-ce2c35c9d27e", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "aday@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADAY@BILISIMEGITIM.COM", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "aday@bilisimegitim.com" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -556,11 +582,9 @@ namespace HrPortalV2.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -585,17 +609,21 @@ namespace HrPortalV2.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new { UserId = "9d586ec6-4c25-4756-a462-6d1fd96f60cd", RoleId = "af1b74b1-f2ce-45fc-8925-a25fa6c5e37b" },
+                        new { UserId = "da95db0c-6479-4e7e-9a63-984df74d847d", RoleId = "b5061790-2653-431b-b178-55f31c0cd621" },
+                        new { UserId = "fb3ea82b-0ca3-4d7d-8f78-ce2c35c9d27e", RoleId = "ac820403-5ea9-4419-a0bc-93843f3a8219" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
