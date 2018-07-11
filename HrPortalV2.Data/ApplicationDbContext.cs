@@ -65,6 +65,9 @@ namespace HrPortalV2.Data
             modelBuilder.Entity<HrPortalV2.Models.City>().HasData(istanbulCity);
             modelBuilder.Entity<HrPortalV2.Models.County>().HasData(kadikoyCounty);
 
+            var yazilimOccupucation = new HrPortalV2.Models.Occupation { Id = Guid.NewGuid().ToString(), Name = "Yazılım Uzmanı", CreateDate = DateTime.Now, CreatedBy = adminUser.UserName, UpdateDate = DateTime.Now, UpdatedBy = adminUser.UserName, IPAddress = "127.0.0.1" };
+
+            modelBuilder.Entity<HrPortalV2.Models.Occupation>().HasData(yazilimOccupucation);
         }
     }
 }
