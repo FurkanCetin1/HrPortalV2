@@ -18,11 +18,13 @@ namespace HrPortalV2.Web.Controllers
         private readonly IResumeService resumeService;
         private readonly IOccupationService occupationService;
         private readonly IHostingEnvironment _environment;
-        public ResumesController(IResumeService resumeService,IOccupationService occupationService,IHostingEnvironment _environment)
+        private readonly ICountryService countryService;
+        public ResumesController(IResumeService resumeService,IOccupationService occupationService,IHostingEnvironment _environment, ICountryService countryService)
         {
             this._environment = _environment;
             this.resumeService = resumeService;
             this.occupationService = occupationService;
+            this.countryService = countryService;
         }
         public IActionResult Index()
         {
@@ -34,6 +36,7 @@ namespace HrPortalV2.Web.Controllers
         {
             var resume = new Resume();
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(),"Id","Name");
             return View(resume);
         }
         [Authorize(Roles = "Candidate")]
@@ -62,6 +65,7 @@ namespace HrPortalV2.Web.Controllers
                 return RedirectToAction(nameof(MyResumes), new { id = resume.Id, saved = true });
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
             return View(resume);
         }
         [Authorize(Roles = "Candidate")]
@@ -70,6 +74,7 @@ namespace HrPortalV2.Web.Controllers
             ViewBag.Saved = saved;
             var resume = resumeService.Get(id);
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
             return View(resume);
         }
         [Authorize(Roles = "Candidate")]
@@ -98,6 +103,7 @@ namespace HrPortalV2.Web.Controllers
                 return RedirectToAction(nameof(Edit), new { id = resume.Id, saved = true });
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
             return View();
         }
         public IActionResult Details(string id)
