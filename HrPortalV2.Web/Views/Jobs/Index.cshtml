@@ -28,7 +28,8 @@
                     @Html.DisplayFor(modelItem => item.Company.Name)
                 </td>
                 <td>
-                    <a asp-action="Apply" asp-route-id="@item.Id" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Başvuru Yap</a> 
+                    <a asp-action="SendMessageToJob" asp-route-jobId="@item.Id" asp-controller="Messages" asp-area="" class="btn btn-primary btn-sm">Mesaj Gönder</a>
+                    <a asp-action="Apply" asp-route-id="@item.Id" asp-controller="Jobs" asp-area="" class="btn btn-primary btn-sm">Başvuru Yap</a>
                     <a asp-action="Details" asp-route-id=@item.Id asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">İlan Detayı</a>
                 </td>
                 

@@ -106,7 +106,7 @@
             <td>
                 <div class="text-nowrap">
                     <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Resumes" class="btn btn-success btn-sm"><i class="fa fa-trash"></i>Özgeçmiş Detayı</a>
-                        <a asp-action="Create" asp-controller="Messages" asp-route-to="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
+                        <a asp-action="SendMessageToResume" asp-controller="Messages" asp-route-resumeId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
                 </div>
             </td>
             
