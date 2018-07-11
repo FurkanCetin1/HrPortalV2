@@ -141,7 +141,13 @@
                     <input asp-for="LastPosition" class="form-control" />
                     <span asp-validation-for="LastPosition" class="text-danger"></span>
                 </div>
-
+                <div class="form-group">
+                    <div>
+                        <label>
+                            <input asp-for="IsCurrentlyWorking" /> @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </fieldset>
@@ -249,9 +255,9 @@
                     <span asp-validation-for="GitHub" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Dribble" class="control-label"></label>
-                    <input asp-for="Dribble" class="form-control" />
-                    <span asp-validation-for="Dribble" class="text-danger"></span>
+                    <label asp-for="Dribbble" class="control-label"></label>
+                    <input asp-for="Dribbble" class="form-control" />
+                    <span asp-validation-for="Dribbble" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Behance" class="control-label"></label>
@@ -298,13 +304,7 @@
                     <input asp-for="Hobbies" class="form-control" />
                     <span asp-validation-for="Hobbies" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <div>
-                        <label>
-                            <input asp-for="IsCurrentlyWorking" /> @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
-                        </label>
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <div>
                         <label>
@@ -326,14 +326,6 @@
                 </div>
             </div>
             <div class="col-md-6">
-
-                <div class="form-group">
-                    <div>
-                        <label>
-                            <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
-                        </label>
-                    </div>
-                </div>
                 <div class="form-group">
                     <div>
                         <label>

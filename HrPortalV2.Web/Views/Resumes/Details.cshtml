@@ -1,7 +1,7 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Özgeçmiş Detayı";
+    ViewData["Title"] = "Özgeçmiş Detayı - " + Model.ResumeName;
 }
 <link href="/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
 <div class="page-content-inner">
@@ -15,22 +15,6 @@
                             <ul class="list-unstyled profile-nav">
                                 <li>
                                     <img src="~/Uploads/@Model.Photo" class="img-responsive pic-bordered" alt="" />
-                                    <a href="javascript:;" class="profile-edit"> edit </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;"> Projects </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">
-                                        Messages
-                                        <span> 3 </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;"> Friends </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;"> Settings </a>
                                 </li>
                             </ul>
                         </div>
@@ -88,17 +72,17 @@
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>Ülke</strong><br />
-                                                    @Html.DisplayFor(model => model.Country)
+                                                    @Html.DisplayFor(model => model.Country.Name)
                                                 </p>
                                                 <p>
                                                     <strong>Şehir</strong><br />
-                                                    @Html.DisplayFor(model => model.City)
+                                                    @Html.DisplayFor(model => model.City.Name)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>İlçe</strong><br />
-                                                    @Html.DisplayFor(model=>model.Country)
+                                                    @Html.DisplayFor(model=>model.County.Name)
                                                 </p>
                                             </div>
                                         </div>
@@ -113,7 +97,7 @@
                                                 </p>
                                                 <p>
                                                     <strong>Meslek</strong><br />
-                                                    @Html.DisplayFor(model => model.Occupation)
+                                                    @Html.DisplayFor(model => model.Occupation.Name)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
@@ -122,8 +106,12 @@
                                                     @Html.DisplayFor(model => model.LastCompany)
                                                 </p>
                                                 <p>
-                                                    <strong>Son Çalıştığı Firma</strong><br />
+                                                    <strong>Son Çalıştığı Pozisyon</strong><br />
                                                     @Html.DisplayFor(model => model.LastPosition)
+                                                </p>
+                                                <p>
+                                                    <strong>Şu Anda Çalışıyor Mu?</strong>
+                                                    @Html.DisplayFor(model => model.IsCurrentlyWorking)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
@@ -177,6 +165,26 @@
                                         </div>
                                     </fieldset>
                                     <fieldset>
+                                        <legend>Profeler ve Yetkinlikler</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Projeler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Projects)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Yetkilikler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Skills)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
                                         <legend>Özgeçmiş Dosyaları</legend>
                                         <div class="row">
                                             <div class="col-md-4">
@@ -209,8 +217,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
-                                                    <strong>Dribble</strong><br />
-                                                    @Html.DisplayFor(model=>model.Dribble)
+                                                    <strong>Dribbble</strong><br />
+                                                    @Html.DisplayFor(model=>model.Dribbble)
                                                 </p>
                                                 <p>
                                                     <strong>Behance</strong><br />
@@ -242,42 +250,49 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <p>
-                                                    <strong>Şu Anda Çalışıyor Mu?</strong>
-                                                    @Html.DisplayFor(model => model.IsCurrentlyWorking)
+                                                    <strong>Sürücü Belgesi</strong><br />
+                                                    @Html.DisplayFor(model=>model.DrivingLicense)
                                                 </p>
                                                 <p>
-                                                    <strong>İş Arıyor Mu?</strong>
+                                                    <strong>Hobiler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Hobbies)
+                                                </p>
+
+                                                <p>
+                                                    <strong>İş Arıyor Mu?</strong><br />
                                                     @Html.DisplayFor(model => model.IsSeekingJob)
                                                 </p>
-                                                <p>
-                                                    <strong>Seyehat Engeli Var Mı?</strong>
-                                                    @Html.DisplayFor(model => model.IsTravelDisabled)
-                                                </p>
+                                                
+                                                
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
-                                                    <strong>Sigara Kullanıyor Mu?</strong>
+                                                    <strong>Sigara Kullanıyor Mu?</strong><br />
                                                     @Html.DisplayFor(model => model.UsingCigarette)
                                                 </p>
                                                 <p>
-                                                    <strong>Onaylandı Mı?</strong>
+                                                    <strong>Onaylandı Mı?</strong><br />
                                                     @Html.DisplayFor(model => model.IsApproved)
                                                 </p>
                                                 <p>
-                                                    <strong>Aktif Mi?</strong>
+                                                    <strong>Aktif Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsActive)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
-                                                    <strong>Engelli Mi?</strong>
+                                                    <strong>Seyehat Engeli Var Mı?</strong><br />
+                                                    @Html.DisplayFor(model => model.IsTravelDisabled)
+                                                </p>
+                                                <p>
+                                                    <strong>Engelli Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsDisabled)
                                                 </p>
                                                 <p>
-                                                    <strong>Teşvikli Mi?</strong>
+                                                    <strong>Teşvikli Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsSubsidized)
                                                 </p>
-                                                
+
                                             </div>
                                         </div>
                                     </fieldset>
@@ -285,459 +300,7 @@
                             </div>
                             
                                 <!--end row-->
-                                <div class="tabbable-line tabbable-custom-profile">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#tab_1_11" data-toggle="tab"> Latest Customers </a>
-                                        </li>
-                                        <li>
-                                            <a href="#tab_1_22" data-toggle="tab"> Feeds </a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_1_11">
-                                            <div class="portlet-body">
-                                                <table class="table table-striped table-bordered table-advance table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>
-                                                                
-                                                                <i class="fa fa-briefcase"></i> Company
-                                                            </th>
-                                                            <th class="hidden-xs">
-                                                                <i class="fa fa-question"></i> Descrition
-                                                            </th>
-                                                            <th>
-                                                                <i class="fa fa-bookmark"></i> Amount
-                                                            </th>
-                                                            <th> </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> Pixel Ltd </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Server hardware purchase </td>
-                                                            <td>
-                                                                52560.10$
-                                                                <span class="label label-success label-sm"> Paid </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> Smart House </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Office furniture purchase </td>
-                                                            <td>
-                                                                5760.00$
-                                                                <span class="label label-warning label-sm"> Pending </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> FoodMaster Ltd </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                                                            <td>
-                                                                12400.00$
-                                                                <span class="label label-success label-sm"> Paid </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> WaterPure Ltd </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Payment for Jan 2013 </td>
-                                                            <td>
-                                                                610.50$
-                                                                <span class="label label-danger label-sm"> Overdue </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> Pixel Ltd </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Server hardware purchase </td>
-                                                            <td>
-                                                                52560.10$
-                                                                <span class="label label-success label-sm"> Paid </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> Smart House </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Office furniture purchase </td>
-                                                            <td>
-                                                                5760.00$
-                                                                <span class="label label-warning label-sm"> Pending </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="javascript:;"> FoodMaster Ltd </a>
-                                                            </td>
-                                                            <td class="hidden-xs"> Company Anual Dinner Catering </td>
-                                                            <td>
-                                                                12400.00$
-                                                                <span class="label label-success label-sm"> Paid </span>
-                                                            </td>
-                                                            <td>
-                                                                <a class="btn btn-sm grey-salsa btn-outline" href="javascript:;"> View </a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <!--tab-pane-->
-                                        <div class="tab-pane" id="tab_1_22">
-                                            <div class="tab-pane active" id="tab_1_1_1">
-                                                <div class="scroller" data-height="290px" data-always-visible="1" data-rail-visible1="1">
-                                                    <ul class="feeds">
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-success">
-                                                                            <i class="fa fa-bell-o"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc">
-                                                                            You have 4 pending tasks.
-                                                                            <span class="label label-danger label-sm">
-                                                                                Take action
-                                                                                <i class="fa fa-share"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> Just now </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:;">
-                                                                <div class="col1">
-                                                                    <div class="cont">
-                                                                        <div class="cont-col1">
-                                                                            <div class="label label-success">
-                                                                                <i class="fa fa-bell-o"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="cont-col2">
-                                                                            <div class="desc"> New version v1.4 just lunched! </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col2">
-                                                                    <div class="date"> 20 mins </div>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-danger">
-                                                                            <i class="fa fa-bolt"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> Database server #12 overloaded. Please fix the issue. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 24 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 30 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-success">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 40 mins </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-warning">
-                                                                            <i class="fa fa-plus"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New user registered. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 1.5 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-success">
-                                                                            <i class="fa fa-bell-o"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc">
-                                                                            Web server hardware needs to be upgraded.
-                                                                            <span class="label label-inverse label-sm"> Overdue </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 2 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 3 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-warning">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 5 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 18 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-default">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 21 hours </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="col1">
-                                                                <div class="cont">
-                                                                    <div class="cont-col1">
-                                                                        <div class="label label-info">
-                                                                            <i class="fa fa-bullhorn"></i>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="cont-col2">
-                                                                        <div class="desc"> New order received. Please take care of it. </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col2">
-                                                                <div class="date"> 22 hours </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--tab-pane-->
-                                    </div>
-                                </div>
+                                
                             </div>
                     </div>
                 </div>
@@ -748,160 +311,3 @@
         </div>
     </div>
 </div>
-@*<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.FirstName)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.FirstName)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.LastName)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.LastName)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Photo)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Photo)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Gender)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Gender)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.MaritalStatus)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.MaritalStatus)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.MobilePhone)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.MobilePhone)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Email)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Email)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.TotalExperience)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.TotalExperience)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.IsCurrentlyWorking)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.IsCurrentlyWorking)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.IsSeekingJob)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.IsSeekingJob)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.LastCompany)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.LastCompany)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.LastPosition)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.LastPosition)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.MilitaryStatus)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.MilitaryStatus)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.LastEducation)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.LastEducation)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.LastDepartment)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.LastDepartment)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.GraduationYear)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.GraduationYear)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.ForeignLanguages)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.ForeignLanguages)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.IsApproved)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.IsApproved)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.IsActive)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.IsActive)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.Occupation)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.Occupation.Id)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.CreateDate)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.CreateDate)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.CreatedBy)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.CreatedBy)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.UpdateDate)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.UpdateDate)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.UpdatedBy)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.UpdatedBy)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(model => model.IPAddress)
-    </dt>
-    <dd>
-        @Html.DisplayFor(model => model.IPAddress)
-    </dd>
-</dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>*@
