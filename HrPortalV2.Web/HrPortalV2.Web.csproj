@@ -56,6 +56,15 @@
     <Content Update="Areas\Admin\Views\_ViewStart.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Messages\SendMessageToJob.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Messages\SendMessageToCompany.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Messages\SendMessageToResume.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Messages\MyMessagesSentToMyResumes.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

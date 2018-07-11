@@ -42,6 +42,9 @@ namespace HrPortalV2.Service
         {
             messageRepository.Update(entity);
         }
+
+        
+
     }
 
     public interface IMessageService

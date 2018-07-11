@@ -1,0 +1,34 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Mesaj";
+}
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            <strong>Kimden:</strong><span>@Model.FromName</span>
+        </p>
+        <p>
+            <strong>Konu:</strong><span>@Model.Title</span>
+        </p>
+        <p>
+        <strong>Mesaj İçeriği:</strong><br />
+            @Model.Description</p>
+        <p>
+            <strong>Tarih:</strong>
+            @Model.CreateDate
+        </p>
+        <hr />
+        <br />
+        <fieldset>
+            <legend>Yanıtla:</legend>
+
+            <form>
+                <textarea name="Description" class="form-control" rows="8"></textarea><br />
+                <button type="submit" class="btn btn-success btn-sm">Gönder</button>
+                <a href="javascript:void(0);" onclick="history.back();"  class="btn btn-danger btn-sm">İptal</a>
+            </form>
+        </fieldset>
+    </div>
+</div>
+
+
