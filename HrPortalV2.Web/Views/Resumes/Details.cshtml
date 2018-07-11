@@ -1,7 +1,7 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Özgeçmiş Detayı";
+    ViewData["Title"] = "Özgeçmiş Detayı - " + Model.ResumeName;
 }
 <link href="/assets/pages/css/profile-2.min.css" rel="stylesheet" type="text/css" />
 <div class="page-content-inner">
@@ -15,7 +15,6 @@
                             <ul class="list-unstyled profile-nav">
                                 <li>
                                     <img src="~/Uploads/@Model.Photo" class="img-responsive pic-bordered" alt="" />
-                                    <a href="javascript:;" class="profile-edit"> edit </a>
                                 </li>
                             </ul>
                         </div>
@@ -73,17 +72,17 @@
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>Ülke</strong><br />
-                                                    @Html.DisplayFor(model => model.Country)
+                                                    @Html.DisplayFor(model => model.Country.Name)
                                                 </p>
                                                 <p>
                                                     <strong>Şehir</strong><br />
-                                                    @Html.DisplayFor(model => model.City)
+                                                    @Html.DisplayFor(model => model.City.Name)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>İlçe</strong><br />
-                                                    @Html.DisplayFor(model=>model.Country)
+                                                    @Html.DisplayFor(model=>model.County.Name)
                                                 </p>
                                             </div>
                                         </div>
@@ -98,7 +97,7 @@
                                                 </p>
                                                 <p>
                                                     <strong>Meslek</strong><br />
-                                                    @Html.DisplayFor(model => model.Occupation)
+                                                    @Html.DisplayFor(model => model.Occupation.Name)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
@@ -166,6 +165,26 @@
                                         </div>
                                     </fieldset>
                                     <fieldset>
+                                        <legend>Profeler ve Yetkinlikler</legend>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Projeler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Projects)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <p>
+                                                    <strong>Yetkilikler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Skills)
+                                                </p>
+                                            </div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
                                         <legend>Özgeçmiş Dosyaları</legend>
                                         <div class="row">
                                             <div class="col-md-4">
@@ -199,7 +218,7 @@
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>Dribbble</strong><br />
-                                                    @Html.DisplayFor(model=>model.Dribble)
+                                                    @Html.DisplayFor(model=>model.Dribbble)
                                                 </p>
                                                 <p>
                                                     <strong>Behance</strong><br />
@@ -230,41 +249,50 @@
                                         <legend>Diğer Bilgiler</legend>
                                         <div class="row">
                                             <div class="col-md-4">
+                                                <p>
+                                                    <strong>Sürücü Belgesi</strong><br />
+                                                    @Html.DisplayFor(model=>model.DrivingLicense)
+                                                </p>
+                                                <p>
+                                                    <strong>Hobiler</strong><br />
+                                                    @Html.DisplayFor(model=>model.Hobbies)
+                                                </p>
 
                                                 <p>
-                                                    <strong>İş Arıyor Mu?</strong>
+                                                    <strong>İş Arıyor Mu?</strong><br />
                                                     @Html.DisplayFor(model => model.IsSeekingJob)
                                                 </p>
-                                                <p>
-                                                    <strong>Seyehat Engeli Var Mı?</strong>
-                                                    @Html.DisplayFor(model => model.IsTravelDisabled)
-                                                </p>
-                                                <p>
-                                                    <strong>Sigara Kullanıyor Mu?</strong>
-                                                    @Html.DisplayFor(model => model.UsingCigarette)
-                                                </p>
+                                                
+                                                
                                             </div>
                                             <div class="col-md-4">
-                                              
                                                 <p>
-                                                    <strong>Onaylandı Mı?</strong>
+                                                    <strong>Sigara Kullanıyor Mu?</strong><br />
+                                                    @Html.DisplayFor(model => model.UsingCigarette)
+                                                </p>
+                                                <p>
+                                                    <strong>Onaylandı Mı?</strong><br />
                                                     @Html.DisplayFor(model => model.IsApproved)
                                                 </p>
                                                 <p>
-                                                    <strong>Aktif Mi?</strong>
+                                                    <strong>Aktif Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsActive)
                                                 </p>
                                             </div>
                                             <div class="col-md-4">
                                                 <p>
-                                                    <strong>Engelli Mi?</strong>
+                                                    <strong>Seyehat Engeli Var Mı?</strong><br />
+                                                    @Html.DisplayFor(model => model.IsTravelDisabled)
+                                                </p>
+                                                <p>
+                                                    <strong>Engelli Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsDisabled)
                                                 </p>
                                                 <p>
-                                                    <strong>Teşvikli Mi?</strong>
+                                                    <strong>Teşvikli Mi?</strong><br />
                                                     @Html.DisplayFor(model => model.IsSubsidized)
                                                 </p>
-                                                
+
                                             </div>
                                         </div>
                                     </fieldset>

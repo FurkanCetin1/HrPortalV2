@@ -21,12 +21,12 @@ namespace HrPortalV2.Service
 
         public Resume Get(string id)
         {
-            return resumeRepository.Get(id, "ResumeFiles", "JobApplications", "Occupation");
+            return resumeRepository.Get(id, "ResumeFiles", "JobApplications", "Occupation","Country","City","County");
         }
 
         public IEnumerable<Resume> GetAll()
         {
-            return resumeRepository.GetAll("ResumeFiles", "JobApplications", "Occupation");
+            return resumeRepository.GetAll("ResumeFiles", "JobApplications", "Occupation", "Country", "City", "County");
         }
         public IEnumerable<Resume> GetAllByUserName(string userName)
         {

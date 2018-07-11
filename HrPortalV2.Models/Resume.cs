@@ -98,7 +98,7 @@ namespace HrPortalV2.Models
         public string Blog { get; set; }
         public string LinkedIn { get; set; }
         public string GitHub { get; set; }
-        public string Dribble { get; set; }
+        public string Dribbble { get; set; }
         public string Behance { get; set; }
         public string Youtube { get; set; }
         public string Instagram { get; set; }
