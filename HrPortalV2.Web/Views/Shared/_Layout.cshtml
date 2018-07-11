@@ -90,27 +90,27 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
                             <div class="hor-menu  ">
                                 <ul class="nav navbar-nav">
-                                    <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown @(this.ViewContext.RouteData.Values["controller"].ToString() == "Home"?"active":"")">
+                                    <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown @(this.ViewContext?.RouteData?.Values["controller"]?.ToString() == "Home"?"active":"")">
                                         <a asp-area="" asp-action="Index" asp-controller="Home">
                                             Anasayfa
 
                                         </a>
                                     </li>
-                                    <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown @(this.ViewContext.RouteData.Values["controller"].ToString() == "Jobs"?"active":"")">
+                                    <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown @(this.ViewContext?.RouteData?.Values["controller"]?.ToString() == "Jobs"?"active":"")">
                                         <a asp-area="" asp-action="Index" asp-controller="Jobs">
                                             Tüm İş İlanları
 
                                         </a>
 
                                     </li>
-                                    <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown @(this.ViewContext.RouteData.Values["controller"].ToString() == "Companies"?"active":"")">
+                                    <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown @(this.ViewContext?.RouteData?.Values["controller"]?.ToString() == "Companies"?"active":"")">
                                         <a asp-area="" asp-action="Index" asp-controller="Companies">
                                             Tüm Firmalar
 
                                         </a>
 
                                     </li>
-                                    <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  @(this.ViewContext.RouteData.Values["controller"].ToString() == "Resumes"?"active":"")">
+                                    <li aria-haspopup="true" class="menu-dropdown mega-menu-dropdown  @(this.ViewContext?.RouteData?.Values["controller"]?.ToString() == "Resumes"?"active":"")">
                                         <a asp-area="" asp-action="Index" asp-controller="Resumes">
                                             Tüm Özgeçmişler
 
