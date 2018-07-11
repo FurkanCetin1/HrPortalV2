@@ -101,12 +101,14 @@ namespace HrPortalV2.Web.Controllers
             return View(job);
 
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult Apply(string jobId)
         {
             var ja = new JobApplication() { JobId = jobId };
             ViewBag.MyResumes = new SelectList(resumeService.GetAllByUserName(User.Identity.Name), "Id", "ResumeName");
             return View(ja);
         }
+        [Authorize(Roles = "Candidate")]
         [HttpPost]
         public IActionResult Apply(JobApplication ja)
         {
@@ -115,6 +117,7 @@ namespace HrPortalV2.Web.Controllers
                 jobApplicationService.Insert(ja);
                 return RedirectToAction("Success");
             }
+            ViewBag.MyResumes = new SelectList(resumeService.GetAllByUserName(User.Identity.Name), "Id", "ResumeName", ja.ResumeId);
             return View(ja);
 
         }
