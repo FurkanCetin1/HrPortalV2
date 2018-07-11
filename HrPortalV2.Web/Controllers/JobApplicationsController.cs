@@ -11,11 +11,13 @@ namespace HrPortalV2.Web.Controllers
     {
         private readonly IJobApplicationService jobApplicationService;
         private readonly IJobService jobService;
+        private readonly IResumeService resumeService;
         
-        public JobApplicationsController(IJobApplicationService jobApplicationService, IJobService jobService)
+        public JobApplicationsController(IJobApplicationService jobApplicationService, IJobService jobService, IResumeService resumeService)
         {
             this.jobApplicationService = jobApplicationService;
             this.jobService = jobService;
+            this.resumeService = resumeService;
         }
         public IActionResult Index()
         {
@@ -33,6 +35,11 @@ namespace HrPortalV2.Web.Controllers
             // keremden sonra
             var myapplications = jobApplicationService.GetAllByUserName(User.Identity.Name);
             return View(myapplications);
+        }
+        public IActionResult Delete(string id)
+        {
+            jobApplicationService.Delete(id);
+            return RedirectToAction("MyJobApplications");
         }
     }
 }

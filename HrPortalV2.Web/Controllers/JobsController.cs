@@ -101,9 +101,9 @@ namespace HrPortalV2.Web.Controllers
             return View(job);
 
         }
-        public IActionResult Apply(string id)
+        public IActionResult Apply(string jobId)
         {
-            var ja = new JobApplication() { JobId = id };
+            var ja = new JobApplication() { JobId = jobId };
             ViewBag.MyResumes = new SelectList(resumeService.GetAllByUserName(User.Identity.Name), "Id", "ResumeName");
             return View(ja);
         }

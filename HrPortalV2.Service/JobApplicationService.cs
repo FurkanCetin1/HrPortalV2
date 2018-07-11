@@ -40,11 +40,11 @@ namespace HrPortalV2.Service
         }
         public IEnumerable<JobApplication> GetAllByJobs(IList<string> jobIds)
         {
-            return jobApplicationRepository.GetMany(j => jobIds.Contains(j.JobId),o=>o.CreateDate,true);
+            return jobApplicationRepository.GetMany(j => jobIds.Contains(j.JobId),o=>o.CreateDate,true, "Resume", "Job");
         }
         public IEnumerable<JobApplication> GetAllByUserName(string userName)
         {
-            return jobApplicationRepository.GetMany(j => j.CreatedBy == userName, o=>o.CreateDate, true);
+            return jobApplicationRepository.GetMany(j => j.CreatedBy == userName, o=>o.CreateDate, true, "Resume", "Job");
         }
     }
 
