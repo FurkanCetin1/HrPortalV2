@@ -31,10 +31,14 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Resume.Id)
+                    <a asp-action="Details" asp-controller="Resumes" asp-route-id="@item.ResumeId">
+                        @Html.DisplayFor(modelItem => item.Resume.ResumeName)
+                      </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Job.Id)
+                    <a asp-action="Details" asp-controller="Jobs" asp-route-id="@item.JobId">
+                        @Html.DisplayFor(modelItem => item.Job.Title)
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
@@ -43,9 +47,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         }
