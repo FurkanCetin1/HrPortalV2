@@ -52,7 +52,7 @@ namespace HrPortalV2.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Company")]
-        public IActionResult SendMessageToResume(string resumeId, Message message)
+        public IActionResult SendMessageToResume(Message message)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace HrPortalV2.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Candidate")]
-        public IActionResult SendMessageToCompany(string companyId, Message message)
+        public IActionResult SendMessageToCompany(Message message)
         {
             if (ModelState.IsValid)
             {
