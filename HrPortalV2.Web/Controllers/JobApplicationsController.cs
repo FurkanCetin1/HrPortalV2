@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrPortalV2.Web.Controllers
@@ -23,17 +24,19 @@ namespace HrPortalV2.Web.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Candidate")]
         public ActionResult MyJobApplications() // kendi yaptığım başvurular
         {
        
             var myapplications = jobApplicationService.GetAllByUserName(User.Identity.Name);
             return View(myapplications);
         }
-
+        [Authorize(Roles = "Company")]
         public ActionResult MyJobApplicants() // ilanlarıma başvuranlar
         {
+            var jobids = jobService.GetAllByUserName(User.Identity.Name).Select(s => s.Id).ToList();
             // keremden sonra
-            var myapplications = jobApplicationService.GetAllByUserName(User.Identity.Name);
+            var myapplications = jobApplicationService.GetAllByJobs(jobids);
             return View(myapplications);
         }
         public IActionResult Delete(string id)
