@@ -39,6 +39,10 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            public InputModel()
+            {
+                Role = "Candidate";
+            }
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -54,6 +58,8 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            [Display(Name = "Rol")]
+            public string Role { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -81,7 +87,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
+                    if (Input.Role == "Company") { 
+                        await _userManager.AddToRoleAsync(user, "Company");
+                    } else
+                    {
+                        await _userManager.AddToRoleAsync(user, "Candidate");
+                    }
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
