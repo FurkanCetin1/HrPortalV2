@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,7 @@ namespace HrPortalV2.Web.Controllers
             var companys = companyService.GetAll();
             return View(companys);
         }
+        [Authorize(Roles = "Company")]
         public ActionResult Create()
         {
             
@@ -46,6 +48,7 @@ namespace HrPortalV2.Web.Controllers
             return View(company);
         }
         // POST: City/Create
+        [Authorize(Roles = "Company")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Company company, IFormFile File)
@@ -85,6 +88,7 @@ namespace HrPortalV2.Web.Controllers
                 return View(company);
             }
         }
+        [Authorize(Roles = "Company")]
         public ActionResult Edit(string id, bool saved = false)
         {
             var company = companyService.Get(id);
@@ -95,6 +99,7 @@ namespace HrPortalV2.Web.Controllers
             ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
             return View(company);
         }
+        [Authorize(Roles = "Company")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(String id, Company company, IFormFile File)
@@ -136,6 +141,7 @@ namespace HrPortalV2.Web.Controllers
             }
            
         }
+        [Authorize(Roles = "Company")]
         public ActionResult Delete(string id)
         {
             companyService.Delete(id);

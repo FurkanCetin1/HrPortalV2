@@ -13,7 +13,7 @@ namespace HrPortalV2.Data
             : base(options)
         {
         }
-
+        public DbSet<HrPortalV2.Models.ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<HrPortalV2.Models.City> Cities { get; set; }
         public DbSet<HrPortalV2.Models.Company> Companies { get; set; }
         public DbSet<HrPortalV2.Models.Country> Countries { get; set; }

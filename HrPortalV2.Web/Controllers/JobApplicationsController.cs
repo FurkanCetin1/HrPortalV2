@@ -39,6 +39,7 @@ namespace HrPortalV2.Web.Controllers
             var myapplications = jobApplicationService.GetAllByJobs(jobids);
             return View(myapplications);
         }
+        [Authorize(Roles = "Candidate")]
         public IActionResult Delete(string id)
         {
             jobApplicationService.Delete(id);
