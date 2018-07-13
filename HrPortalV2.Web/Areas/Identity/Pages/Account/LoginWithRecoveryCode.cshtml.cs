@@ -33,7 +33,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             [BindProperty]
             [Required]
             [DataType(DataType.Text)]
-            [Display(Name = "Recovery Code")]
+            [Display(Name = "Kurtarma kodu")]
             public string RecoveryCode { get; set; }
         }
 
@@ -43,7 +43,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"İki faktörlü kimlik doğrulama kullanıcısı yüklenemedi.");
             }
 
             ReturnUrl = returnUrl;
@@ -61,7 +61,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"İki faktörlü kimlik doğrulama kullanıcısı yüklenemedi.");
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
@@ -70,18 +70,18 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with a recovery code.", user.Id);
+                _logger.LogInformation("Kimliği olan  '{UserId}' kullanıcı bir kurtarma koduyla giriş yaptı.", user.Id);
                 return LocalRedirect(returnUrl ?? Url.Content("~/"));
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("Kimliği olan '{UserId}' kullanıcı hesabı kilitlendi.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid recovery code entered for user with ID '{UserId}' ", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
+                _logger.LogWarning("Kimliği olan kullanıcı için geçersiz kurtarma kodu girildi '{UserId}' ", user.Id);
+                ModelState.AddModelError(string.Empty, "Geçersiz kurtarma kodu girildi.");
                 return Page();
             }
         }

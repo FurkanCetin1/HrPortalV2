@@ -35,10 +35,10 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             [Required]
             [StringLength(7, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Text)]
-            [Display(Name = "Authenticator code")]
+            [Display(Name = "Kimlik kodu")]
             public string TwoFactorCode { get; set; }
 
-            [Display(Name = "Remember this machine")]
+            [Display(Name = "Bu makineyi hatırla")]
             public bool RememberMachine { get; set; }
         }
 
@@ -49,7 +49,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"İki faktörlü kimlik doğrulama kullanıcısı yüklenemedi.");
             }
 
             ReturnUrl = returnUrl;
@@ -70,7 +70,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"İki faktörlü kimlik doğrulama kullanıcısı yüklenemedi.");
             }
 
             var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
@@ -79,18 +79,18 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
+                _logger.LogInformation("Kimliği olan '{UserId}' kullanıcı 2fa ile giriş yaptı.", user.Id);
                 return LocalRedirect(returnUrl);
             }
             else if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("Kimliği olan '{UserId}' kullanıcı kilitlendi.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
+                _logger.LogWarning("Kimliği olan kullanıcı için geçersiz kimlik doğrulama kodu girildi '{UserId}'.", user.Id);
+                ModelState.AddModelError(string.Empty, "Geçersiz kimlik doğrulama kodu.");
                 return Page();
             }
         }  
