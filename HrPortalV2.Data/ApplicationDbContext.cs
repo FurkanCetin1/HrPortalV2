@@ -28,7 +28,12 @@ namespace HrPortalV2.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+            modelBuilder.Entity<HrPortalV2.Models.Company>().HasOne(c => c.Country).WithMany(co => co.Companies).HasForeignKey(f => f.CountryId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<HrPortalV2.Models.Company>().HasOne(c => c.City).WithMany(co => co.Companies).HasForeignKey(f => f.CityId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<HrPortalV2.Models.Company>().HasOne(c => c.County).WithMany(co => co.Companies).HasForeignKey(f => f.CountyId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<HrPortalV2.Models.Resume>().HasOne(c => c.Country).WithMany(co => co.Resumes).HasForeignKey(f => f.CountryId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<HrPortalV2.Models.Resume>().HasOne(c => c.City).WithMany(co => co.Resumes).HasForeignKey(f => f.CityId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<HrPortalV2.Models.Resume>().HasOne(c => c.County).WithMany(co => co.Resumes).HasForeignKey(f => f.CountyId).OnDelete(DeleteBehavior.Restrict);
             // create roles and users
             var adminRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Admin", ConcurrencyStamp = "Admin", NormalizedName = "ADMIN" };
             var companyRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Company", ConcurrencyStamp = "Company", NormalizedName = "COMPANY" };

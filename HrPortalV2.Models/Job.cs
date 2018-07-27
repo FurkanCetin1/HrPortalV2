@@ -9,10 +9,14 @@ namespace HrPortalV2.Models
     public class Job:BaseEntity
     {
         [Display(Name ="İlan Başlığı")]
+        [Required(ErrorMessage = "İlan başlığı gereklidir.")]
+        [StringLength(200, ErrorMessage = "İlan başlığı en fazla 200 karakter uzunluğunda olabilir.")]
         public string Title { get; set; }
         [Display(Name = "Açıklama")]
+        [Required(ErrorMessage = "İlan açıklaması gereklidir.")]
         public string Description { get; set; }
         [Display(Name = "Firma")]
+        [Required(ErrorMessage = "Firma gereklidir.")]
         public string CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         [Display(Name = "Firma")]

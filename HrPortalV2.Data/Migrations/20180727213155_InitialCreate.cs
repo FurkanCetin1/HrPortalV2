@@ -56,11 +56,11 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,16 +73,16 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    From = table.Column<string>(nullable: true),
-                    FromName = table.Column<string>(nullable: true),
-                    To = table.Column<string>(nullable: true),
-                    ToName = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    From = table.Column<string>(maxLength: 200, nullable: false),
+                    FromName = table.Column<string>(maxLength: 200, nullable: false),
+                    To = table.Column<string>(maxLength: 200, nullable: false),
+                    ToName = table.Column<string>(maxLength: 200, nullable: false),
+                    Title = table.Column<string>(maxLength: 200, nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     IsRead = table.Column<bool>(nullable: false),
                     IsApproved = table.Column<bool>(nullable: false)
                 },
@@ -97,11 +97,11 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,11 +114,11 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -237,12 +237,12 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    CountryId = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    CountryId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -252,7 +252,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -261,12 +261,12 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    CityId = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
+                    CityId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -276,7 +276,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -285,24 +285,24 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    CountryId = table.Column<string>(nullable: true),
-                    CityId = table.Column<string>(nullable: true),
-                    CountyId = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    SectorId = table.Column<string>(nullable: true),
+                    CountryId = table.Column<string>(nullable: false),
+                    CityId = table.Column<string>(nullable: false),
+                    CountyId = table.Column<string>(nullable: false),
+                    Address = table.Column<string>(maxLength: 4000, nullable: true),
+                    SectorId = table.Column<string>(nullable: false),
                     IsApproved = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
-                    Phone = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    ContactName = table.Column<string>(nullable: true),
-                    Logo = table.Column<string>(nullable: true),
-                    Website = table.Column<string>(nullable: true)
+                    Phone = table.Column<string>(maxLength: 20, nullable: false),
+                    Email = table.Column<string>(maxLength: 200, nullable: false),
+                    ContactName = table.Column<string>(maxLength: 200, nullable: false),
+                    Logo = table.Column<string>(maxLength: 200, nullable: true),
+                    Website = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -330,7 +330,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.SectorId,
                         principalTable: "Sectors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -339,18 +339,18 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    ResumeName = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Photo = table.Column<string>(nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    ResumeName = table.Column<string>(maxLength: 200, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 100, nullable: false),
+                    LastName = table.Column<string>(maxLength: 100, nullable: false),
+                    Photo = table.Column<string>(maxLength: 200, nullable: true),
                     Gender = table.Column<int>(nullable: false),
                     MaritalStatus = table.Column<int>(nullable: false),
-                    MobilePhone = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
+                    MobilePhone = table.Column<string>(maxLength: 20, nullable: false),
+                    Email = table.Column<string>(maxLength: 200, nullable: false),
                     TotalExperience = table.Column<int>(nullable: false),
                     UsingCigarette = table.Column<bool>(nullable: false),
                     IsTravelDisabled = table.Column<bool>(nullable: false),
@@ -358,35 +358,35 @@ namespace HrPortalV2.Data.Migrations
                     IsSubsidized = table.Column<bool>(nullable: false),
                     IsCurrentlyWorking = table.Column<bool>(nullable: false),
                     IsSeekingJob = table.Column<bool>(nullable: false),
-                    LastCompany = table.Column<string>(nullable: true),
-                    LastPosition = table.Column<string>(nullable: true),
+                    LastCompany = table.Column<string>(maxLength: 200, nullable: true),
+                    LastPosition = table.Column<string>(maxLength: 200, nullable: true),
                     MilitaryStatus = table.Column<int>(nullable: true),
-                    LastEducation = table.Column<string>(nullable: true),
-                    LastDepartment = table.Column<string>(nullable: true),
-                    GraduationYear = table.Column<int>(nullable: false),
-                    ForeignLanguages = table.Column<string>(nullable: true),
+                    LastEducation = table.Column<string>(maxLength: 200, nullable: false),
+                    LastDepartment = table.Column<string>(maxLength: 200, nullable: false),
+                    GraduationYear = table.Column<int>(nullable: true),
+                    ForeignLanguages = table.Column<string>(maxLength: 200, nullable: true),
                     IsApproved = table.Column<bool>(nullable: false),
                     IsActive = table.Column<bool>(nullable: false),
-                    OccupationId = table.Column<string>(nullable: true),
-                    Objective = table.Column<string>(nullable: true),
-                    CountryId = table.Column<string>(nullable: true),
-                    CityId = table.Column<string>(nullable: true),
-                    CountyId = table.Column<string>(nullable: true),
+                    OccupationId = table.Column<string>(nullable: false),
+                    Objective = table.Column<string>(maxLength: 4000, nullable: true),
+                    CountryId = table.Column<string>(nullable: false),
+                    CityId = table.Column<string>(nullable: false),
+                    CountyId = table.Column<string>(nullable: false),
                     AddressId = table.Column<string>(nullable: true),
                     Projects = table.Column<string>(nullable: true),
                     Skills = table.Column<string>(nullable: true),
-                    Hobbies = table.Column<string>(nullable: true),
-                    DrivingLicense = table.Column<string>(nullable: true),
+                    Hobbies = table.Column<string>(maxLength: 4000, nullable: true),
+                    DrivingLicense = table.Column<string>(maxLength: 20, nullable: true),
                     Courses = table.Column<string>(nullable: true),
-                    Blog = table.Column<string>(nullable: true),
-                    LinkedIn = table.Column<string>(nullable: true),
-                    GitHub = table.Column<string>(nullable: true),
-                    Dribbble = table.Column<string>(nullable: true),
-                    Behance = table.Column<string>(nullable: true),
-                    Youtube = table.Column<string>(nullable: true),
-                    Instagram = table.Column<string>(nullable: true),
-                    Facebook = table.Column<string>(nullable: true),
-                    Twitter = table.Column<string>(nullable: true)
+                    Blog = table.Column<string>(maxLength: 100, nullable: true),
+                    LinkedIn = table.Column<string>(maxLength: 100, nullable: true),
+                    GitHub = table.Column<string>(maxLength: 100, nullable: true),
+                    Dribbble = table.Column<string>(maxLength: 100, nullable: true),
+                    Behance = table.Column<string>(maxLength: 100, nullable: true),
+                    Youtube = table.Column<string>(maxLength: 100, nullable: true),
+                    Instagram = table.Column<string>(maxLength: 100, nullable: true),
+                    Facebook = table.Column<string>(maxLength: 100, nullable: true),
+                    Twitter = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -420,7 +420,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.OccupationId,
                         principalTable: "Occupations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -429,13 +429,13 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    CompanyId = table.Column<string>(nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    Title = table.Column<string>(maxLength: 200, nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    CompanyId = table.Column<string>(nullable: false),
                     PublishDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
                     IsApproved = table.Column<bool>(nullable: false),
@@ -451,7 +451,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.CompanyId,
                         principalTable: "Companies",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -460,12 +460,12 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    File = table.Column<string>(nullable: true),
-                    ResumeId = table.Column<string>(nullable: true)
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    File = table.Column<string>(maxLength: 200, nullable: false),
+                    ResumeId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -475,7 +475,7 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.ResumeId,
                         principalTable: "Resumes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -484,13 +484,13 @@ namespace HrPortalV2.Data.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     CreateDate = table.Column<DateTime>(nullable: false),
-                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedBy = table.Column<string>(maxLength: 200, nullable: true),
                     UpdateDate = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(nullable: true),
-                    IPAddress = table.Column<string>(nullable: true),
-                    ResumeId = table.Column<string>(nullable: true),
-                    JobId = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
+                    UpdatedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    IPAddress = table.Column<string>(maxLength: 200, nullable: true),
+                    ResumeId = table.Column<string>(nullable: false),
+                    JobId = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -501,13 +501,13 @@ namespace HrPortalV2.Data.Migrations
                         column: x => x.JobId,
                         principalTable: "Jobs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_JobApplications_Resumes_ResumeId",
                         column: x => x.ResumeId,
                         principalTable: "Resumes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -515,9 +515,9 @@ namespace HrPortalV2.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2fabc0d7-8954-4ffd-8375-a9f31b70030e", "Admin", "Admin", "ADMIN" },
-                    { "f1132bc7-b1d8-4a2a-a29a-9af772eccb0b", "Company", "Company", "COMPANY" },
-                    { "b1a98a16-fd1e-4bc1-84c6-b47a4c8e9e05", "Candidate", "Candidate", "CANDIDATE" }
+                    { "b550db4c-a2b5-4095-aaaf-d27dde5c225b", "Admin", "Admin", "ADMIN" },
+                    { "d8a5481f-98f4-49c6-ac22-ebe88d73042f", "Company", "Company", "COMPANY" },
+                    { "18d37314-12ac-4d84-b2a4-e8bfd3a8edec", "Candidate", "Candidate", "CANDIDATE" }
                 });
 
             migrationBuilder.InsertData(
@@ -525,45 +525,45 @@ namespace HrPortalV2.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "c1eb2de7-d9b8-4deb-a53c-116795bc883a", 0, "1", "IdentityUser", "admin@bilisimegitim.com", true, true, null, "ADMIN@BILISIMEGITIM.COM", "ADMIN@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "admin@bilisimegitim.com" },
-                    { "1a273bcc-aebc-40e7-84a4-9e3f07460d8d", 0, "1", "IdentityUser", "firma@bilisimegitim.com", true, true, null, "FIRMA@BILISIMEGITIM.COM", "FIRMA@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "firma@bilisimegitim.com" },
-                    { "ee94f6e9-29d1-4ad7-905f-14a77d3e9ddd", 0, "1", "IdentityUser", "aday@bilisimegitim.com", true, true, null, "ADAY@BILISIMEGITIM.COM", "ADAY@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "aday@bilisimegitim.com" }
+                    { "4c8069f8-706d-4822-b3d4-96042bc4bf15", 0, "1", "IdentityUser", "admin@bilisimegitim.com", true, true, null, "ADMIN@BILISIMEGITIM.COM", "ADMIN@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "admin@bilisimegitim.com" },
+                    { "da4db732-aa6f-42bb-a0d3-4bba6574f285", 0, "1", "IdentityUser", "firma@bilisimegitim.com", true, true, null, "FIRMA@BILISIMEGITIM.COM", "FIRMA@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "firma@bilisimegitim.com" },
+                    { "0714b929-460a-4ee4-b51b-797dc60760d9", 0, "1", "IdentityUser", "aday@bilisimegitim.com", true, true, null, "ADAY@BILISIMEGITIM.COM", "ADAY@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "aday@bilisimegitim.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "59bfe84a-a0fb-436d-9814-070f961b2c00", new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Türkiye", new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "7eb890e8-3c99-4482-bc26-7b00bcfc451b", new DateTime(2018, 7, 28, 0, 31, 54, 731, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Türkiye", new DateTime(2018, 7, 28, 0, 31, 54, 731, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "Occupations",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "a2f744d9-1984-47cd-976d-6ce9d4fb3027", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Yazılım Uzmanı", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "e1541cd1-6de8-42ad-ab63-fd361de6f66a", new DateTime(2018, 7, 28, 0, 31, 54, 733, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Yazılım Uzmanı", new DateTime(2018, 7, 28, 0, 31, 54, 733, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "Sectors",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "1", new DateTime(2018, 7, 13, 10, 8, 57, 115, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Eğitim", new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "1", new DateTime(2018, 7, 28, 0, 31, 54, 729, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Eğitim", new DateTime(2018, 7, 28, 0, 31, 54, 730, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "UserId", "RoleId" },
                 values: new object[,]
                 {
-                    { "c1eb2de7-d9b8-4deb-a53c-116795bc883a", "2fabc0d7-8954-4ffd-8375-a9f31b70030e" },
-                    { "1a273bcc-aebc-40e7-84a4-9e3f07460d8d", "f1132bc7-b1d8-4a2a-a29a-9af772eccb0b" },
-                    { "ee94f6e9-29d1-4ad7-905f-14a77d3e9ddd", "b1a98a16-fd1e-4bc1-84c6-b47a4c8e9e05" }
+                    { "4c8069f8-706d-4822-b3d4-96042bc4bf15", "b550db4c-a2b5-4095-aaaf-d27dde5c225b" },
+                    { "da4db732-aa6f-42bb-a0d3-4bba6574f285", "d8a5481f-98f4-49c6-ac22-ebe88d73042f" },
+                    { "0714b929-460a-4ee4-b51b-797dc60760d9", "18d37314-12ac-4d84-b2a4-e8bfd3a8edec" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "CountryId", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "cf675319-9670-462d-939c-9a87eca71024", "59bfe84a-a0fb-436d-9814-070f961b2c00", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "İstanbul", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "97888a3c-7f58-45b6-8a7f-35bd1de4235e", "7eb890e8-3c99-4482-bc26-7b00bcfc451b", new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "İstanbul", new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "County",
                 columns: new[] { "Id", "CityId", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "6234ad31-9d60-4fc6-a637-ef977de5e243", "cf675319-9670-462d-939c-9a87eca71024", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Kadıköy", new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "1f5092b0-ff41-4df6-9fb5-ce4e028d2ba7", "97888a3c-7f58-45b6-8a7f-35bd1de4235e", new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Kadıköy", new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

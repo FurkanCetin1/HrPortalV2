@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrPortalV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180713070857_InitialCreate")]
+    [Migration("20180727213155_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,19 +26,25 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CountryId");
+                    b.Property<string>("CountryId")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -47,7 +53,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("Cities");
 
                     b.HasData(
-                        new { Id = "cf675319-9670-462d-939c-9a87eca71024", CountryId = "59bfe84a-a0fb-436d-9814-070f961b2c00", CreateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "İstanbul", UpdateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "97888a3c-7f58-45b6-8a7f-35bd1de4235e", CountryId = "7eb890e8-3c99-4482-bc26-7b00bcfc451b", CreateDate = new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "İstanbul", UpdateDate = new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -56,43 +62,61 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .HasMaxLength(4000);
 
-                    b.Property<string>("CityId");
+                    b.Property<string>("CityId")
+                        .IsRequired();
 
-                    b.Property<string>("ContactName");
+                    b.Property<string>("ContactName")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("CountryId");
+                    b.Property<string>("CountryId")
+                        .IsRequired();
 
-                    b.Property<string>("CountyId");
+                    b.Property<string>("CountyId")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsApproved");
 
-                    b.Property<string>("Logo");
+                    b.Property<string>("Logo")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
-                    b.Property<string>("SectorId");
+                    b.Property<string>("SectorId")
+                        .IsRequired();
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Website");
+                    b.Property<string>("Website")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -114,22 +138,27 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
 
                     b.HasData(
-                        new { Id = "59bfe84a-a0fb-436d-9814-070f961b2c00", CreateDate = new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Türkiye", UpdateDate = new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "7eb890e8-3c99-4482-bc26-7b00bcfc451b", CreateDate = new DateTime(2018, 7, 28, 0, 31, 54, 731, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Türkiye", UpdateDate = new DateTime(2018, 7, 28, 0, 31, 54, 731, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -138,19 +167,25 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CityId");
+                    b.Property<string>("CityId")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -159,7 +194,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("County");
 
                     b.HasData(
-                        new { Id = "6234ad31-9d60-4fc6-a637-ef977de5e243", CityId = "cf675319-9670-462d-939c-9a87eca71024", CreateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "1f5092b0-ff41-4df6-9fb5-ce4e028d2ba7", CityId = "97888a3c-7f58-45b6-8a7f-35bd1de4235e", CreateDate = new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 7, 28, 0, 31, 54, 732, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -168,17 +203,21 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CompanyId");
+                    b.Property<string>("CompanyId")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<DateTime>("EndDate");
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("IsActive");
 
@@ -190,11 +229,14 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("PublishDate");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -210,21 +252,27 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("JobId");
+                    b.Property<string>("JobId")
+                        .IsRequired();
 
-                    b.Property<string>("ResumeId");
+                    b.Property<string>("ResumeId")
+                        .IsRequired();
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -242,29 +290,43 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
-                    b.Property<string>("From");
+                    b.Property<string>("From")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("FromName");
+                    b.Property<string>("FromName")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("IsApproved");
 
                     b.Property<bool>("IsRead");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("To");
+                    b.Property<string>("To")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("ToName");
+                    b.Property<string>("ToName")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -278,22 +340,27 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
                     b.ToTable("Occupations");
 
                     b.HasData(
-                        new { Id = "a2f744d9-1984-47cd-976d-6ce9d4fb3027", CreateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Yazılım Uzmanı", UpdateDate = new DateTime(2018, 7, 13, 10, 8, 57, 117, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "e1541cd1-6de8-42ad-ab63-fd361de6f66a", CreateDate = new DateTime(2018, 7, 28, 0, 31, 54, 733, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Yazılım Uzmanı", UpdateDate = new DateTime(2018, 7, 28, 0, 31, 54, 733, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -304,45 +371,63 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<string>("AddressId");
 
-                    b.Property<string>("Behance");
+                    b.Property<string>("Behance")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("Blog");
+                    b.Property<string>("Blog")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("CityId");
+                    b.Property<string>("CityId")
+                        .IsRequired();
 
-                    b.Property<string>("CountryId");
+                    b.Property<string>("CountryId")
+                        .IsRequired();
 
-                    b.Property<string>("CountyId");
+                    b.Property<string>("CountyId")
+                        .IsRequired();
 
                     b.Property<string>("Courses");
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Dribbble");
+                    b.Property<string>("Dribbble")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("DrivingLicense");
+                    b.Property<string>("DrivingLicense")
+                        .HasMaxLength(20);
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Facebook");
+                    b.Property<string>("Facebook")
+                        .HasMaxLength(100);
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.Property<string>("ForeignLanguages");
+                    b.Property<string>("ForeignLanguages")
+                        .HasMaxLength(200);
 
                     b.Property<int>("Gender");
 
-                    b.Property<string>("GitHub");
+                    b.Property<string>("GitHub")
+                        .HasMaxLength(100);
 
-                    b.Property<int>("GraduationYear");
+                    b.Property<int?>("GraduationYear");
 
-                    b.Property<string>("Hobbies");
+                    b.Property<string>("Hobbies")
+                        .HasMaxLength(4000);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Instagram");
+                    b.Property<string>("Instagram")
+                        .HasMaxLength(100);
 
                     b.Property<bool>("IsActive");
 
@@ -358,47 +443,66 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<bool>("IsTravelDisabled");
 
-                    b.Property<string>("LastCompany");
+                    b.Property<string>("LastCompany")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("LastDepartment");
+                    b.Property<string>("LastDepartment")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("LastEducation");
+                    b.Property<string>("LastEducation")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.Property<string>("LastPosition");
+                    b.Property<string>("LastPosition")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("LinkedIn");
+                    b.Property<string>("LinkedIn")
+                        .HasMaxLength(100);
 
                     b.Property<int>("MaritalStatus");
 
                     b.Property<int?>("MilitaryStatus");
 
-                    b.Property<string>("MobilePhone");
+                    b.Property<string>("MobilePhone")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
-                    b.Property<string>("Objective");
+                    b.Property<string>("Objective")
+                        .HasMaxLength(4000);
 
-                    b.Property<string>("OccupationId");
+                    b.Property<string>("OccupationId")
+                        .IsRequired();
 
-                    b.Property<string>("Photo");
+                    b.Property<string>("Photo")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Projects");
 
-                    b.Property<string>("ResumeName");
+                    b.Property<string>("ResumeName")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<string>("Skills");
 
                     b.Property<int>("TotalExperience");
 
-                    b.Property<string>("Twitter");
+                    b.Property<string>("Twitter")
+                        .HasMaxLength(100);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("UsingCigarette");
 
-                    b.Property<string>("Youtube");
+                    b.Property<string>("Youtube")
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
@@ -422,17 +526,23 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("File");
+                    b.Property<string>("File")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("ResumeId");
+                    b.Property<string>("ResumeId")
+                        .IsRequired();
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -448,22 +558,27 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<DateTime>("CreateDate");
 
-                    b.Property<string>("CreatedBy");
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("IPAddress");
+                    b.Property<string>("IPAddress")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("UpdateDate");
 
-                    b.Property<string>("UpdatedBy");
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
                     b.ToTable("Sectors");
 
                     b.HasData(
-                        new { Id = "1", CreateDate = new DateTime(2018, 7, 13, 10, 8, 57, 115, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Eğitim", UpdateDate = new DateTime(2018, 7, 13, 10, 8, 57, 116, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "1", CreateDate = new DateTime(2018, 7, 28, 0, 31, 54, 729, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Eğitim", UpdateDate = new DateTime(2018, 7, 28, 0, 31, 54, 730, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -491,9 +606,9 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "2fabc0d7-8954-4ffd-8375-a9f31b70030e", ConcurrencyStamp = "Admin", Name = "Admin", NormalizedName = "ADMIN" },
-                        new { Id = "f1132bc7-b1d8-4a2a-a29a-9af772eccb0b", ConcurrencyStamp = "Company", Name = "Company", NormalizedName = "COMPANY" },
-                        new { Id = "b1a98a16-fd1e-4bc1-84c6-b47a4c8e9e05", ConcurrencyStamp = "Candidate", Name = "Candidate", NormalizedName = "CANDIDATE" }
+                        new { Id = "b550db4c-a2b5-4095-aaaf-d27dde5c225b", ConcurrencyStamp = "Admin", Name = "Admin", NormalizedName = "ADMIN" },
+                        new { Id = "d8a5481f-98f4-49c6-ac22-ebe88d73042f", ConcurrencyStamp = "Company", Name = "Company", NormalizedName = "COMPANY" },
+                        new { Id = "18d37314-12ac-4d84-b2a4-e8bfd3a8edec", ConcurrencyStamp = "Candidate", Name = "Candidate", NormalizedName = "CANDIDATE" }
                     );
                 });
 
@@ -573,9 +688,9 @@ namespace HrPortalV2.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
 
                     b.HasData(
-                        new { Id = "c1eb2de7-d9b8-4deb-a53c-116795bc883a", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "admin@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "admin@bilisimegitim.com" },
-                        new { Id = "1a273bcc-aebc-40e7-84a4-9e3f07460d8d", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "firma@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "firma@bilisimegitim.com" },
-                        new { Id = "ee94f6e9-29d1-4ad7-905f-14a77d3e9ddd", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "aday@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADAY@BILISIMEGITIM.COM", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "aday@bilisimegitim.com" }
+                        new { Id = "4c8069f8-706d-4822-b3d4-96042bc4bf15", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "admin@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "admin@bilisimegitim.com" },
+                        new { Id = "da4db732-aa6f-42bb-a0d3-4bba6574f285", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "firma@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "firma@bilisimegitim.com" },
+                        new { Id = "0714b929-460a-4ee4-b51b-797dc60760d9", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "aday@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADAY@BILISIMEGITIM.COM", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "aday@bilisimegitim.com" }
                     );
                 });
 
@@ -630,9 +745,9 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("AspNetUserRoles");
 
                     b.HasData(
-                        new { UserId = "c1eb2de7-d9b8-4deb-a53c-116795bc883a", RoleId = "2fabc0d7-8954-4ffd-8375-a9f31b70030e" },
-                        new { UserId = "1a273bcc-aebc-40e7-84a4-9e3f07460d8d", RoleId = "f1132bc7-b1d8-4a2a-a29a-9af772eccb0b" },
-                        new { UserId = "ee94f6e9-29d1-4ad7-905f-14a77d3e9ddd", RoleId = "b1a98a16-fd1e-4bc1-84c6-b47a4c8e9e05" }
+                        new { UserId = "4c8069f8-706d-4822-b3d4-96042bc4bf15", RoleId = "b550db4c-a2b5-4095-aaaf-d27dde5c225b" },
+                        new { UserId = "da4db732-aa6f-42bb-a0d3-4bba6574f285", RoleId = "d8a5481f-98f4-49c6-ac22-ebe88d73042f" },
+                        new { UserId = "0714b929-460a-4ee4-b51b-797dc60760d9", RoleId = "18d37314-12ac-4d84-b2a4-e8bfd3a8edec" }
                     );
                 });
 
@@ -670,51 +785,60 @@ namespace HrPortalV2.Data.Migrations
                 {
                     b.HasOne("HrPortalV2.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.Company", b =>
                 {
                     b.HasOne("HrPortalV2.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId");
+                        .WithMany("Companies")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId");
+                        .WithMany("Companies")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.County", "County")
-                        .WithMany()
-                        .HasForeignKey("CountyId");
+                        .WithMany("Companies")
+                        .HasForeignKey("CountyId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.Sector", "Sector")
                         .WithMany()
-                        .HasForeignKey("SectorId");
+                        .HasForeignKey("SectorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.County", b =>
                 {
                     b.HasOne("HrPortalV2.Models.City", "City")
                         .WithMany()
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.Job", b =>
                 {
                     b.HasOne("HrPortalV2.Models.Company", "Company")
                         .WithMany("Jobs")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.JobApplication", b =>
                 {
                     b.HasOne("HrPortalV2.Models.Job", "Job")
                         .WithMany("JobApplications")
-                        .HasForeignKey("JobId");
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HrPortalV2.Models.Resume", "Resume")
                         .WithMany("JobApplications")
-                        .HasForeignKey("ResumeId");
+                        .HasForeignKey("ResumeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.Resume", b =>
@@ -724,27 +848,32 @@ namespace HrPortalV2.Data.Migrations
                         .HasForeignKey("AddressId");
 
                     b.HasOne("HrPortalV2.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId");
+                        .WithMany("Resumes")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId");
+                        .WithMany("Resumes")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.County", "County")
-                        .WithMany()
-                        .HasForeignKey("CountyId");
+                        .WithMany("Resumes")
+                        .HasForeignKey("CountyId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("HrPortalV2.Models.Occupation", "Occupation")
                         .WithMany()
-                        .HasForeignKey("OccupationId");
+                        .HasForeignKey("OccupationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("HrPortalV2.Models.ResumeFile", b =>
                 {
                     b.HasOne("HrPortalV2.Models.Resume", "Resume")
                         .WithMany("ResumeFiles")
-                        .HasForeignKey("ResumeId");
+                        .HasForeignKey("ResumeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
