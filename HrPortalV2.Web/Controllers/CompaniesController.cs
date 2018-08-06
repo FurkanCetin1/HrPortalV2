@@ -77,7 +77,7 @@ namespace HrPortalV2.Web.Controllers
                     company.Logo = File.FileName;
                 }
                 companyService.Insert(company);
-                return RedirectToAction(nameof(Edit), new { id = company.Id, saved = true });
+                return RedirectToAction("Index");
             }
             else
             {

@@ -30,7 +30,7 @@ namespace HrPortalV2.Service
         }
         public IEnumerable<Resume> GetAllByUserName(string userName)
         {
-            return resumeRepository.GetMany(m => m.CreatedBy == userName, o=>o.UpdateDate,true);
+            return resumeRepository.GetMany(m => m.CreatedBy == userName, o=>o.UpdateDate,true, "ResumeFiles", "JobApplications", "Occupation", "Country", "City", "County");
         }
 
         public void Insert(Resume entity)

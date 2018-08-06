@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HrPortalV2.Models;
+using HrPortalV2.Web.Areas.Identity.Services;
 
 namespace HrPortalV2.Web
 {
@@ -40,7 +41,10 @@ namespace HrPortalV2.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
         // services.AddDefaultIdentity<IdentityUser>()
         .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
@@ -52,6 +56,9 @@ namespace HrPortalV2.Web
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
 
+  
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = $"/Identity/Account/Login";
@@ -60,7 +67,7 @@ namespace HrPortalV2.Web
             });
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddSingleton<IEmailSender, HrPortalV2.Web.Areas.Identity.Services.EmailSender>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IMessageService, MessageService>();
@@ -74,6 +81,7 @@ namespace HrPortalV2.Web
             services.AddTransient<ICityService, CityService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<ISubscriptionService, SubscriptionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
