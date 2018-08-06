@@ -28,7 +28,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "E-mail girilmesi Zorunludır.")]
             [EmailAddress]
             public string Email { get; set; }
         }
