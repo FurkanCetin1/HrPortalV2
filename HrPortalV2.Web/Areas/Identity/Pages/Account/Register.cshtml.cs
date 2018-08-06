@@ -60,8 +60,6 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             [Display(Name = "Rol")]
             public string Role { get; set; }
-            [Display(Name = "Fotograf")]
-            public string Photo { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -97,7 +95,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, "Candidate");
                     }
                     //await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    return LocalRedirect("~/Identity/Account/ConfirmSent");
                 }
                 foreach (var error in result.Errors)
                 {
