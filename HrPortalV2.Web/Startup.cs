@@ -81,6 +81,7 @@ namespace HrPortalV2.Web
             services.AddTransient<ICityService, CityService>();
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<ISubscriptionService, SubscriptionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
