@@ -43,12 +43,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             {
                 Role = "Candidate";
             }
-            [Required]
+            [Required(ErrorMessage = "E-posta Girilmesi zorunludur.")]
             [EmailAddress]
             [Display(Name = "E-posta")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Parola Oluşturulması zorunludur.")]
             [StringLength(100, ErrorMessage = "{0} alanı en az {2} ve en fazla {1} karakter uzunluğunda olmalıdır.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Parola")]
@@ -88,8 +88,8 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "E-postanızı doğrulayın",
-                        $"Lütfen hesabınızı doğrulayın <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>buraya tıklayarak</a>.");
-
+                        $"<div style='text-align:center'><img src='http://demo.bilisimkariyer.net/images/logo_bilisimkariyer.png' /><br />Lütfen hesabınızı doğrulayın <a href='{HtmlEncoder.Default.Encode(callbackUrl)} '>buraya tıklayarak</a>.</div>");
+                    
                     if (Input.Role == "Company") { 
                         await _userManager.AddToRoleAsync(user, "Company");
                     } else

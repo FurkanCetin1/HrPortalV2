@@ -9,6 +9,7 @@
     <div class="col-md-12">
         <form asp-action="SendMessageToResume">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="FromName" type="hidden" value="(bilinmiyor)" />
             <div class="form-group">
                 <label asp-for="From" class="control-label"></label>
                 <select asp-for="From" class="form-control" asp-items="ViewBag.MyCompanies">
@@ -32,23 +33,23 @@
                 <textarea rows="8" asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            
-            
-          
-                <input asp-for="CreateDate" type="hidden" />
 
-                <input asp-for="CreatedBy" type="hidden" />
-                
-                <input asp-for="UpdateDate" type="hidden" />
-              
-                <input asp-for="UpdatedBy" type="hidden" />
-               
-                <input asp-for="IPAddress" type="hidden" />
-            
-                <div class="form-group">
-                    <input type="submit" value="Gönder" class="btn btn-primary btn-sm" />
-                    <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="history.back();">İptal</a>
-                </div>
+
+
+            <input asp-for="CreateDate" type="hidden" />
+
+            <input asp-for="CreatedBy" type="hidden" />
+
+            <input asp-for="UpdateDate" type="hidden" />
+
+            <input asp-for="UpdatedBy" type="hidden" />
+
+            <input asp-for="IPAddress" type="hidden" />
+
+            <div class="form-group">
+                <input type="submit" value="Gönder" class="btn btn-primary btn-sm" />
+                <a href="javascript:void(0)" class="btn btn-danger btn-sm" onclick="history.back();">İptal</a>
+            </div>
         </form>
     </div>
 </div>
