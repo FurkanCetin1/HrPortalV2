@@ -60,6 +60,8 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
             [Display(Name = "Rol")]
             public string Role { get; set; }
+            [Display(Name = "Fotograf")]
+            public string Photo { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
