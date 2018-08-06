@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPortalV2.Web", "HrPortalV2.Web\HrPortalV2.Web.csproj", "{3D811181-1C0C-41A0-AE03-505BA0E6220B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrPortalV2.Web", "HrPortalV2.Web\HrPortalV2.Web.csproj", "{3D811181-1C0C-41A0-AE03-505BA0E6220B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPortalV2.Models", "HrPortalV2.Models\HrPortalV2.Models.csproj", "{A64350D5-C4CB-4ED3-ADA5-835A009AE011}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrPortalV2.Models", "HrPortalV2.Models\HrPortalV2.Models.csproj", "{A64350D5-C4CB-4ED3-ADA5-835A009AE011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPortalV2.Data", "HrPortalV2.Data\HrPortalV2.Data.csproj", "{E7E533E5-D9CA-4043-A7DA-C592CA16B327}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrPortalV2.Data", "HrPortalV2.Data\HrPortalV2.Data.csproj", "{E7E533E5-D9CA-4043-A7DA-C592CA16B327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrPortalV2.Service", "HrPortalV2.Service\HrPortalV2.Service.csproj", "{C3F89E37-97C8-4BBE-9563-8AEC1549F70A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrPortalV2.Service", "HrPortalV2.Service\HrPortalV2.Service.csproj", "{C3F89E37-97C8-4BBE-9563-8AEC1549F70A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

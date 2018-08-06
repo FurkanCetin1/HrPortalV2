@@ -9,6 +9,7 @@
     <div class="col-md-12">
         <form asp-action="SendMessageToCompany">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="FromName" type="hidden" value="(bilinmiyor)" />
             <div class="form-group">
                 <label asp-for="From" class="control-label"></label>
                 <select asp-for="From" class="form-control" asp-items="ViewBag.MyResumes">

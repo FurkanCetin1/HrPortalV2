@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class JobApplicationsController : Controller
+    public class JobApplicationsController : ControllerBase
     {
         private readonly IJobApplicationService jobApplicationService;
         private readonly IJobService jobService;

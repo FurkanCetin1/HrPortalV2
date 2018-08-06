@@ -24,37 +24,31 @@
             <th>
                 @Html.DisplayNameFor(model => model.Sector)
             </th>
-            <th class="text-nowrap all">Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
+            <tr>
+                <td class="text-nowrap">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.County.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sector.Name)
+                </td>
+
             <td class="text-nowrap">
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.County.Name)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Sector.Name)
-            </td>
-
-            <td class="text-nowrap">
-                <div class="text-nowrap">
-
-                    <a asp-action="Details" asp-controller="Companies" asp-route-Id="@item.Id" class="btn btn-default btn-sm">Firma Detayı</a>
-
-                    <a asp-action="SendMessageToCompany" asp-controller="Messages" asp-route-companyId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
-
-                </div>
-
+                <a asp-action="Details" asp-controller="Companies" asp-route-Id="@item.Id" class="btn btn-default btn-sm">Firma Detayı</a>
+                <a asp-action="SendMessageToCompany" asp-controller="Messages" asp-route-companyId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
             </td>
         </tr>
         }

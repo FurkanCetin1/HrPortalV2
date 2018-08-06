@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class CompaniesController : Controller
+    public class CompaniesController : ControllerBase
     {
         private readonly ICompanyService companyService;
         private readonly ICountyService countyService;
@@ -77,7 +77,7 @@ namespace HrPortalV2.Web.Controllers
                     company.Logo = File.FileName;
                 }
                 companyService.Insert(company);
-                return RedirectToAction(nameof(Edit), new { id = company.Id, saved = true });
+                return RedirectToAction("Index");
             }
             else
             {
