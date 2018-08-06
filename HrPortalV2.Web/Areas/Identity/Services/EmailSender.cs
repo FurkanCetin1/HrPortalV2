@@ -19,7 +19,7 @@ namespace HrPortalV2.Web.Areas.Identity.Services
         }
 
         public AuthMessageSenderOptions Options { get; } //set only via Secret Manager
-
+        
         public Task SendEmailAsync(string email, string subject, string message)
         {
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);

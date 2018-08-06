@@ -88,8 +88,8 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                         protocol: Request.Scheme);
 
                     await _emailSender.SendEmailAsync(Input.Email, "E-postanızı doğrulayın",
-                        $"Lütfen hesabınızı doğrulayın <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>buraya tıklayarak</a>.");
-
+                        $"<div style='text-align:center'><img src='http://demo.bilisimkariyer.net/images/logo_bilisimkariyer.png' /><br />Lütfen hesabınızı doğrulayın <a href='{HtmlEncoder.Default.Encode(callbackUrl)} '>buraya tıklayarak</a>.</div>");
+                    
                     if (Input.Role == "Company") { 
                         await _userManager.AddToRoleAsync(user, "Company");
                     } else
