@@ -56,62 +56,62 @@
                 @Html.DisplayNameFor(model => model.Occupation)
             </th>
 
-            <th class="text-nowrap all">Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td class="text-nowrap all">
-                    @Html.DisplayFor(modelItem => item.Photo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalExperience)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsCurrentlyWorking)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsSeekingJob)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastCompany)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastPosition)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastEducation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastDepartment)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GraduationYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ForeignLanguages)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Occupation.Name)
-                </td>
-                <td class="text-nowrap">
+        <tr>
+            <td class="text-nowrap all">
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalExperience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCurrentlyWorking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSeekingJob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastEducation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastDepartment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GraduationYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForeignLanguages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occupation.Name)
+            </td>
+            <td class="text-nowrap">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Düzenle</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Sil</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Detaylar</a>
+            </td>
 
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Düzenle</a> <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Sil</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Detaylar</a>
-                </td>
-
-            </tr>
+        </tr>
         }
     </tbody>
 </table>
