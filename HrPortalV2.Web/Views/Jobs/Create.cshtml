@@ -20,47 +20,58 @@
                 <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CompanyId" class="control-label"></label>
-                <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
-                    <option value="">Firma Seçiniz</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublishDate" class="control-label"></label>
-                <input asp-for="PublishDate" class="form-control" />
-                <span asp-validation-for="PublishDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                    </label>
-                </div>
-            </div>
+
           
-            <input asp-for="CreateDate" type="hidden" />
-            <input asp-for="CreatedBy" type="hidden" />
-            <input asp-for="UpdateDate" type="hidden" />
-            <input asp-for="UpdatedBy" type="hidden" />
-            <input asp-for="IPAddress" type="hidden" />
-            <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-success btn-sm" />  <a asp-action="Index" asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">Geri Dön</a>
+
+           
+            <div class="form-group ">
+
+
+                <label asp-for="CompanyId" class="control-label"></label>
+                <div class="input-group">
+                    <select asp-for="CompanyId" class="form-control" asp-items="ViewBag.CompanyId">
+                        <option value=""></option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default">Firma Ekle...</button>
+                    </span>
+                </div>
             </div>
-        </form>
-    </div>
+                        <div class="form-group">
+                            <label asp-for="PublishDate" class="control-label"></label>
+                            <input asp-for="PublishDate" class="form-control" />
+                            <span asp-validation-for="PublishDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EndDate" class="control-label"></label>
+                            <input asp-for="EndDate" class="form-control" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                </label>
+                            </div>
+                        </div>
+
+                        <input asp-for="CreateDate" type="hidden" />
+                        <input asp-for="CreatedBy" type="hidden" />
+                        <input asp-for="UpdateDate" type="hidden" />
+                        <input asp-for="UpdatedBy" type="hidden" />
+                        <input asp-for="IPAddress" type="hidden" />
+                        <div class="form-group">
+                            <input type="submit" value="Kaydet" class="btn btn-success btn-sm" />  <a asp-action="Index" asp-controller="Jobs" asp-area="" class="btn btn-warning btn-sm">Geri Dön</a>
+                        </div>
+                    </form>
+                </div>
 </div>
 
 
