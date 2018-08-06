@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class ResumesController : Controller
+    public class ResumesController : ControllerBase
     {
         private readonly IResumeService resumeService;
         private readonly IOccupationService occupationService;

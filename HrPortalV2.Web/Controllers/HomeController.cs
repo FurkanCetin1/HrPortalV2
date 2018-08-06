@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HrPortalV2.Web.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private readonly IJobService jobService;
         public HomeController(IJobService jobService)
         {
             this.jobService = jobService;
         }
+        
         public IActionResult Index()
         {
             ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();

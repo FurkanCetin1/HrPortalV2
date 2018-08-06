@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class MessagesController : Controller
+    public class MessagesController : ControllerBase
     {
         private readonly IMessageService messageService;
         private readonly ICompanyService companyService;
