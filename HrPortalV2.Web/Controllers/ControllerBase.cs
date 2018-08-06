@@ -18,6 +18,7 @@ namespace HrPortalV2.Web.Controllers
                 var myresumes = _resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
                 var mymessages = _messageService.GetAllByTo(myresumes);
                 ViewBag.MessageCount = mymessages.Count().ToString();
+                ViewBag.Messages = mymessages;
             }
             else
             {
@@ -25,6 +26,7 @@ namespace HrPortalV2.Web.Controllers
                 var mycompanies = _companyService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList();
                 var mymessages = _messageService.GetAllByTo(mycompanies);
                 ViewBag.MessageCount = mymessages.Count().ToString();
+                ViewBag.Messages = mymessages;
             }
             base.OnActionExecuting(context);
         }
