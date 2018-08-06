@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using HrPortalV2.Web.Models;
 using HrPortalV2.Service;
 using HrPortalV2.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private readonly IJobService jobService;
         private readonly ISubscriptionService subscriptionService;
@@ -19,9 +20,16 @@ namespace HrPortalV2.Web.Controllers
             this.subscriptionService = subscriptionService;
             this.jobService = jobService;
         }
-        public IActionResult Index()
+        public IActionResult Index(string search = "")
         {
-            ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            
+            if(!string.IsNullOrEmpty(search))
+            {
+                ViewBag.Search = search;
+                ViewBag.FeaturedJobs = jobService.Search(search);
+            } else {
+                ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            }
             return View();
         }
 

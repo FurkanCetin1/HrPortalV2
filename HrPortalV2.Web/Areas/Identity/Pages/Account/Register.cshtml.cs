@@ -43,12 +43,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             {
                 Role = "Candidate";
             }
-            [Required]
+            [Required(ErrorMessage = "E-posta Girilmesi zorunludur.")]
             [EmailAddress]
             [Display(Name = "E-posta")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Parola Oluşturulması zorunludur.")]
             [StringLength(100, ErrorMessage = "{0} alanı en az {2} ve en fazla {1} karakter uzunluğunda olmalıdır.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Parola")]

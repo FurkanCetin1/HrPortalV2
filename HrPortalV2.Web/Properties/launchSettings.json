@@ -2,10 +2,6 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "http://localhost/HrPortalV2.Web",
-      "sslPort": 0
-    },
     "iisExpress": {
       "applicationUrl": "http://localhost:55437",
       "sslPort": 0
@@ -20,7 +16,7 @@
       }
     },
     "HrPortalV2.Web": {
-      "commandName": "IIS",
+      "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

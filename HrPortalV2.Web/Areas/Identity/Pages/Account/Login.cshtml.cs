@@ -36,13 +36,15 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+          
             [EmailAddress]
             [Display(Name = "E-Posta")]
+            [Required(ErrorMessage = "E-posta alanı gereklidir")]
             public string Email { get; set; }
 
-            [Required]
+           
             [DataType(DataType.Password)]
+            [Required(ErrorMessage = "Hatalı veya Eksik parola  girdiniz ")]
             [Display(Name ="Parola")]
             public string Password { get; set; }
 

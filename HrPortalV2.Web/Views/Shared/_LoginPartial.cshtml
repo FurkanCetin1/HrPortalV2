@@ -124,7 +124,7 @@
                         <li>
                             <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyCompanies">
                                 <i class="icon-envelope-open"></i> Mesajlarım
-                                <span class="badge badge-danger"> 3 </span>
+                                <span class="badge badge-danger"> @ViewBag.MessageCount </span>
                             </a>
                         </li>
                     }
@@ -133,7 +133,7 @@
                         <li>
                             <a asp-area="" asp-controller="Messages" asp-action="MyMessagesSentToMyResumes">
                                 <i class="icon-envelope-open"></i> Mesajlarım
-                                <span class="badge badge-danger"> 3 </span>
+                                <span class="badge badge-danger"> @ViewBag.MessageCount </span>
                             </a>
                         </li>
                     }
