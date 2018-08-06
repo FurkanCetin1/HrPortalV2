@@ -24,6 +24,7 @@ namespace HrPortalV2.Data
         public DbSet<HrPortalV2.Models.Resume> Resumes { get; set; }
         public DbSet<HrPortalV2.Models.ResumeFile> ResumeFiles { get; set; }
         public DbSet<HrPortalV2.Models.Sector> Sectors { get; set; }
+        public DbSet<HrPortalV2.Models.Subscription> Subscription { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
