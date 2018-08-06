@@ -35,19 +35,22 @@
                 <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId" onchange="CountryChange(this)">
                     <option value="">Ülke seçiniz</option>
                 </select>
-
+                <span asp-validation-for="CountryId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
                 <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId" onchange="CityChange(this)">   <option value="">Şehir seçiniz</option></select>
+                <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CountyId" class="control-label"></label>
                 <select asp-for="CountyId" class="form-control" asp-items="ViewBag.CountyId">   <option value="">İlçe seçiniz</option></select>
+                <span asp-validation-for="CountyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SectorId" class="control-label"></label>
                 <select asp-for="SectorId" class="form-control" asp-items="ViewBag.SectorId"> <option value="">Sektor seçiniz</option></select>
+                <span asp-validation-for="SectorId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
@@ -56,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control">
+                <input asp-for="Phone" class="form-control" type="tel" placeholder="05__ _______">
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -74,10 +77,6 @@
                 <input asp-for="ContactName" class="form-control">
                 <span asp-validation-for="ContactName" class="text-danger"></span>
             </div>
-
-
-
-
             <div class="form-group">
                 <div>
                     <label>
@@ -144,7 +143,9 @@
                 });
             });
         }
-
+    </script>
+    <script src="/js/jquery.inputmask.bundle.js"></script>
+    <script>
+        Inputmask({ "mask": "0599 9999999" }).mask("[type='tel']");
     </script>
 }
-
