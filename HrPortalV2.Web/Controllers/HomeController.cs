@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HrPortalV2.Web.Models;
 using HrPortalV2.Service;
+using HrPortalV2.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HrPortalV2.Web.Controllers
@@ -13,14 +14,22 @@ namespace HrPortalV2.Web.Controllers
     public class HomeController : ControllerBase
     {
         private readonly IJobService jobService;
-        public HomeController(IJobService jobService)
+        private readonly ISubscriptionService subscriptionService;
+        public HomeController(IJobService jobService,ISubscriptionService subscriptionService)
         {
+            this.subscriptionService = subscriptionService;
             this.jobService = jobService;
         }
-        
-        public IActionResult Index()
+        public IActionResult Index(string search = "")
         {
-            ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            
+            if(!string.IsNullOrEmpty(search))
+            {
+                ViewBag.Search = search;
+                ViewBag.FeaturedJobs = jobService.Search(search);
+            } else {
+                ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            }
             return View();
         }
 
@@ -47,6 +56,12 @@ namespace HrPortalV2.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult AddSubscription(string email)
+        {
+            var subscription = new Subscription() { Email = email, IsSubscribed = true };
+            subscriptionService.Insert(subscription);
+            return RedirectToAction("Index", new { subscribtion = "ok" });
         }
     }
 }

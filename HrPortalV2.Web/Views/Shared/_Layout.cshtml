@@ -70,7 +70,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!-- END RESPONSIVE MENU TOGGLER -->
                             <!-- BEGIN TOP NAVIGATION MENU -->
                             <div class="top-menu">
-                                <partial name="_LoginPartial" /> 
+                                <partial name="_LoginPartial" />
                             </div>
                             <!-- END TOP NAVIGATION MENU -->
                         </div>
@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <ul class="nav navbar-nav pull-right">
                                 <li><a style="color:white; background-color:transparent !important;" href="tel:02163462606"><i class="icon-speech"></i> 0216 346 26 06</a></li>
                             </ul>
-                            
+
                             <!-- END HEADER SEARCH BOX -->
                             <!-- BEGIN MEGA MENU -->
                             <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
@@ -135,16 +135,17 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="page-content-wrapper">
                         <!-- BEGIN CONTENT BODY -->
                         <!-- BEGIN PAGE HEAD-->
-                        @if (!(this.ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && this.ViewContext.RouteData.Values["action"]?.ToString() == "Index")) { 
-                        <div class="page-head">
-                            <div class="container">
-                                <div class="page-title">
-                                    <h1>@ViewData["Title"]</h1>
+                        @if (!(this.ViewContext.RouteData.Values["controller"]?.ToString() == "Home" && this.ViewContext.RouteData.Values["action"]?.ToString() == "Index"))
+                        {
+                            <div class="page-head">
+                                <div class="container">
+                                    <div class="page-title">
+                                        <h1>@ViewData["Title"]</h1>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         }
-                        @RenderSection("Slider", required:false)
+                        @RenderSection("Slider", required: false)
                         <!-- END PAGE HEAD-->
                         <!-- BEGIN PAGE CONTENT BODY -->
                         <div class="page-content">
@@ -773,11 +774,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="col-md-3 col-sm-6 col-xs12 footer-block">
                                 <h2>E-posta Aboneliği</h2>
                                 <div class="subscribe-form">
-                                    <form action="javascript:;">
+                                    <form asp-action="AddSubscription" asp-controller="Home" asp-area="">
                                         <div class="input-group">
-                                            <input type="text" placeholder="mail@email.com" class="form-control">
+                                            <input type="email" placeholder="mail@email.com" class="form-control" name="email">
                                             <span class="input-group-btn">
-                                                <button class="btn" type="submit">Gönder</button>
+                                                <button type="submit" class="btn btn-sm btn-primary">Gönder</button>
                                             </span>
                                         </div>
                                     </form>
@@ -819,9 +820,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN INNER FOOTER -->
                 <div class="page-footer">
                     <div class="container">
-                        2018 &copy; Bilişim Kariyer - 
-                        <a target="_blank" href="http://www.bilisimegitim.com">Bilişim Eğitim Merkezi</a> 
-                        
+                        2018 &copy; Bilişim Kariyer -
+                        <a target="_blank" href="http://www.bilisimegitim.com">Bilişim Eğitim Merkezi</a>
+
                     </div>
                 </div>
                 <div class="scroll-to-top">
@@ -853,6 +854,10 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
     <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
     <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+    <script src="~/js/jquery.inputmask.bundle.js"></script>
+    <script>
+        Inputmask({ "mask": "0599 9999999" }).mask("[type='tel']");
+    </script>
     <!-- END THEME LAYOUT SCRIPTS -->
     @RenderSection("Scripts", required: false)
 </body>

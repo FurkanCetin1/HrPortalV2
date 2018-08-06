@@ -19,12 +19,16 @@ namespace HrPortalV2.Web.Controllers
         private readonly IOccupationService occupationService;
         private readonly IHostingEnvironment _environment;
         private readonly ICountryService countryService;
-        public ResumesController(IResumeService resumeService,IOccupationService occupationService,IHostingEnvironment _environment, ICountryService countryService)
+        private readonly ICityService cityService;
+        private readonly ICountyService countyService;
+        public ResumesController(IResumeService resumeService,IOccupationService occupationService,IHostingEnvironment _environment, ICountryService countryService, ICityService cityService, ICountyService countyService)
         {
             this._environment = _environment;
             this.resumeService = resumeService;
             this.occupationService = occupationService;
             this.countryService = countryService;
+            this.cityService = cityService;
+            this.countyService = countyService;
         }
         public IActionResult Index()
         {
@@ -65,7 +69,9 @@ namespace HrPortalV2.Web.Controllers
                 return RedirectToAction(nameof(MyResumes), new { id = resume.Id, saved = true });
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
-            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", resume.CountryId);
+            ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(resume.CountryId), "Id", "Name", resume.CityId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(resume.CityId), "Id", "Name", resume.CountyId);
             return View(resume);
         }
         [Authorize(Roles = "Candidate")]
@@ -74,7 +80,9 @@ namespace HrPortalV2.Web.Controllers
             ViewBag.Saved = saved;
             var resume = resumeService.Get(id);
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
-            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", resume.CountryId);
+            ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(resume.CountryId), "Id", "Name", resume.CityId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(resume.CityId), "Id", "Name", resume.CountyId);
             return View(resume);
         }
         [Authorize(Roles = "Candidate")]
@@ -103,7 +111,9 @@ namespace HrPortalV2.Web.Controllers
                 return RedirectToAction(nameof(Edit), new { id = resume.Id, saved = true });
             }
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name",resume.OccupationId);
-            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", resume.CountryId);
+            ViewData["CityId"] = new SelectList(cityService.GetAllByCountryId(resume.CountryId), "Id", "Name", resume.CityId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAllByCityId(resume.CityId), "Id", "Name", resume.CountyId);
             return View();
         }
         public IActionResult Details(string id)
