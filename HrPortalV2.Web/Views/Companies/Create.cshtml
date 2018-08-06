@@ -8,7 +8,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <form asp-action="Create" enctype="multipart/form-data">
+        <form asp-action="Create" enctype="multipart/form-data" onsubmit="var result = true; $.each($('#defaultForm input'), function (index, value) { if ($(value).val() == '') { result=false; } });return result;">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -35,7 +35,6 @@
                 <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId" onchange="CountryChange(this)">
                     <option value="">Ülke seçiniz</option>
                 </select>
-
             </div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
@@ -55,9 +54,11 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control">
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <div>
+                    <input class="form-contro" data-val="true" data-val-phone="Lütfen geçerli bir telefon numarası giriniz."
+                           data-val-required="Lütfen bu alanı boş bırakmayınız." id="Telefon" name="Telefon" placeholder="05__ _______" required="required" type="tel" value="">
+                </div>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Telefon" data-valmsg-replace="true"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
@@ -74,10 +75,6 @@
                 <input asp-for="ContactName" class="form-control">
                 <span asp-validation-for="ContactName" class="text-danger"></span>
             </div>
-
-
-
-
             <div class="form-group">
                 <div>
                     <label>
@@ -147,4 +144,3 @@
 
     </script>
 }
-
