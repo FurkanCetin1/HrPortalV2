@@ -19,9 +19,16 @@ namespace HrPortalV2.Web.Controllers
             this.subscriptionService = subscriptionService;
             this.jobService = jobService;
         }
-        public IActionResult Index()
+        public IActionResult Index(string search = "")
         {
-            ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            
+            if(!string.IsNullOrEmpty(search))
+            {
+                ViewBag.Search = search;
+                ViewBag.FeaturedJobs = jobService.Search(search);
+            } else {
+                ViewBag.FeaturedJobs = jobService.GetFeaturedJobs();
+            }
             return View();
         }
 

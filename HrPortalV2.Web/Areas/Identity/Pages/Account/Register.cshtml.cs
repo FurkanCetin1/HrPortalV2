@@ -96,7 +96,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, "Candidate");
                     }
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

@@ -48,6 +48,11 @@ namespace HrPortalV2.Service
         {
             return jobRepository.GetMany(m => m.CreatedBy == userName, o=>o.EndDate, true, "Company");
         }
+
+        public IEnumerable<Job> Search(string search)
+        {
+            return jobRepository.GetMany(m => m.Title.Contains(search), o => o.EndDate, true, "Company");
+        }
     }
 
     public interface IJobService
@@ -59,5 +64,6 @@ namespace HrPortalV2.Service
         void Insert(Job entity);
         void Update(Job entity);
         void Delete(string id);
+        IEnumerable<Job> Search(string search);
     }
 }
