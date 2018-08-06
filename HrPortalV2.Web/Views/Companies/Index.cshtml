@@ -5,6 +5,9 @@
 }
 <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="//cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Yeni Firma</a>
+</p>
 
 <table id="tblRecords" class="table">
     <thead>
@@ -30,33 +33,33 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td class="text-nowrap">
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            <tr>
+                <td class="text-nowrap">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.County.Name)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.County.Name)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Sector.Name)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sector.Name)
+                </td>
 
-            <td class="text-nowrap">
-                <div class="text-nowrap">
+                <td class="text-nowrap">
+                    <div class="text-nowrap">
 
-                    <a asp-action="Details" asp-controller="Companies" asp-route-Id="@item.Id" class="btn btn-default btn-sm">Firma Detayı</a>
+                        <a asp-action="Details" asp-controller="Companies" asp-route-Id="@item.Id" class="btn btn-default btn-sm">Firma Detayı</a>
 
-                    <a asp-action="SendMessageToCompany" asp-controller="Messages" asp-route-companyId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
+                        <a asp-action="SendMessageToCompany" asp-controller="Messages" asp-route-companyId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
 
-                </div>
+                    </div>
 
-            </td>
-        </tr>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
