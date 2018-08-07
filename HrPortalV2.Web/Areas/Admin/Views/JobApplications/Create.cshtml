@@ -1,13 +1,8 @@
 ﻿@model HrPortalV2.Models.JobApplication
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Yeni İş başvuruları";
 }
-
-<h2>Create</h2>
-
-<h4>JobApplication</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -55,15 +50,12 @@
                 <input asp-for="IPAddress" class="form-control" />
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-default" />
+				<a asp-action="Index">İptal</a>
+			</div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
