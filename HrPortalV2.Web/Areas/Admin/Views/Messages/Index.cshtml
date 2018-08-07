@@ -12,14 +12,8 @@
 <table class="table" id="tblRecords">
     <thead>
         <tr>
-            <th class="hidden">
-                @Html.DisplayNameFor(model => model.From)
-            </th>
             <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.FromName)
-            </th>
-            <th class="hidden">
-                @Html.DisplayNameFor(model => model.To)
             </th>
             <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.ToName)
@@ -51,22 +45,14 @@
             <th class="text-nowrap never">
                 @Html.DisplayNameFor(model => model.IPAddress)
             </th>
-            <th class="text-nowrap all" data-orderable="false">
-                Eylemler
-            </th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.From)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FromName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.To)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ToName)
