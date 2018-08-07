@@ -30,78 +30,35 @@
             <!-- BEGIN INBOX DROPDOWN -->
             <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <span class="circle">3</span>
+                    <span class="circle">@ViewBag.MessageCount</span>
                     <span class="corner"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="external">
                         <h3>
-                            <strong>7 Yeni</strong> Mesajınız Var
+                          
+                            <strong>@ViewBag.MessageCount Yeni </strong> Mesajınız Var   
+                            
                         </h3>
                         <a href="app_inbox.html">tümünü göster</a>
                     </li>
                     <li>
                         <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                            <li>
-                                <a href="#">
-                                    <span class="photo">
-                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                        <span class="from"> Lisa Wong </span>
-                                        <span class="time">Just Now </span>
-                                    </span>
-                                    <span class="message"> Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo">
-                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                        <span class="from"> Richard Doe </span>
-                                        <span class="time">16 mins </span>
-                                    </span>
-                                    <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo">
-                                        <img src="../assets/layouts/layout3/img/avatar1.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                        <span class="from"> Bob Nilson </span>
-                                        <span class="time">2 hrs </span>
-                                    </span>
-                                    <span class="message"> Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo">
-                                        <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                        <span class="from"> Lisa Wong </span>
-                                        <span class="time">40 mins </span>
-                                    </span>
-                                    <span class="message"> Vivamus sed auctor 40% nibh congue nibh... </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo">
-                                        <img src="../assets/layouts/layout3/img/avatar3.jpg" class="img-circle" alt="">
-                                    </span>
-                                    <span class="subject">
-                                        <span class="from"> Richard Doe </span>
-                                        <span class="time">46 mins </span>
-                                    </span>
-                                    <span class="message"> Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                </a>
-                            </li>
+                            @foreach (var  item in (IEnumerable<Message>)ViewBag.Messages)
+                            {
+                                <li>
+                                    <a href="#">
+                                        <span class="photo">
+                                            <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
+                                        </span>
+                                        <span class="subject">
+                                            <span class="from"> @item.FromName </span>
+                                            <span class="time">@string.Format("{0:dd.MM.yyyy}", item.CreateDate) </span>
+                                        </span>
+                                        <span class="message"> @(item.Description.Length>50?item.Description.Substring(0, 50):item.Description)</span>
+                                    </a>
+                                </li>
+                            }
                         </ul>
                     </li>
                 </ul>
