@@ -144,7 +144,7 @@
         </div>
         <!-- START -- area to add -->
         <div id="areaToAdd">
-            <div id="hiddenExperienceDiv" class="row">
+            <div style="display:none;" id="hiddenExperienceDiv" class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="Company" class="control-label">Firma</label>
@@ -172,7 +172,7 @@
                 <div class="col-md-2">
                     <div style="display:inline-flex; margin-top:28px;" class="form-group">
                         <a id="saveExp" onclick="AddExperience(this)" class="btn btn-sm btn-success date">Kaydet</a>
-                        <a style="margin-left:10px;" class="btn btn-sm btn-danger">Sil</a>
+                        <a style="margin-left:10px;" onclick="RemoveExperience(this)" class="btn btn-sm btn-danger">Sil</a>
                     </div>
                 </div>
             </div>
@@ -457,8 +457,13 @@
     </script>
     <!-- Deneyimi kaydet fonksiyonu -->
     <script>
-        function AddExperience(elm) {    
+        function AddExperience(elm) {
             $(elm).css('display', 'none');
+        }
+    </script>
+    <script>
+        function RemoveExperience(elm) {
+            $(elm).parent('div').parent('div').parent('div').remove();
         }
     </script>
 }
