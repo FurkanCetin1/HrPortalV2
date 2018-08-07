@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HrPortalV2.Models.Occupation>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Yeni Meslek";
 }
 <p>
     <a asp-action="Create">Yeni Meslek</a>
@@ -51,10 +51,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
-            <td class="text-nowrap">
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Düzenle</a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-default">Detaylar</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
             </td>
         </tr>
 }

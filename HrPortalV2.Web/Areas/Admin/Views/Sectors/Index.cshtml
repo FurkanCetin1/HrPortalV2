@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<HrPortalV2.Models.Sector>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sektörler";
 }
-
-
 
 <p>
     <a asp-action="Create">Yeni Sektör</a>
@@ -55,9 +53,9 @@
                 @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
             <td class="text-nowrap">
-                <a asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detaylar</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-sm btn-primary">Düzenle</a> 
+                <a asp-action="Details" asp-route-id="@item.Id"class="btn btn-sm btn-default">Detaylar</a> 
+                <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-sm btn-danger">Sil</a>
             </td>
         </tr>
 }
