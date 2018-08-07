@@ -59,8 +59,6 @@
                     </select>
                     <span asp-validation-for="MilitaryStatus" class="text-danger"></span>
                 </div>
-
-
             </div>
         </div>
     </fieldset>
@@ -110,7 +108,6 @@
                     <span asp-validation-for="CountyId" class="text-danger"></span>
                 </div>
             </div>
-
         </div>
     </fieldset>
     <br />
@@ -125,25 +122,73 @@
                     <span asp-validation-for="TotalExperience" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="LastCompany" class="control-label"></label>
+                    <input asp-for="LastCompany" class="form-control" />
+                    <span asp-validation-for="LastCompany" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label asp-for="OccupationId" class="control-label"></label>
                     <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
                         <option value="">Meslek Seçiniz</option>
                     </select>
                     <span asp-validation-for="OccupationId" class="text-danger"></span>
                 </div>
-
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="LastCompany" class="control-label"></label>
-                    <input asp-for="LastCompany" class="form-control" />
-                    <span asp-validation-for="LastCompany" class="text-danger"></span>
-                </div>
                 <div class="form-group">
                     <label asp-for="LastPosition" class="control-label"></label>
                     <input asp-for="LastPosition" class="form-control" />
                     <span asp-validation-for="LastPosition" class="text-danger"></span>
                 </div>
+            </div>
+        </div>
+        <!-- START -- area to add -->
+        <div id="areaToAdd">
+            <div style="display:none;" id="hiddenExperienceDiv" class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Company" class="control-label">Firma</label>
+                        <input name="Company" id="Company" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="Position" class="control-label">Pozisyon</label>
+                        <input name="Position" id="Position" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-2 idate">
+                    <div class="form-group">
+                        <label for="StartDate" class="control-label">Başlangıç</label>
+                        <input type="date" name="StartDate" id="StartDate" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-2 idate">
+                    <div class="form-group">
+                        <label for="EndDate" class="control-label">Bitiş</label>
+                        <input type="date" name="EndDate" class="form-control date" />
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div style="display:inline-flex; margin-top:28px;" class="form-group">
+                        <a id="saveExp" onclick="AddExperience(this)" class="btn btn-sm btn-success date">Kaydet</a>
+                        <a style="margin-left:10px;" onclick="RemoveExperience(this)" class="btn btn-sm btn-danger">Sil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END -- area to add -->
+        <!-- START -- Add New Experience -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div>
+                        <button type="button" id="addExp" class="btn btn-sm btn-success fa fa-plus-square-o"> Yeni Deneyim Ekle</button>
+                        <!--<a class="fa fa-plus-square-o" aria-hidden="true"> Yeni Deneyim Ekle</a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <div>
                         <label>
@@ -153,6 +198,7 @@
                 </div>
             </div>
         </div>
+        <!-- END -- Add New Experience -->
     </fieldset>
     <br />
     <fieldset>
@@ -400,5 +446,24 @@
             });
         }
 
+    </script>
+    <!-- Deneyim ekle fonksiyonu -->
+    <script>
+        $(document).ready(function () {
+            $("#addExp").click(function () {
+                $("#areaToAdd").append("<div class='row'>" + $("#hiddenExperienceDiv").html() + "</div>");
+            });
+        });
+    </script>
+    <!-- Deneyimi kaydet fonksiyonu -->
+    <script>
+        function AddExperience(elm) {
+            $(elm).css('display', 'none');
+        }
+    </script>
+    <script>
+        function RemoveExperience(elm) {
+            $(elm).parent('div').parent('div').parent('div').remove();
+        }
     </script>
 }
