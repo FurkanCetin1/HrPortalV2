@@ -13,6 +13,7 @@ namespace HrPortalV2.Service
         {
             this.resumeRepository = resumeRepository;
         }
+
         public void Delete(string id)
         {
             var entity = resumeRepository.Get(id);
@@ -28,6 +29,7 @@ namespace HrPortalV2.Service
         {
             return resumeRepository.GetAll("ResumeFiles", "JobApplications", "Occupation", "Country", "City", "County");
         }
+
         public IEnumerable<Resume> GetAllByUserName(string userName)
         {
             return resumeRepository.GetMany(m => m.CreatedBy == userName, o=>o.UpdateDate,true, "ResumeFiles", "JobApplications", "Occupation", "Country", "City", "County");
@@ -42,6 +44,16 @@ namespace HrPortalV2.Service
         {
             resumeRepository.Update(entity);
         }
+
+        public void AddExperiance(Resume entity)
+        {
+            resumeRepository.Insert(entity);
+        }
+
+        public void RemoveExperiance(Resume entity)
+        {
+            resumeRepository.Delete(entity);
+        }
     }
 
     public interface IResumeService
@@ -51,6 +63,8 @@ namespace HrPortalV2.Service
         Resume Get(string id);
         void Insert(Resume entity);
         void Update(Resume entity);
+        void AddExperiance(Resume entity);
+        void RemoveExperiance(Resume entity);
         void Delete(string id);
     }
 }
