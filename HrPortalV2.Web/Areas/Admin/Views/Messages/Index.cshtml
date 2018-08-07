@@ -59,48 +59,48 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td class="text-nowrap all">
                 @Html.DisplayFor(modelItem => item.From)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.FromName)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.To)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.ToName)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.IsRead)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.IsApproved)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.CreatedBy)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.UpdateDate)
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.DisplayFor(modelItem => item.UpdatedBy)
             </td>
-            <td>
+            <td class="text-nowrap all">
                 @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
-            <td class="text-nowrap">
+            <td class="text-nowrap all">
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Düzenle</a> 
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">Detaylar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-success">Detaylar</a> 
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Sil</a>
             </td>
         </tr>
