@@ -12,22 +12,22 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreateDate)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.UpdateDate)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.UpdatedBy)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IPAddress)
             </th>
             <th></th>
@@ -54,7 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
-            <td>
+            <td class="text-nowrap">
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
