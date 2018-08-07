@@ -21,10 +21,10 @@
             <th class="text-nowrap ">
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th text-nowrap>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th text-nowrap>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.CreateDate)
             </th>
             <th class="text-nowrap">
@@ -72,7 +72,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
-            <td class="text-nowrap all">
+            <td class="text-nowrap ">
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
