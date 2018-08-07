@@ -10,20 +10,19 @@
 <table id="myTable" class="table">
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Resume)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Job)
             </th>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
+            <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-
-            <th>Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -46,7 +45,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
+                <td class="text-nowrap">
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

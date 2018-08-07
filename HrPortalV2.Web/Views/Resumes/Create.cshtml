@@ -75,7 +75,7 @@
 
                 <div class="form-group">
                     <label asp-for="MobilePhone" class="control-label"></label>
-                    <input asp-for="MobilePhone" class="form-control" />
+                    <input asp-for="MobilePhone" class="form-control" type="tel" placeholder="05__ _______"/>
                     <span asp-validation-for="MobilePhone" class="text-danger"></span>
                 </div>
             </div>
@@ -109,10 +109,10 @@
                     <select asp-for="CountyId" class="form-control" asp-items="ViewBag.CountyId">   <option value="">İlçe seçiniz</option></select>
                     <span asp-validation-for="CountyId" class="text-danger"></span>
                 </div>
-                </div>
-
             </div>
-</fieldset>
+
+        </div>
+    </fieldset>
     <br />
 
     <fieldset>
@@ -125,18 +125,18 @@
                     <span asp-validation-for="TotalExperience" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="LastCompany" class="control-label"></label>
+                    <input asp-for="LastCompany" class="form-control" />
+                    <span asp-validation-for="LastCompany" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label asp-for="OccupationId" class="control-label"></label>
                     <select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
                         <option value="">Meslek Seçiniz</option>
                     </select>
                     <span asp-validation-for="OccupationId" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="LastCompany" class="control-label"></label>
-                    <input asp-for="LastCompany" class="form-control" />
-                    <span asp-validation-for="LastCompany" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="LastPosition" class="control-label"></label>
@@ -150,9 +150,9 @@
                         </label>
                     </div>
                 </div>
-
             </div>
         </div>
+        
     </fieldset>
     <br />
     <fieldset>
@@ -307,7 +307,7 @@
                     <input asp-for="Hobbies" class="form-control" />
                     <span asp-validation-for="Hobbies" class="text-danger"></span>
                 </div>
-                
+
                 <div class="form-group">
                     <div>
                         <label>
@@ -376,7 +376,7 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="https://cdn.ckeditor.com/ckeditor5/10.1.0/classic/ckeditor.js"></script>
     <script>
-       
+
         function CountryChange(elm) {
             $.get('@Url.Action("GetCities","Companies")', { countryId: $(elm).val() }, function (data) {
                 var $select = $("#CityId");
@@ -398,6 +398,5 @@
                 });
             });
         }
-
     </script>
 }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class JobsController : Controller
+    public class JobsController : ControllerBase
     {
         private readonly IJobService jobService;
         private readonly ICompanyService companyService;

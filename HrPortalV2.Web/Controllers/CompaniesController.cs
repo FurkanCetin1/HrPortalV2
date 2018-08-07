@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HrPortalV2.Web.Controllers
 {
-    public class CompaniesController : Controller
+    public class CompaniesController : ControllerBase
     {
         private readonly ICompanyService companyService;
         private readonly ICountyService countyService;
