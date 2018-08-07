@@ -44,21 +44,26 @@
                     </li>
                     <li>
                         <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                            @foreach (var  item in (IEnumerable<Message>)ViewBag.Messages)
+                            @if (ViewBag.Messages != null)
                             {
-                                <li>
-                                    <a href="#">
-                                        <span class="photo">
-                                            <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
-                                        </span>
-                                        <span class="subject">
-                                            <span class="from"> @item.FromName </span>
-                                            <span class="time">@string.Format("{0:dd.MM.yyyy}", item.CreateDate) </span>
-                                        </span>
-                                        <span class="message"> @(item.Description.Length>50?item.Description.Substring(0, 50):item.Description)</span>
-                                    </a>
-                                </li>
+                                @foreach (var item in (IEnumerable<Message>)ViewBag.Messages)
+                                {
+                                    <li>
+                                        <a href="#">
+                                            <span class="photo">
+                                                <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
+                                            </span>
+                                            <span class="subject">
+                                                <span class="from"> @item.FromName </span>
+                                                <span class="time">@string.Format("{0:dd.MM.yyyy}", item.CreateDate) </span>
+                                            </span>
+                                            <span class="message"> @(item.Description.Length > 50 ? item.Description.Substring(0, 50) : item.Description)</span>
+                                        </a>
+                                    </li>
+                                }
+
                             }
+
                         </ul>
                     </li>
                 </ul>
