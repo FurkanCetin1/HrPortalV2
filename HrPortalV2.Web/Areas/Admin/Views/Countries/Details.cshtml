@@ -1,9 +1,14 @@
-﻿@model HrPortalV2.Models.Occupation
+﻿@model HrPortalV2.Models.Country
 
 @{
-    ViewData["Title"] = "Detaylar";
+    ViewData["Title"] = "Details";
 }
 
+<h2>Details</h2>
+
+<div>
+    <h4>Country</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -44,6 +49,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Düzenle</a> 
-    <a asp-action="Index">İptal</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>
