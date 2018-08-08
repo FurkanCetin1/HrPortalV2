@@ -4,8 +4,6 @@
     ViewData["Title"] = "Detaylar";
 }
 
-<h2>Detaylar</h2>
-
 <div>
 
     <dl class="dl-horizontal">
@@ -48,6 +46,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Düzenle</a> 
-    <a asp-action="Index">İptal</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id"class="btn btn-sm btn-default">Düzenle</a> 
+    <a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
 </div>

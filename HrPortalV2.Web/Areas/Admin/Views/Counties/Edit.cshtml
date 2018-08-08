@@ -1,30 +1,27 @@
-﻿@model HrPortalV2.Models.JobApplication
+﻿@model HrPortalV2.Models.County
 
 @{
-    ViewData["Title"] = "Yeni İş başvuruları";
+    ViewData["Title"] = "İlçe Düzenle";
 }
+
+<h2>İlçe Düzenle</h2>
+
+
 <div class="row">
-    <div class="col-md-12">
-        <form asp-action="Create">
+    <div class="col-md-4">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ResumeId" class="control-label"></label>
-                <select asp-for="ResumeId" class ="form-control" asp-items="ViewBag.ResumeId"></select>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JobId" class="control-label"></label>
-                <select asp-for="JobId" class ="form-control" asp-items="ViewBag.JobId"></select>
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+                <span asp-validation-for="CityId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="CreateDate" class="control-label"></label>
                 <input asp-for="CreateDate" class="form-control" />
@@ -51,12 +48,13 @@
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-sm btn-primary" />
-                <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
+                <input type="submit" value="Kaydet" class="btn btn-sm btn-danger" />
+                <a asp-action="Index" class="btn btn-sm btn-primary">İptal</a>
             </div>
         </form>
     </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
