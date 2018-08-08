@@ -38,18 +38,22 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
             return View(user);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, string currentPassword, string newPassword)
+        public async Task<IActionResult> Edit(string id, string currentPassword, string newPassword, string[] SelectedRoles)
         {
             var user = await userManager.FindByIdAsync(id);
-
-            var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
-            if (result.Errors.Count()>0) { 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("Password", error.Description);
+            if (!string.IsNullOrEmpty(newPassword)) { 
+                var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+                if (result.Errors.Count()>0) { 
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("Password", error.Description);
+                    }
+                    return View(user);
                 }
-                return View(user);
             }
+            var roles = await userManager.GetRolesAsync(user);
+            userManager.RemoveFromRolesAsync(user, roles).Wait();
+            await userManager.AddToRolesAsync(user, SelectedRoles);
             return RedirectToAction("Index");
         }
     }
