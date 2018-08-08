@@ -17,9 +17,9 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         private readonly ICityService cityService;
         private readonly IResumeService resumeService;
 
-        public CitiesController(ICityService citiesService, IResumeService resumeService)
+        public CitiesController(ICityService cityService, IResumeService resumeService)
         {
-            this.cityService = citiesService;
+            this.cityService = cityService;
             this.resumeService = resumeService;
         }
 
@@ -49,6 +49,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // GET: Admin/Cities/Create
         public IActionResult Create()
         {
+            ViewBag.CityId = new SelectList(cityService.GetAll(), "Id", "Name");
             return View();
         }
 
