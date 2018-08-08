@@ -23,14 +23,14 @@ namespace HrPortalV2.Data
         }
         public IEnumerable<T> GetAll(params string[] nav)
         {
-            var query = entities.AsQueryable();
+            var query = entities.AsNoTracking().AsQueryable();
             foreach (var n in nav)
                 query = query.Include(n);
             return query.AsEnumerable();
         }
         public IEnumerable<T> GetMany(Func<T, bool> where, Func<T, object> orderby, bool desc = false, params string[] nav)
         {
-            var query = entities.AsQueryable();
+            var query = entities.AsNoTracking().AsQueryable();
             foreach (var n in nav)
                 query = query.Include(n);
             query = query.Where(where).AsQueryable();
@@ -46,7 +46,7 @@ namespace HrPortalV2.Data
 
         public T Get(string id, params string[] nav)
         {
-            var query = entities.AsQueryable();
+            var query = entities.AsNoTracking().AsQueryable();
             foreach (var n in nav)
                 query = query.Include(n);
             return query.FirstOrDefault(s => s.Id == id);

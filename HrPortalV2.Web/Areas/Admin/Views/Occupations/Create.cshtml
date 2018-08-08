@@ -1,7 +1,7 @@
 ﻿@model HrPortalV2.Models.Occupation
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Yeni Meslek";
 }
 
 <h2>Yeni Meslek</h2>
@@ -41,15 +41,12 @@
                 <input asp-for="IPAddress" class="form-control" />
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Kaydet" class="btn btn-default" />
-            </div>
+			<div class="form-group">
+				<input type="submit" value="Kaydet" class="btn btn-primary" />
+				<a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
+			</div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">İptal</a>
 </div>
 
 @section Scripts {

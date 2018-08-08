@@ -1,13 +1,9 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Yeni Özgeçmiş";
 }
 
-<h2>Create</h2>
-
-<h4>Resume</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -100,16 +96,6 @@
                         <input asp-for="IsSeekingJob" /> @Html.DisplayNameFor(model => model.IsSeekingJob)
                     </label>
                 </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastCompany" class="control-label"></label>
-                <input asp-for="LastCompany" class="form-control" />
-                <span asp-validation-for="LastCompany" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastPosition" class="control-label"></label>
-                <input asp-for="LastPosition" class="form-control" />
-                <span asp-validation-for="LastPosition" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MilitaryStatus" class="control-label"></label>
@@ -266,17 +252,13 @@
                 <input asp-for="IPAddress" class="form-control" />
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+			<div class="form-group">
+				<input type="submit" value="Kaydet" class="btn btn-primary" />
+				<a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
+			</div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

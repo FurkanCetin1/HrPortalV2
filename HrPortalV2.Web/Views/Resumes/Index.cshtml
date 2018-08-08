@@ -21,7 +21,6 @@
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
-            
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.TotalExperience)
             </th>
@@ -30,12 +29,6 @@
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsSeekingJob)
-            </th>
-            <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.LastCompany)
-            </th>
-            <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.LastPosition)
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.LastEducation)
@@ -60,8 +53,8 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td class="text-nowrap all">
-                @Html.DisplayFor(modelItem => item.Photo)
+            <td class="all">
+                <img style="width:50px;" src="~/Uploads/@item.Photo" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -82,12 +75,6 @@
                 @Html.DisplayFor(modelItem => item.IsSeekingJob)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastCompany)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastPosition)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.LastEducation)
             </td>
             <td>
@@ -106,10 +93,10 @@
             <td>
                 <div class="text-nowrap">
                     <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Resumes" class="btn btn-success btn-sm"><i class="fa fa-trash"></i>Özgeçmiş Detayı</a>
-                        <a asp-action="SendMessageToResume" asp-controller="Messages" asp-route-resumeId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
+                    <a asp-action="SendMessageToResume" asp-controller="Messages" asp-route-resumeId="@item.Id" class="btn btn-warning btn-sm"><i class="fa fa-envelope-o"></i>Mesaj Gönder</a>
                 </div>
             </td>
-            
+
         </tr>
         }
     </tbody>

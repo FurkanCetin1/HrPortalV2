@@ -4,14 +4,16 @@ using HrPortalV2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HrPortalV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180808111542_addResumePhoto")]
+    partial class addResumePhoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,7 +191,7 @@ namespace HrPortalV2.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("Counties");
+                    b.ToTable("County");
 
                     b.HasData(
                         new { Id = "90a856c8-e898-4dcb-b291-bcb66f697ea6", CityId = "d6318f4e-56d0-4004-bfd5-b4db31262a83", CreateDate = new DateTime(2018, 8, 8, 14, 15, 42, 243, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 8, 8, 14, 15, 42, 243, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
@@ -441,9 +443,6 @@ namespace HrPortalV2.Data.Migrations
 
                     b.Property<bool>("IsTravelDisabled");
 
-                    b.Property<string>("LastCompany")
-                        .HasMaxLength(200);
-
                     b.Property<string>("LastDepartment")
                         .IsRequired()
                         .HasMaxLength(200);
@@ -455,9 +454,6 @@ namespace HrPortalV2.Data.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(100);
-
-                    b.Property<string>("LastPosition")
-                        .HasMaxLength(200);
 
                     b.Property<string>("LinkedIn")
                         .HasMaxLength(100);

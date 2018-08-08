@@ -1,14 +1,9 @@
 ﻿@model HrPortalV2.Models.Resume
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detaylar";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>Resume</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.ResumeName)
@@ -99,18 +94,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsSeekingJob)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastCompany)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastCompany)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.LastPosition)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LastPosition)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.MilitaryStatus)
@@ -299,8 +282,8 @@
             @Html.DisplayFor(model => model.IPAddress)
         </dd>
     </dl>
-</div>
+	</div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id"class="btn btn-sm btn-primary">Düzenle</a> 
+    <a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
 </div>
