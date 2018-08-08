@@ -43,7 +43,9 @@
         </form>
     </div>
 <div class="search-table table-responsive">
-    <h3 style="text-align:center">Öne Çıkan İş İlanları</h3>
+    <h3 style="text-align:center">@if (string.IsNullOrEmpty(ViewBag.search))
+    {<text>Öne Çıkan İş İlanları</text>}
+    else {<text>Arama Sonuçları</text>}</h3>
     <table class="table table-bordered table-striped table-condensed">
         <thead class="bg-blue">
             <tr>
