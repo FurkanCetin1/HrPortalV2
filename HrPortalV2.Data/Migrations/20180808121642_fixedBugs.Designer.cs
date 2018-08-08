@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrPortalV2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180808094435_deleteLastCompanyToResume")]
-    partial class deleteLastCompanyToResume
+    [Migration("20180808121642_fixedBugs")]
+    partial class fixedBugs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,7 +53,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("Cities");
 
                     b.HasData(
-                        new { Id = "63945ec4-d8c1-477f-9722-f1c269d5b720", CountryId = "44fa95c9-c817-4fd1-a7ee-91dec619db94", CreateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "İstanbul", UpdateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "edd5b69f-c127-4756-8b62-7ababf5b6a30", CountryId = "a38bb340-68c4-465c-9627-36f6471ec540", CreateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "İstanbul", UpdateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -158,7 +158,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("Countries");
 
                     b.HasData(
-                        new { Id = "44fa95c9-c817-4fd1-a7ee-91dec619db94", CreateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Türkiye", UpdateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "a38bb340-68c4-465c-9627-36f6471ec540", CreateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Türkiye", UpdateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -191,10 +191,10 @@ namespace HrPortalV2.Data.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("County");
+                    b.ToTable("Counties");
 
                     b.HasData(
-                        new { Id = "f18ae5e6-9c76-4b5d-abfa-5f2b6f1af57c", CityId = "63945ec4-d8c1-477f-9722-f1c269d5b720", CreateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 8, 8, 12, 44, 34, 414, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "228b4e53-49e9-4788-8bf6-fee5cacf1a1b", CityId = "edd5b69f-c127-4756-8b62-7ababf5b6a30", CreateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Kadıköy", UpdateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -360,7 +360,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("Occupations");
 
                     b.HasData(
-                        new { Id = "4684c875-df5d-4f6a-90c1-4a4451a7e7b8", CreateDate = new DateTime(2018, 8, 8, 12, 44, 34, 415, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Yazılım Uzmanı", UpdateDate = new DateTime(2018, 8, 8, 12, 44, 34, 415, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "af4e4791-4bc9-46d6-9a96-78d4f4d9e29b", CreateDate = new DateTime(2018, 8, 8, 15, 16, 42, 64, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Yazılım Uzmanı", UpdateDate = new DateTime(2018, 8, 8, 15, 16, 42, 64, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -572,7 +572,7 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("Sectors");
 
                     b.HasData(
-                        new { Id = "1", CreateDate = new DateTime(2018, 8, 8, 12, 44, 34, 412, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Eğitim", UpdateDate = new DateTime(2018, 8, 8, 12, 44, 34, 413, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
+                        new { Id = "1", CreateDate = new DateTime(2018, 8, 8, 15, 16, 42, 62, DateTimeKind.Local), CreatedBy = "admin@bilisimegitim.com", IPAddress = "127.0.0.1", Name = "Eğitim", UpdateDate = new DateTime(2018, 8, 8, 15, 16, 42, 63, DateTimeKind.Local), UpdatedBy = "admin@bilisimegitim.com" }
                     );
                 });
 
@@ -631,9 +631,9 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("AspNetRoles");
 
                     b.HasData(
-                        new { Id = "1e85fb7c-0b43-48d8-835b-fae3a9cbe91e", ConcurrencyStamp = "Admin", Name = "Admin", NormalizedName = "ADMIN" },
-                        new { Id = "f83a1b42-b8fa-4036-9947-c2b70683d20e", ConcurrencyStamp = "Company", Name = "Company", NormalizedName = "COMPANY" },
-                        new { Id = "54ccfe77-fea9-4673-b1d3-71d81975d837", ConcurrencyStamp = "Candidate", Name = "Candidate", NormalizedName = "CANDIDATE" }
+                        new { Id = "969041ef-b6b0-42de-a5ea-24b4a4b06df1", ConcurrencyStamp = "Admin", Name = "Admin", NormalizedName = "ADMIN" },
+                        new { Id = "df9cec6a-0a66-41cb-b837-a88e83a9a834", ConcurrencyStamp = "Company", Name = "Company", NormalizedName = "COMPANY" },
+                        new { Id = "ffe26d50-5fa6-47c1-b7f5-41d9b2e7e645", ConcurrencyStamp = "Candidate", Name = "Candidate", NormalizedName = "CANDIDATE" }
                     );
                 });
 
@@ -713,9 +713,9 @@ namespace HrPortalV2.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
 
                     b.HasData(
-                        new { Id = "fd80b2a0-8db1-4cec-94e6-27cb239d2de1", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "admin@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "admin@bilisimegitim.com" },
-                        new { Id = "10fa501a-dda8-463c-9166-409cbe68493c", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "firma@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "firma@bilisimegitim.com" },
-                        new { Id = "cddd01bc-06ba-4f5f-a770-60e807cf9fc5", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "aday@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADAY@BILISIMEGITIM.COM", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "aday@bilisimegitim.com" }
+                        new { Id = "6ef1266e-d2c1-4054-8132-466d46c08c34", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "admin@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "admin@bilisimegitim.com" },
+                        new { Id = "8a63c245-0845-4cd6-8f20-750cbee85a14", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "firma@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "firma@bilisimegitim.com" },
+                        new { Id = "d25e214d-d144-4e5d-93f1-5fb4e5b2ff48", AccessFailedCount = 0, ConcurrencyStamp = "1", Email = "aday@bilisimegitim.com", EmailConfirmed = true, LockoutEnabled = true, NormalizedEmail = "ADAY@BILISIMEGITIM.COM", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", PasswordHash = "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", PhoneNumberConfirmed = false, SecurityStamp = "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", TwoFactorEnabled = false, UserName = "aday@bilisimegitim.com" }
                     );
                 });
 
@@ -770,9 +770,9 @@ namespace HrPortalV2.Data.Migrations
                     b.ToTable("AspNetUserRoles");
 
                     b.HasData(
-                        new { UserId = "fd80b2a0-8db1-4cec-94e6-27cb239d2de1", RoleId = "1e85fb7c-0b43-48d8-835b-fae3a9cbe91e" },
-                        new { UserId = "10fa501a-dda8-463c-9166-409cbe68493c", RoleId = "f83a1b42-b8fa-4036-9947-c2b70683d20e" },
-                        new { UserId = "cddd01bc-06ba-4f5f-a770-60e807cf9fc5", RoleId = "54ccfe77-fea9-4673-b1d3-71d81975d837" }
+                        new { UserId = "6ef1266e-d2c1-4054-8132-466d46c08c34", RoleId = "969041ef-b6b0-42de-a5ea-24b4a4b06df1" },
+                        new { UserId = "8a63c245-0845-4cd6-8f20-750cbee85a14", RoleId = "df9cec6a-0a66-41cb-b837-a88e83a9a834" },
+                        new { UserId = "d25e214d-d144-4e5d-93f1-5fb4e5b2ff48", RoleId = "ffe26d50-5fa6-47c1-b7f5-41d9b2e7e645" }
                     );
                 });
 
