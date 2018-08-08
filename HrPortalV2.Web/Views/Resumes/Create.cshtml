@@ -46,7 +46,7 @@
                     <label asp-for="Photo" class="control-label"></label>
                     @if (!string.IsNullOrEmpty(Model.Photo))
                     {
-                        <img src="~/Uploads/@Model.Photo" width="50" />
+                        <img src="~/Uploads/Resumes/@Model.Photo" width="50" />
                     }
 
                     <input name="upload" type="file" class="form-control" />

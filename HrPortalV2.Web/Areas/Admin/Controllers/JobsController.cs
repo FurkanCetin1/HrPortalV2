@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using HrPortalV2.Data;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrPortalV2.Web.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class JobsController : Controller
+    [Authorize(Roles="Admin")]
+    public class JobsController : Controller
 	{
 		private readonly IJobService jobService;
 		private readonly ICompanyService companyService;
