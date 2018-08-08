@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Detaylar";
 }
-
+<div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -92,6 +92,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-default">Düzenle</a> 
+    <a asp-action="Index">İptal</a>
 </div>

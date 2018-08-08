@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Sil";
 }
-
+<div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.ResumeName)
@@ -298,6 +298,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Sil" class="btn btn-default" /> 
-        <a asp-action="Index">İptal</a>
+        <a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
     </form>
 </div>
