@@ -58,7 +58,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,CityId,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] County county)
+        public IActionResult Create([Bind("Name,CityId,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] County county)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Name,CityId,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] County county)
+        public IActionResult Edit(string id, [Bind("Name,CityId,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] County county)
         {
             if (id != county.Id)
             {
@@ -141,7 +141,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // POST: Admin/Counties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public IActionResult DeleteConfirmed(string id)
         {
             countyService.Delete(id);
             return RedirectToAction(nameof(Index));
