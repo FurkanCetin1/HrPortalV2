@@ -7,7 +7,7 @@
 
 
 <p>
-	<a asp-action="Create">Yeni Özgeçmiş </a>
+	<a asp-action="Create" class="btn btn-sm btn-primary">Yeni Özgeçmiş </a>
 </p>
 <table id="tblRecords" class="table">
     <thead>
@@ -56,12 +56,6 @@
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.IsSeekingJob)
-            </th>
-            <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.LastCompany)
-            </th>
-            <th class="text-nowrap">
-                @Html.DisplayNameFor(model => model.LastPosition)
             </th>
             <th class="text-nowrap">
                 @Html.DisplayNameFor(model => model.MilitaryStatus)
@@ -206,12 +200,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsSeekingJob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastCompany)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastPosition)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MilitaryStatus)

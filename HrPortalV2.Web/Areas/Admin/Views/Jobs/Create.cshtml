@@ -37,21 +37,21 @@
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div>
                     <label>
                         <input asp-for="IsApproved" /> @Html.DisplayNameFor(model => model.IsApproved)
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div>
                     <label>
                         <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div>
                     <label>
                         <input asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
                     </label>
@@ -88,7 +88,7 @@
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
 			<div class="form-group">
-				<input type="submit" value="Oluştur" class="btn btn-sm btn-primary" />
+				<input type="submit" value="Kaydet" class="btn btn-primary" />
 				<a asp-action="Index"class=" btn btn-sm btn-danger">İptal</a>
 			</div>
         </form>
