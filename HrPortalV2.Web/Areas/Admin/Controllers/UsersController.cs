@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HrPortalV2.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;
