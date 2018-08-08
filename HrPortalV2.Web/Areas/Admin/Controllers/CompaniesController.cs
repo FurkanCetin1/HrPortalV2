@@ -9,10 +9,12 @@ using HrPortalV2.Data;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrPortalV2.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles="Admin")]
     public class CompaniesController : Controller
     {
         private readonly ICompanyService companyService;
