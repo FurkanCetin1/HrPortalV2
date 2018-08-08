@@ -95,9 +95,8 @@ namespace HrPortalV2.Web.Controllers
                 if (upload != null && upload.Length > 0)
                 {
                     //upload işlemi burada yapılır.
-                    var rnd = new Random();
-                    var fileName = Path.GetFileNameWithoutExtension(upload.FileName) + rnd.Next(1000).ToString() + Path.GetExtension(upload.FileName);
-                    var path = Path.Combine(_environment.WebRootPath, "Uploads");
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                    var path = Path.Combine(_environment.WebRootPath, "Uploads", "Resumes");
                     var filePath = Path.Combine(path, fileName);
                     if (!Directory.Exists(path))
                     {
