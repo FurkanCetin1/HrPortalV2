@@ -55,12 +55,6 @@ namespace HrPortalV2.Models
         public bool IsCurrentlyWorking { get; set; }
         [Display(Name = "İş Arıyor Mu?")]
         public bool IsSeekingJob { get; set; }
-        [Display(Name = "Son Çalıştığı Firma")]
-        [StringLength(200, ErrorMessage = "Son çalıştığı firma en fazla 200 karakter uzunluğunda olabilir.")]
-        public string LastCompany { get; set; }
-        [Display(Name = "Son Çalıştığı Pozisyon")]
-        [StringLength(200, ErrorMessage = "Son pozisyon en fazla 200 karakter uzunluğunda olabilir.")]
-        public string LastPosition { get; set; }
         [Display(Name = "Askerlik Durumu")]
         public MilitaryStatus? MilitaryStatus { get; set; }
         [Display(Name = "Mezun Olduğu Okul")]
