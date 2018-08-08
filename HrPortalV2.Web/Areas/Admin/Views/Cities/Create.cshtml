@@ -1,14 +1,14 @@
 ﻿@model HrPortalV2.Models.City
 
 @{
-    ViewData["Title"] = "Yeni Şehir";
+    ViewData["Title"] = "Yeni Şehir Ekle";
 }
 
-<h2>Yeni Şehir</h2>
+
 
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -42,15 +42,14 @@
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Oluştur" class="btn btn-success" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-default">Listeye geri dön</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
