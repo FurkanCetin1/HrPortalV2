@@ -17,6 +17,7 @@ namespace HrPortalV2.Data
         public DbSet<HrPortalV2.Models.City> Cities { get; set; }
         public DbSet<HrPortalV2.Models.Company> Companies { get; set; }
         public DbSet<HrPortalV2.Models.Country> Countries { get; set; }
+        public DbSet<HrPortalV2.Models.County> Counties { get; set; }
         public DbSet<HrPortalV2.Models.Job> Jobs { get; set; }
         public DbSet<HrPortalV2.Models.JobApplication> JobApplications { get; set; }
         public DbSet<HrPortalV2.Models.Message> Messages { get; set; }

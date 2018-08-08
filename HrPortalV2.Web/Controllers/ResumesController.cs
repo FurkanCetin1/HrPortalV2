@@ -45,25 +45,27 @@ namespace HrPortalV2.Web.Controllers
         }
         [Authorize(Roles = "Candidate")]
         [HttpPost]
-        public async Task<IActionResult> Create(Resume resume, IFormFile File)
+        public IActionResult Create(Resume resume, IFormFile upload)
         {
             if (ModelState.IsValid)
             {
-                if (File != null && File.Length > 0)
+                if (upload != null && upload.Length > 0)
                 {
-                    //upload işlemi yapmak için konum belirle
-                    string path = Path.Combine(_environment.WebRootPath, "Uploads", File.FileName);
-                    //uploads dizini yoksa oluştur
-                    if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "Uploads")))
+                    //upload işlemi burada yapılır.
+                    var rnd = new Random();
+                    var fileName = Path.GetFileNameWithoutExtension(upload.FileName) + rnd.Next(1000).ToString() + Path.GetExtension(upload.FileName);
+                    var path = Path.Combine(_environment.WebRootPath, "Uploads");
+                    var filePath = Path.Combine(path, fileName);
+                    if (!Directory.Exists(path))
                     {
-                        Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "Uploads"));
+                        Directory.CreateDirectory(path);
                     }
-                    //belirlenen konuma upload yapılır.
-                    using (var stream = new FileStream(path, FileMode.Create))
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await File.CopyToAsync(stream);
+                        upload.CopyTo(stream);
                     }
-                    resume.Photo = File.FileName;
+                    resume.Photo = fileName;
                 }
                 resumeService.Insert(resume);
                 return RedirectToAction(nameof(MyResumes), new { id = resume.Id, saved = true });
@@ -87,25 +89,27 @@ namespace HrPortalV2.Web.Controllers
         }
         [Authorize(Roles = "Candidate")]
         [HttpPost]
-        public async Task<IActionResult> Edit(Resume resume, IFormFile File)
+        public IActionResult Edit(Resume resume, IFormFile upload)
         {
             if (ModelState.IsValid)
             {
-                if (File != null && File.Length > 0)
+                if (upload != null && upload.Length > 0)
                 {
-                    //upload işlemi yapmak için konum belirle
-                    string path = Path.Combine(_environment.WebRootPath, "Uploads", File.FileName);
-                    //uploads dizini yoksa oluştur
-                    if (!Directory.Exists(Path.Combine(_environment.WebRootPath, "Uploads")))
+                    //upload işlemi burada yapılır.
+                    var rnd = new Random();
+                    var fileName = Path.GetFileNameWithoutExtension(upload.FileName) + rnd.Next(1000).ToString() + Path.GetExtension(upload.FileName);
+                    var path = Path.Combine(_environment.WebRootPath, "Uploads");
+                    var filePath = Path.Combine(path, fileName);
+                    if (!Directory.Exists(path))
                     {
-                        Directory.CreateDirectory(Path.Combine(_environment.WebRootPath, "Uploads"));
+                        Directory.CreateDirectory(path);
                     }
-                    //belirlenen konuma upload yapılır.
-                    using (var stream = new FileStream(path, FileMode.Create))
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await File.CopyToAsync(stream);
+                        upload.CopyTo(stream);
                     }
-                    resume.Photo = File.FileName;
+                    resume.Photo = fileName;
                 }
                 resumeService.Update(resume);
                 return RedirectToAction(nameof(Edit), new { id = resume.Id, saved = true });

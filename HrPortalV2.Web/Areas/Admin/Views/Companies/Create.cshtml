@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -20,15 +20,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="CountryId" class="control-label"></label>
-                <select asp-for="CountryId" class ="form-control" asp-items="ViewBag.CountryId"></select>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId">
+                    <option value="">Ülke Seçiniz</option>
+                   
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="CityId" class="control-label"></label>
-                <select asp-for="CityId" class ="form-control" asp-items="ViewBag.CityId"></select>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId">
+                    <option value="">Şehir Seçiniz</option>
+                   
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="CountyId" class="control-label"></label>
-                <select asp-for="CountyId" class ="form-control" asp-items="ViewBag.CountyId"></select>
+                <select asp-for="CountyId" class="form-control" asp-items="ViewBag.CountyId">
+                    <option value="">İlçe Seçiniz</option>
+            </select>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
@@ -37,7 +45,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="SectorId" class="control-label"></label>
-                <select asp-for="SectorId" class ="form-control" asp-items="ViewBag.SectorId"></select>
+                <select asp-for="SectorId" class="form-control" asp-items="ViewBag.SectorId">
+                    <option value="">Sektör Seçiniz</option>
+                 </select>
             </div>
             <div class="form-group">
                 <div>
@@ -103,13 +113,15 @@
                 <input asp-for="IPAddress" class="form-control" />
                 <span asp-validation-for="IPAddress" class="text-danger"></span>
             </div>
-			<div class="form-group">
-				<input type="submit" value="Kaydet" class="btn btn-primary" />
-				<a asp-action="Index"class="btn btn-sm btn-danger">İptal</a>
-			</div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-sm btn-primary" />
+                <a asp-action="Index" class="btn btn-sm btn-danger">İptal</a>
+            </div>
         </form>
     </div>
 </div>
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

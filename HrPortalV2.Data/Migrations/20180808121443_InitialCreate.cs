@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HrPortalV2.Data.Migrations
 {
-    public partial class fixedBugs : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -275,7 +275,7 @@ namespace HrPortalV2.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "County",
+                name: "Counties",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -289,9 +289,9 @@ namespace HrPortalV2.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_County", x => x.Id);
+                    table.PrimaryKey("PK_Counties", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_County_Cities_CityId",
+                        name: "FK_Counties_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
@@ -339,9 +339,9 @@ namespace HrPortalV2.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Companies_County_CountyId",
+                        name: "FK_Companies_Counties_CountyId",
                         column: x => x.CountyId,
-                        principalTable: "County",
+                        principalTable: "Counties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -377,8 +377,6 @@ namespace HrPortalV2.Data.Migrations
                     IsSubsidized = table.Column<bool>(nullable: false),
                     IsCurrentlyWorking = table.Column<bool>(nullable: false),
                     IsSeekingJob = table.Column<bool>(nullable: false),
-                    LastCompany = table.Column<string>(maxLength: 200, nullable: true),
-                    LastPosition = table.Column<string>(maxLength: 200, nullable: true),
                     MilitaryStatus = table.Column<int>(nullable: true),
                     LastEducation = table.Column<string>(maxLength: 200, nullable: false),
                     LastDepartment = table.Column<string>(maxLength: 200, nullable: false),
@@ -429,9 +427,9 @@ namespace HrPortalV2.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Resumes_County_CountyId",
+                        name: "FK_Resumes_Counties_CountyId",
                         column: x => x.CountyId,
-                        principalTable: "County",
+                        principalTable: "Counties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -534,9 +532,9 @@ namespace HrPortalV2.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "c7d8a353-2f9e-4568-998a-326ecb882ec7", "Admin", "Admin", "ADMIN" },
-                    { "3fabd825-5783-4299-a790-88eeb345889f", "Company", "Company", "COMPANY" },
-                    { "79528a2a-f286-416c-80b2-5e46ba2ee43e", "Candidate", "Candidate", "CANDIDATE" }
+                    { "9cfec724-367d-48fe-ab9d-b6d45682023e", "Admin", "Admin", "ADMIN" },
+                    { "fc1eab1d-50fe-4333-b1c1-9a5236a28057", "Company", "Company", "COMPANY" },
+                    { "f4f5e92b-8896-4e8a-9e61-aa06e0643557", "Candidate", "Candidate", "CANDIDATE" }
                 });
 
             migrationBuilder.InsertData(
@@ -544,45 +542,45 @@ namespace HrPortalV2.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "50e0f211-54d4-4901-b02d-007c5aa0b17e", 0, "1", "IdentityUser", "admin@bilisimegitim.com", true, true, null, "ADMIN@BILISIMEGITIM.COM", "ADMIN@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "admin@bilisimegitim.com" },
-                    { "bae7d4e6-bb56-4b38-914d-eb03b73a0d74", 0, "1", "IdentityUser", "firma@bilisimegitim.com", true, true, null, "FIRMA@BILISIMEGITIM.COM", "FIRMA@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "firma@bilisimegitim.com" },
-                    { "421c368a-73e5-4794-8855-2fb23eb1ebb2", 0, "1", "IdentityUser", "aday@bilisimegitim.com", true, true, null, "ADAY@BILISIMEGITIM.COM", "ADAY@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "aday@bilisimegitim.com" }
+                    { "430a3bbf-2c42-4d28-9939-5fc511b81528", 0, "1", "IdentityUser", "admin@bilisimegitim.com", true, true, null, "ADMIN@BILISIMEGITIM.COM", "ADMIN@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "admin@bilisimegitim.com" },
+                    { "dcd43152-223b-4901-b4be-45f2c1c8b45c", 0, "1", "IdentityUser", "firma@bilisimegitim.com", true, true, null, "FIRMA@BILISIMEGITIM.COM", "FIRMA@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "firma@bilisimegitim.com" },
+                    { "2f053aaa-bcb4-42c5-8e3c-338c05d18109", 0, "1", "IdentityUser", "aday@bilisimegitim.com", true, true, null, "ADAY@BILISIMEGITIM.COM", "ADAY@BILISIMEGITIM.COM", "AQAAAAEAACcQAAAAEE6Wt5bONqJSCCeRsVu7w9gc+2z1D3f9JIiWbgoNpr8/eYHQK9hEScAP5Yv6Cbj8xg==", null, false, "JQ5JRGHZGCVI3BZPMNHFG2KOH63RGTDD", false, "aday@bilisimegitim.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "c488608e-30b0-413c-bf5f-a59cc15bddb4", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Türkiye", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "7d4f4118-0e24-47bd-9fd9-1b819d1af089", new DateTime(2018, 8, 8, 15, 14, 42, 687, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Türkiye", new DateTime(2018, 8, 8, 15, 14, 42, 687, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "Occupations",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "2648a60f-c97d-444e-9201-337cff8b42c4", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Yazılım Uzmanı", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "ebbdb29e-4c52-45b0-be9a-c79f0f17d8b7", new DateTime(2018, 8, 8, 15, 14, 42, 688, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Yazılım Uzmanı", new DateTime(2018, 8, 8, 15, 14, 42, 688, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "Sectors",
                 columns: new[] { "Id", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "1", new DateTime(2018, 8, 7, 15, 29, 13, 505, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Eğitim", new DateTime(2018, 8, 7, 15, 29, 13, 505, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "1", new DateTime(2018, 8, 8, 15, 14, 42, 684, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Eğitim", new DateTime(2018, 8, 8, 15, 14, 42, 686, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "UserId", "RoleId" },
                 values: new object[,]
                 {
-                    { "50e0f211-54d4-4901-b02d-007c5aa0b17e", "c7d8a353-2f9e-4568-998a-326ecb882ec7" },
-                    { "bae7d4e6-bb56-4b38-914d-eb03b73a0d74", "3fabd825-5783-4299-a790-88eeb345889f" },
-                    { "421c368a-73e5-4794-8855-2fb23eb1ebb2", "79528a2a-f286-416c-80b2-5e46ba2ee43e" }
+                    { "430a3bbf-2c42-4d28-9939-5fc511b81528", "9cfec724-367d-48fe-ab9d-b6d45682023e" },
+                    { "dcd43152-223b-4901-b4be-45f2c1c8b45c", "fc1eab1d-50fe-4333-b1c1-9a5236a28057" },
+                    { "2f053aaa-bcb4-42c5-8e3c-338c05d18109", "f4f5e92b-8896-4e8a-9e61-aa06e0643557" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "CountryId", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "27595331-3265-4708-87d2-df8031c4edf4", "c488608e-30b0-413c-bf5f-a59cc15bddb4", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "İstanbul", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "6c7cfaa6-e80a-4be6-9c74-4f7d0aa501fa", "7d4f4118-0e24-47bd-9fd9-1b819d1af089", new DateTime(2018, 8, 8, 15, 14, 42, 687, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "İstanbul", new DateTime(2018, 8, 8, 15, 14, 42, 687, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.InsertData(
-                table: "County",
+                table: "Counties",
                 columns: new[] { "Id", "CityId", "CreateDate", "CreatedBy", "IPAddress", "Name", "UpdateDate", "UpdatedBy" },
-                values: new object[] { "39a51c6b-cdc3-4a43-b246-00355c78f1c3", "27595331-3265-4708-87d2-df8031c4edf4", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Kadıköy", new DateTime(2018, 8, 7, 15, 29, 13, 506, DateTimeKind.Local), "admin@bilisimegitim.com" });
+                values: new object[] { "9a06e949-c431-486b-9b05-9466732ffd5d", "6c7cfaa6-e80a-4be6-9c74-4f7d0aa501fa", new DateTime(2018, 8, 8, 15, 14, 42, 688, DateTimeKind.Local), "admin@bilisimegitim.com", "127.0.0.1", "Kadıköy", new DateTime(2018, 8, 8, 15, 14, 42, 688, DateTimeKind.Local), "admin@bilisimegitim.com" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -649,8 +647,8 @@ namespace HrPortalV2.Data.Migrations
                 column: "SectorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_County_CityId",
-                table: "County",
+                name: "IX_Counties_CityId",
+                table: "Counties",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
@@ -747,7 +745,7 @@ namespace HrPortalV2.Data.Migrations
                 name: "Occupations");
 
             migrationBuilder.DropTable(
-                name: "County");
+                name: "Counties");
 
             migrationBuilder.DropTable(
                 name: "Sectors");
