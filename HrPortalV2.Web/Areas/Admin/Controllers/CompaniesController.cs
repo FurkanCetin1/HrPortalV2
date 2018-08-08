@@ -41,27 +41,20 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // GET: Admin/Companies/Details/5
         public IActionResult Details(string id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            
 
-            var jobApplication = companyService.Get(id);
-            if (jobApplication == null)
-            {
-                return NotFound();
-            }
-
-            return View(companyService);
+            var company = companyService.Get(id);
+            
+                return View(company);
         }
 
         // GET: Admin/Companies/Create
         public IActionResult Create()
         {
-            ViewData["CityId"] = new SelectList(companyService.GetAll(), "Id", "Id");
-            ViewData["CountryId"] = new SelectList(companyService.GetAll(), "Id", "Id");
-            ViewData["CountyId"] = new SelectList(companyService.GetAll(), "Id", "Id");
-            ViewData["SectorId"] = new SelectList(companyService.GetAll(), "Id", "Id");
+            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
+            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name");
+            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name");
             return View();
         }
 
@@ -77,10 +70,10 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
                 companyService.Insert(company);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CityId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CityId);
-            ViewData["CountryId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountryId);
-            ViewData["CountyId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountyId);
-            ViewData["SectorId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.SectorId);
+            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name");
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
+            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name");
+            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name");
             return View(company);
         }
 
@@ -97,10 +90,10 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["CityId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CityId);
-            ViewData["CountryId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountryId);
-            ViewData["CountyId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountyId);
-            ViewData["SectorId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.SectorId);
+            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name", company.CityId);
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", company.CountryId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name", company.CountyId);
+            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
             return View(company);
         }
 
@@ -136,10 +129,10 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
                 return RedirectToAction(nameof(Index));
             }
         
-            ViewData["CityId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CityId);
-            ViewData["CountryId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountryId);
-            ViewData["CountyId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.CountyId);
-            ViewData["SectorId"] = new SelectList(companyService.GetAll(), "Id", "Id", company.SectorId);
+            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name", company.CityId);
+            ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name", company.CountryId);
+            ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name", company.CountyId);
+            ViewData["SectorId"] = new SelectList(sectorService.GetAll(), "Id", "Name", company.SectorId);
             return View(company);
         }
 
