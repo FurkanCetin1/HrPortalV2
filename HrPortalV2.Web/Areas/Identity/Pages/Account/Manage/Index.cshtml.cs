@@ -29,8 +29,8 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
             _emailSender = emailSender;
         }
-
-        public string Username { get; set; }
+		[Display(Name = "Kullanıcı Adı")]
+		public string Username { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
 
@@ -44,13 +44,14 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            public string Email { get; set; }
+			[Display(Name = "E-posta")]
+			public string Email { get; set; }
 
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefon numaram")]
             public string PhoneNumber { get; set; }
-
-            public string Photo { get; set; }
+			[Display(Name = "Resim")]
+			public string Photo { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -69,7 +70,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                Email = email,
+				Email = email,
                 PhoneNumber = phoneNumber
             };
 
@@ -78,7 +79,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(IFormFile upload)
+		private object Display(object p)
+		{
+			throw new NotImplementedException();
+		}
+
+		public async Task<IActionResult> OnPostAsync(IFormFile upload)
         {
             if (!ModelState.IsValid)
             {
