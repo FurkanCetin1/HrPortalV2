@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Mvc.Filters;
+using HrPortalV2.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace HrPortalV2.Web.Controllers
 {
     public class ControllerBase : Controller
@@ -17,8 +20,11 @@ namespace HrPortalV2.Web.Controllers
                 var _resumeService = HttpContext.RequestServices.GetService(typeof(IResumeService)) as ResumeService;
                 var myresumes = _resumeService.GetAllByUserName(User.Identity.Name).Select(c => c.Id).ToList(); // resumes
                 var mymessages = _messageService.GetAllByTo(myresumes);
+                
                 ViewBag.MessageCount = mymessages.Count().ToString();
                 ViewBag.Messages = mymessages;
+               
+                
             }
             else
             {
@@ -27,6 +33,12 @@ namespace HrPortalV2.Web.Controllers
                 var mymessages = _messageService.GetAllByTo(mycompanies);
                 ViewBag.MessageCount = mymessages.Count().ToString();
                 ViewBag.Messages = mymessages;
+                var _jobapplicationService = HttpContext.RequestServices.GetService(typeof(IJobApplicationService)) as JobApplicationService;
+                var jobService = HttpContext.RequestServices.GetService(typeof(IJobService)) as JobService;
+                var jobids = jobService.GetAllByUserName(User.Identity.Name).Select(s => s.Id).ToList();
+                var myapplications = _jobapplicationService.GetAllByJobs(jobids);
+                ViewBag.jobApplicationCount = myapplications.Count().ToString();
+
             }
             base.OnActionExecuting(context);
         }
