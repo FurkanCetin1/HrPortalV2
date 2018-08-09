@@ -43,7 +43,7 @@
     <Content Update="Areas\Admin\Views\Shared\_Layout.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Areas\Admin\Views\Shared\_LoginPartial.cshtml">
+    <Content Update="Areas\Admin\Views\Shared\_AdminLoginPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml">

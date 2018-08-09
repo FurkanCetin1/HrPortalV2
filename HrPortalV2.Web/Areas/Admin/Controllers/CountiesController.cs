@@ -8,19 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using HrPortalV2.Data;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrPortalV2.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles="Admin")]
     public class CountiesController : Controller
     {
         private readonly ICountyService countyService;
         private readonly IResumeService resumeService;
+        private readonly ICityService cityService;
 
-        public CountiesController(ICountyService countyService, IResumeService resumeService)
+        public CountiesController(ICountyService countyService, IResumeService resumeService, ICityService cityService)
         {
             this.countyService = countyService;
             this.resumeService = resumeService;
+            this.cityService = cityService;
         }
 
         // GET: Admin/Counties
@@ -49,7 +53,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // GET: Admin/Counties/Create
         public IActionResult Create()
         {
-            
+            ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name");
             return View();
         }
 

@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Photo)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Photo)
+            <img src="~/Uploads/Resumes/@Model.Photo" alt="Google Logo" width="50" /><br />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Gender)
@@ -141,7 +141,7 @@
             @Html.DisplayNameFor(model => model.Occupation)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Occupation.Id)
+            @Html.DisplayFor(model => model.Occupation.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Objective)
@@ -153,19 +153,19 @@
             @Html.DisplayNameFor(model => model.Country)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Country.Id)
+            @Html.DisplayFor(model => model.Country.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.City)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.City.Id)
+            @Html.DisplayFor(model => model.City.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.County)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.County.Id)
+            @Html.DisplayFor(model => model.County.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Projects)
