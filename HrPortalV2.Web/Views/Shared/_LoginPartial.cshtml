@@ -30,7 +30,7 @@
             <!-- BEGIN INBOX DROPDOWN -->
             <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <span class="circle">@ViewBag.MessageCount</span>
+                    <span class="circle">@(ViewBag.MessageCount ?? 0)</span>
                     <span class="corner"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -140,7 +140,7 @@
                         <li>
                             <a asp-area="" asp-controller="JobApplications" asp-action="MyJobApplicants">
                                 <i class="icon-envelope-open"></i> Başvuranlar
-                                <span class="badge badge-danger"> 3 </span>
+                                <span class="badge badge-danger"> @ViewBag.jobApplicationCount </span>
                             </a>
                         </li>
                     }
