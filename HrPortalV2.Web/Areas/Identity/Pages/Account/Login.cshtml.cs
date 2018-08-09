@@ -94,7 +94,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Geçersiz giriş denemesi. Toplam 5 denemeden sonra hesabınız 5 dk kilitlenir.");
+                    ModelState.AddModelError(string.Empty, "Geçersiz giriş denemesi. Toplam 5 denemeden sonra hesabınız 5 dk kilitlenecektir.");
                     return Page();
                 }
             }
