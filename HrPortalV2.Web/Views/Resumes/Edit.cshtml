@@ -33,24 +33,13 @@
                     <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label asp-for="MaritalStatus" class="control-label"></label>
                     <select asp-for="MaritalStatus" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(MaritalStatus))">
                         <option value="">Medeni Durumu Seçiniz</option>
                     </select>
                     <span asp-validation-for="MaritalStatus" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input asp-for="Photo" type="hidden" />
-                    @if (!string.IsNullOrEmpty(Model.Photo))
-                    {
-                        <img src="~/Uploads/Resumes/@Model.Photo" width="50" /> <br />
-                    }
-                    <label asp-for="Photo" class="control-label"></label>
-
-                    <input name="upload" type="file" class="form-control" />
-                    <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="MilitaryStatus" class="control-label"></label>
@@ -60,6 +49,20 @@
                     <span asp-validation-for="MilitaryStatus" class="text-danger"></span>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input asp-for="Photo" type="hidden" />
+                    <label asp-for="Photo" class="control-label"></label>
+                    @if (!string.IsNullOrEmpty(Model.Photo))
+                    {
+                        <img src="~/Uploads/Resumes/@Model.Photo" width="300" height="300" /> <br /> 
+                    }
+                    <br />
+                    <input name="upload" type="file" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
+            
         </div>
     </fieldset>
 
