@@ -11,15 +11,15 @@
 
     <thead>
         <tr>
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.From)
             </th>
           
-            <th>
+            <th class="text-nowrap all">
                 @Html.DisplayNameFor(model => model.Title)
             </th>
 
-            <th>Eylemler</th>
+            <th class="text-nowrap all" data-orderable="false">Eylemler</th>
         </tr>
     </thead>
     <tbody>
@@ -29,11 +29,10 @@
                 <td>
                     <a asp-action="Details" asp-controller="Resumes" asp-route-id="@item.From">@Html.DisplayFor(modelItem => item.FromName)</a>
                 </td>
-              
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td>
+                <td class="text-nowrap">
                     
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Mesajı Oku</a> 
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
