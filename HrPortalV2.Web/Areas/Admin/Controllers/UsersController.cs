@@ -58,5 +58,6 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
             await userManager.AddToRolesAsync(user, SelectedRoles);
             return RedirectToAction("Index");
         }
+        
     }
 }
