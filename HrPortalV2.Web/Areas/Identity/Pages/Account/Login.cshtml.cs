@@ -44,7 +44,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
 
            
             [DataType(DataType.Password)]
-            [Required(ErrorMessage = "Hatalı veya Eksik parola  girdiniz ")]
+            [Required(ErrorMessage = "Parola gereklidir.")]
             [Display(Name ="Parola")]
             public string Password { get; set; }
 
@@ -94,7 +94,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Geçersiz giriş denemesi.");
+                    ModelState.AddModelError(string.Empty, "Geçersiz giriş denemesi. Toplam 5 denemeden sonra hesabınız 5 dk kilitlenir.");
                     return Page();
                 }
             }

@@ -48,7 +48,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
             [Display(Name = "E-posta")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Parola Oluşturulması zorunludur.")]
+            [Required(ErrorMessage = "Parola oluşturulması zorunludur.")]
             [StringLength(100, ErrorMessage = "{0} alanı en az {2} ve en fazla {1} karakter uzunluğunda olmalıdır.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Parola")]
