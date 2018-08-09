@@ -14,7 +14,14 @@
                         <div class="col-md-3">
                             <ul class="list-unstyled profile-nav">
                                 <li>
-                                    <img src="~/Uploads/Resumes/@Model.Photo" class="img-responsive pic-bordered" alt="" />
+                                    @if (!string.IsNullOrEmpty(Model.Photo))
+                                    {
+                                        <img width="460" height="460" src="~/Uploads/Resumes/@Model.Photo" class="img-responsive pic-bordered" alt="" />
+                                    }
+                                    else
+                                    {
+                                        <img width="460" height="460" src="~/assets/layouts/layout3/img/avatar9.jpg" class="img-responsive pic-bordered" alt=""/> <br />
+                                    }
                                 </li>
                             </ul>
                         </div>
@@ -62,11 +69,17 @@
                                             <div class="col-md-4">
                                                 <p>
                                                     <strong>Telefon</strong><br />
-                                                    @Html.DisplayFor(model => model.MobilePhone)
-                                                </p>
+                                                    @if (User.IsInRole("Admin"))
+                                                    {<text>@Html.DisplayFor(model => model.MobilePhone)</text>}
+                                                else
+                                                { <text>*************</text> }
+                                                    </p>
                                                 <p>
                                                     <strong>E-mail</strong><br />
-                                                    @Html.DisplayFor(model => model.Email)
+                                                    @if (User.IsInRole("Admin"))
+                                                    {<text>@Html.DisplayFor(model => model.Email)</text>}
+                                                else
+                                                { <text>*************</text>}
                                                 </p>
                                             </div>
                                             <div class="col-md-4">

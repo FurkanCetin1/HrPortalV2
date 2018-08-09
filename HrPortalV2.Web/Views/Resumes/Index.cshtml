@@ -54,7 +54,14 @@
         {
         <tr>
             <td class="all">
-                <img style="width:50px;" src="~/Uploads/Resumes/@item.Photo" />
+                @if (!string.IsNullOrEmpty(item.Photo))
+                {
+                    <img width="50" src="~/Uploads/Resumes/@item.Photo" />
+                }
+                else
+                {
+                    <img width="50" src="../assets/layouts/layout3/img/avatar9.jpg" />
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

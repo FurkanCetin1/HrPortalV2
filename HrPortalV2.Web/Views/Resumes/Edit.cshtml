@@ -25,13 +25,6 @@
                     <input asp-for="LastName" class="form-control" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Gender" class="control-label"></label>
-                    <select asp-for="Gender" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Gender))">
-                        <option value="">Cinsiyet Seçiniz</option>
-                    </select>
-                    <span asp-validation-for="Gender" class="text-danger"></span>
-                </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
@@ -48,6 +41,13 @@
                     </select>
                     <span asp-validation-for="MilitaryStatus" class="text-danger"></span>
                 </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select asp-for="Gender" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Gender))">
+                        <option value="">Cinsiyet Seçiniz</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
@@ -55,7 +55,11 @@
                     <label asp-for="Photo" class="control-label"></label>
                     @if (!string.IsNullOrEmpty(Model.Photo))
                     {
-                        <img src="~/Uploads/Resumes/@Model.Photo" width="300" height="300" /> <br /> 
+                        <img width="460" height="460" src="~/Uploads/Resumes/@Model.Photo" width="300" height="300" class="img-responsive pic-bordered" alt=""/> <br />
+                    }
+                    else
+                    {   
+                        <img width="460" height="460" src="~/assets/layouts/layout3/img/avatar9.jpg" class="img-responsive pic-bordered" alt=""/> <br />
                     }
                     <br />
                     <input name="upload" type="file" class="form-control" />
