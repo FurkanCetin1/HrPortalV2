@@ -63,11 +63,12 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // GET: Admin/Resumes/Create
         public IActionResult Create()
         {
+            var resume = new Resume();
             ViewData["CityId"] = new SelectList(cityService.GetAll(), "Id", "Name");
             ViewData["CountryId"] = new SelectList(countryService.GetAll(), "Id", "Name");
             ViewData["CountyId"] = new SelectList(countyService.GetAll(), "Id", "Name");
             ViewData["OccupationId"] = new SelectList(occupationService.GetAll(), "Id", "Name");
-            return View();
+            return View(resume);
         }
 
         // POST: Admin/Resumes/Create

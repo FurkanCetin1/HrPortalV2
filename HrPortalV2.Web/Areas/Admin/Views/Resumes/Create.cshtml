@@ -30,10 +30,6 @@
                 {
                     <img src="~/Uploads/Resumes/@Model.Photo" width="50" />
                 }
-                else
-                {
-                    <img src="~/images/profil_foto.png" width="50" />
-                }
                 <input name="upload" type="file" class="form-control" />
                 <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
@@ -149,7 +145,9 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="OccupationId" class="control-label"></label>
-				<select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId"></select>
+				<select asp-for="OccupationId" class="form-control" asp-items="ViewBag.OccupationId">
+                    <option value="">Meslek Seçiniz</option>
+                </select>
 			</div>
 			<div class="form-group">
 				<label asp-for="Objective" class="control-label"></label>
