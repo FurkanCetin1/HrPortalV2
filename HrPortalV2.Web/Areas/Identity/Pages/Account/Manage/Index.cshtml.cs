@@ -137,7 +137,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
                 //Upload işlemi burada yapılır
             }
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Profiliniz güncellendi";
             return RedirectToPage();
         }
 
