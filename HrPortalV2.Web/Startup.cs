@@ -41,11 +41,11 @@ namespace HrPortalV2.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>(config =>
+            services.AddIdentity<HrPortalV2.Models.ApplicationUser, IdentityRole>(config =>
             {
                 config.SignIn.RequireConfirmedEmail = true;
             })
-        // services.AddDefaultIdentity<IdentityUser>()
+        // services.AddDefaultIdentity<HrPortalV2.Models.ApplicationUser>()
         .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)

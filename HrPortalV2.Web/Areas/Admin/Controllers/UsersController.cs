@@ -12,9 +12,9 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<HrPortalV2.Models.ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
-        public UsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(UserManager<HrPortalV2.Models.ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;

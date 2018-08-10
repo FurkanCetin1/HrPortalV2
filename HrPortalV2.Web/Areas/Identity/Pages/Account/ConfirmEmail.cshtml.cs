@@ -12,9 +12,9 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<HrPortalV2.Models.ApplicationUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<HrPortalV2.Models.ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
