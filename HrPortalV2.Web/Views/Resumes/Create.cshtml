@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Özgeçmiş Oluştur";
 }
+
 <form asp-action="Create" enctype="multipart/form-data">
     <fieldset>
         <legend>Kişisel Bilgiler</legend>
@@ -55,9 +56,12 @@
                     <label asp-for="Photo" class="control-label"></label>
                     @if (!string.IsNullOrEmpty(Model.Photo))
                     {
-                    <img src="~/Uploads/Resumes/@Model.Photo" width="50" />
+                        <img src="~/Uploads/Resumes/@Model.Photo" width="50" />
                     }
-
+                    else
+                    {
+                        <img src="~/images/profil_foto.png" width="50" />
+                    }
                     <input name="upload" type="file" class="form-control" />
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
