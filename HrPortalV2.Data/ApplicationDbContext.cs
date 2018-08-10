@@ -40,9 +40,9 @@ namespace HrPortalV2.Data
             var adminRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Admin", ConcurrencyStamp = "Admin", NormalizedName = "ADMIN" };
             var companyRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Company", ConcurrencyStamp = "Company", NormalizedName = "COMPANY" };
             var candidateRole = new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Candidate", ConcurrencyStamp = "Candidate", NormalizedName = "CANDIDATE" };
-            var adminUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "admin@bilisimegitim.com", NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", UserName = "admin@bilisimegitim.com", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
-            var companyUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "firma@bilisimegitim.com", NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", UserName = "firma@bilisimegitim.com", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
-            var candidateUser = new IdentityUser { Id = Guid.NewGuid().ToString(), Email = "aday@bilisimegitim.com", NormalizedEmail = "ADAY@BILISIMEGITIM.COM", UserName = "aday@bilisimegitim.com", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+            var adminUser = new HrPortalV2.Models.ApplicationUser { Id = Guid.NewGuid().ToString(), Email = "admin@bilisimegitim.com", NormalizedEmail = "ADMIN@BILISIMEGITIM.COM", UserName = "admin@bilisimegitim.com", NormalizedUserName = "ADMIN@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+            var companyUser = new HrPortalV2.Models.ApplicationUser { Id = Guid.NewGuid().ToString(), Email = "firma@bilisimegitim.com", NormalizedEmail = "FIRMA@BILISIMEGITIM.COM", UserName = "firma@bilisimegitim.com", NormalizedUserName = "FIRMA@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
+            var candidateUser = new HrPortalV2.Models.ApplicationUser { Id = Guid.NewGuid().ToString(), Email = "aday@bilisimegitim.com", NormalizedEmail = "ADAY@BILISIMEGITIM.COM", UserName = "aday@bilisimegitim.com", NormalizedUserName = "ADAY@BILISIMEGITIM.COM", EmailConfirmed = true, PasswordHash = "AQAAAAEAACcQAAAAEDvyQ5fzBhHIGG+XvlWnHOPQFj8vzwsWagAXr+MVJnsKsfr5OKE4nInSitz6gyg3cA==", SecurityStamp = "X4J75DO73ZV6MVW7DRVYPDOIUHHZQ7PM", ConcurrencyStamp = "1", AccessFailedCount = 0, PhoneNumberConfirmed = false, TwoFactorEnabled = false, LockoutEnabled = true };
 
             // add roles
             modelBuilder.Entity<IdentityRole>().HasData(adminRole);
@@ -50,9 +50,9 @@ namespace HrPortalV2.Data
             modelBuilder.Entity<IdentityRole>().HasData(candidateRole);
 
             // add users
-            modelBuilder.Entity<IdentityUser>().HasData(adminUser);
-            modelBuilder.Entity<IdentityUser>().HasData(companyUser);
-            modelBuilder.Entity<IdentityUser>().HasData(candidateUser);
+            modelBuilder.Entity<HrPortalV2.Models.ApplicationUser>().HasData(adminUser);
+            modelBuilder.Entity<HrPortalV2.Models.ApplicationUser>().HasData(companyUser);
+            modelBuilder.Entity<HrPortalV2.Models.ApplicationUser>().HasData(candidateUser);
 
             // add user roles
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string> { UserId = adminUser.Id, RoleId = adminRole.Id });

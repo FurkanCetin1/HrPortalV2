@@ -1,10 +1,22 @@
 ﻿@using Microsoft.AspNetCore.Identity
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<HrPortalV2.Models.ApplicationUser> SignInManager
+@inject UserManager<HrPortalV2.Models.ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
+
+    var profilePhoto = UserManager.Users.FirstOrDefault(f => f.UserName == User.Identity.Name)?.Photo;
+    if (string.IsNullOrEmpty(profilePhoto)) {
+        profilePhoto = "/images/profil_foto.png";
+    }
+    else
+    {
+    profilePhoto = "/uploads/profiles/";
+    }
+
+    
+
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             @if (User.IsInRole("Company"))
@@ -36,9 +48,9 @@
                 <ul class="dropdown-menu">
                     <li class="external">
                         <h3>
-                          
-                            <strong>@ViewBag.MessageCount Yeni </strong> Mesajınız Var   
-                            
+
+                            <strong>@ViewBag.MessageCount Yeni </strong> Mesajınız Var
+
                         </h3>
                         <a href="app_inbox.html">tümünü göster</a>
                     </li>
@@ -51,7 +63,7 @@
                                     <li>
                                         <a href="#">
                                             <span class="photo">
-                                                <img src="../assets/layouts/layout3/img/avatar2.jpg" class="img-circle" alt="">
+                                                <img src="@profilePhoto" class="img-circle" alt="">
                                             </span>
                                             <span class="subject">
                                                 <span class="from"> @item.FromName </span>
@@ -69,10 +81,11 @@
                 </ul>
             </li>
             <!-- END INBOX DROPDOWN -->
-           
+
             <li class="dropdown dropdown-user dropdown-dark">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                    <img alt="" class="img-circle" src="../assets/layouts/layout3/img/avatar9.jpg">
+
+                    <img alt="Profil Fotoğrafım" class="img-circle" src="@profilePhoto">
                     <span class="username username-hide-mobile">@UserManager.GetUserName(User)</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-default">
@@ -144,13 +157,13 @@
                             </a>
                         </li>
                     }
-                        <li class="divider"> </li>
-                        <li>
-                            <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
-                                <i class="icon-key"></i> Çıkış
-                            </a>
-                        </li>
-                    </ul>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="javascript:void(0);" onclick="document.getElementById('logoutForm').submit();">
+                            <i class="icon-key"></i> Çıkış
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </form>

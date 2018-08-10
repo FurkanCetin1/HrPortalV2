@@ -16,13 +16,13 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
 {
     public partial class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<HrPortalV2.Models.ApplicationUser> _userManager;
+        private readonly SignInManager<HrPortalV2.Models.ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly IHostingEnvironment environment;
         public IndexModel(IHostingEnvironment environment,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<HrPortalV2.Models.ApplicationUser> userManager,
+            SignInManager<HrPortalV2.Models.ApplicationUser> signInManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
@@ -50,8 +50,13 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Telefon numaram")]
             public string PhoneNumber { get; set; }
-			[Display(Name = "Resim")]
-			public string Photo { get; set; }
+            [StringLength(200)]
+            [Display(Name = "Tam Ad")]
+            public string FullName { get; set; }
+            [StringLength(200)]
+            [Display(Name = "Fotoğraf")]
+            public string Photo { get; set; }
+            public IFormFile Upload { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -71,7 +76,9 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
 				Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FullName = user.FullName,
+                Photo = user.Photo
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
@@ -84,7 +91,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
 			throw new NotImplementedException();
 		}
 
-		public async Task<IActionResult> OnPostAsync(IFormFile upload)
+		public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +103,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
+            user.FullName = Input.FullName;
             var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {
@@ -118,11 +125,10 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
-            if (upload != null && upload.Length > 0)
+            if (Input.Upload != null && Input.Upload.Length > 0)
             {
-                var rnd = new Random();
-                var fileName = Path.GetFileNameWithoutExtension(upload.FileName) + rnd.Next(1000).ToString() + Path.GetExtension(upload.FileName);
-                var path = Path.Combine(environment.WebRootPath, "Uploads");
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Input.Upload.FileName);
+                var path = Path.Combine(environment.WebRootPath, "Uploads","Profiles");
                 var filePath = Path.Combine(path, fileName);
                 if (!Directory.Exists(path))
                 {
@@ -131,11 +137,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    upload.CopyTo(stream);
+                    Input.Upload.CopyTo(stream);
                 }
-                //user.Photo = fileName;
+                user.Photo = fileName;
                 //Upload işlemi burada yapılır
             }
+            await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Profiliniz güncellendi";
             return RedirectToPage();

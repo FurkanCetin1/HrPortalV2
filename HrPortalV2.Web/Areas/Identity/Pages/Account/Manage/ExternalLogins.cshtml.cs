@@ -11,12 +11,12 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
 {
     public class ExternalLoginsModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<HrPortalV2.Models.ApplicationUser> _userManager;
+        private readonly SignInManager<HrPortalV2.Models.ApplicationUser> _signInManager;
 
         public ExternalLoginsModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<HrPortalV2.Models.ApplicationUser> userManager,
+            SignInManager<HrPortalV2.Models.ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
