@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-4">
-		<form asp-action="Create">
+		<form asp-action="Create" enctype="multipart/form-data">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
 				<label asp-for="ResumeName" class="control-label"></label>
@@ -23,11 +23,20 @@
 				<input asp-for="LastName" class="form-control" />
 				<span asp-validation-for="LastName" class="text-danger"></span>
 			</div>
-			<div class="form-group">
-				<label asp-for="Photo" class="control-label"></label>
-				<input asp-for="Photo" class="form-control" />
-				<span asp-validation-for="Photo" class="text-danger"></span>
-			</div>
+            <div class="form-group">
+                <input asp-for="Photo" type="hidden" />
+                <label asp-for="Photo" class="control-label"></label>
+                @if (!string.IsNullOrEmpty(Model.Photo))
+                {
+                    <img src="~/Uploads/Resumes/@Model.Photo" width="50" />
+                }
+                else
+                {
+                    <img src="~/images/profil_foto.png" width="50" />
+                }
+                <input name="upload" type="file" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
 			<div class="form-group">
 				<label asp-for="Gender" class="control-label"></label>
 				<select asp-for="Gender" class="form-control" id="formGender" asp-items="@Html.GetEnumSelectList(typeof(Gender))">

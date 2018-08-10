@@ -9,6 +9,9 @@ using HrPortalV2.Data;
 using HrPortalV2.Models;
 using HrPortalV2.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HrPortalV2.Web.Areas.Admin.Controllers
 {
@@ -21,14 +24,16 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         private readonly ICountyService countyService;
         private readonly ICountryService countryService;
         private readonly IOccupationService occupationService;
+        private readonly IHostingEnvironment _environment;
         public ResumesController(IResumeService resumeService, ICityService cityService, ICountyService countyService,
-           ICountryService countryService, IOccupationService occupationService)
+           ICountryService countryService, IOccupationService occupationService, IHostingEnvironment _environment)
         {
             this.resumeService = resumeService;
             this.cityService = cityService;
             this.countryService = countryService;
             this.countyService = countyService;
             this.occupationService = occupationService;
+            this._environment = _environment;
         }
 
         // GET: Admin/Resumes
@@ -70,10 +75,27 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("ResumeName,FirstName,LastName,Photo,Gender,MaritalStatus,MobilePhone,Email,TotalExperience,UsingCigarette,IsTravelDisabled,IsDisabled,IsSubsidized,IsCurrentlyWorking,IsSeekingJob,LastCompany,LastPosition,MilitaryStatus,LastEducation,LastDepartment,GraduationYear,ForeignLanguages,IsApproved,IsActive,OccupationId,Objective,CountryId,CityId,CountyId,Projects,Skills,Hobbies,DrivingLicense,Courses,Blog,LinkedIn,GitHub,Dribbble,Behance,Youtube,Instagram,Facebook,Twitter,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] Resume resume)
+        public IActionResult Create([Bind("ResumeName,FirstName,LastName,Photo,Gender,MaritalStatus,MobilePhone,Email,TotalExperience,UsingCigarette,IsTravelDisabled,IsDisabled,IsSubsidized,IsCurrentlyWorking,IsSeekingJob,LastCompany,LastPosition,MilitaryStatus,LastEducation,LastDepartment,GraduationYear,ForeignLanguages,IsApproved,IsActive,OccupationId,Objective,CountryId,CityId,CountyId,Projects,Skills,Hobbies,DrivingLicense,Courses,Blog,LinkedIn,GitHub,Dribbble,Behance,Youtube,Instagram,Facebook,Twitter,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] Resume resume, IFormFile upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.Length > 0)
+                {
+                    //upload işlemi burada yapılır.
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                    var path = Path.Combine(_environment.WebRootPath, "Uploads", "Resumes");
+                    var filePath = Path.Combine(path, fileName);
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        upload.CopyTo(stream);
+                    }
+                    resume.Photo = fileName;
+                }
                 resumeService.Insert(resume);
                 return RedirectToAction(nameof(Index));
             }
@@ -109,7 +131,7 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(string id, [Bind("ResumeName,FirstName,LastName,Photo,Gender,MaritalStatus,MobilePhone,Email,TotalExperience,UsingCigarette,IsTravelDisabled,IsDisabled,IsSubsidized,IsCurrentlyWorking,IsSeekingJob,LastCompany,LastPosition,MilitaryStatus,LastEducation,LastDepartment,GraduationYear,ForeignLanguages,IsApproved,IsActive,OccupationId,Objective,CountryId,CityId,CountyId,Projects,Skills,Hobbies,DrivingLicense,Courses,Blog,LinkedIn,GitHub,Dribbble,Behance,Youtube,Instagram,Facebook,Twitter,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] Resume resume)
+        public IActionResult Edit(string id, [Bind("ResumeName,FirstName,LastName,Photo,Gender,MaritalStatus,MobilePhone,Email,TotalExperience,UsingCigarette,IsTravelDisabled,IsDisabled,IsSubsidized,IsCurrentlyWorking,IsSeekingJob,LastCompany,LastPosition,MilitaryStatus,LastEducation,LastDepartment,GraduationYear,ForeignLanguages,IsApproved,IsActive,OccupationId,Objective,CountryId,CityId,CountyId,Projects,Skills,Hobbies,DrivingLicense,Courses,Blog,LinkedIn,GitHub,Dribbble,Behance,Youtube,Instagram,Facebook,Twitter,Id,CreateDate,CreatedBy,UpdateDate,UpdatedBy,IPAddress")] Resume resume, IFormFile upload)
         {
             if (id != resume.Id)
             {
@@ -120,6 +142,23 @@ namespace HrPortalV2.Web.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (upload != null && upload.Length > 0)
+                    {
+                        //upload işlemi burada yapılır.
+                        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(upload.FileName);
+                        var path = Path.Combine(_environment.WebRootPath, "Uploads", "Resumes");
+                        var filePath = Path.Combine(path, fileName);
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            upload.CopyTo(stream);
+                        }
+                        resume.Photo = fileName;
+                    }
                     resumeService.Update(resume);
                     
                 }
