@@ -16,7 +16,6 @@ using HrPortalV2.Service;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using HrPortalV2.Models;
 using HrPortalV2.Web.Areas.Identity.Services;
-
 namespace HrPortalV2.Web
 {
     public class Startup
