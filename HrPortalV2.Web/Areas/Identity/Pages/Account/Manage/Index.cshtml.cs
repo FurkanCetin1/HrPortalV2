@@ -28,6 +28,7 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            this.environment = environment;
         }
 		[Display(Name = "Kullanıcı Adı")]
 		public string Username { get; set; }
@@ -125,22 +126,19 @@ namespace HrPortalV2.Web.Areas.Identity.Pages.Account.Manage
                     throw new InvalidOperationException($"Unexpected error occurred setting phone number for user with ID '{userId}'.");
                 }
             }
-            if (Input.Upload != null && Input.Upload.Length > 0)
-            {
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Input.Upload.FileName);
-                var path = Path.Combine(environment.WebRootPath, "Uploads","Profiles");
-                var filePath = Path.Combine(path, fileName);
-                if (!Directory.Exists(path))
+            if (Input.Upload != null) {
+                var fileName = Guid.NewGuid().ToString() + ".jpg";
+                var filePath = Path.Combine(environment.WebRootPath, "Uploads", "Profiles", fileName);;
+                if (!Directory.Exists(Path.Combine(environment.WebRootPath, "Uploads", "Profiles")))
                 {
-                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(Path.Combine(environment.WebRootPath, "Uploads", "Profiles"));
                 }
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    Input.Upload.CopyTo(stream);
+                    await Input.Upload.CopyToAsync(fileStream);
                 }
+                Input.Photo = fileName;
                 user.Photo = fileName;
-                //Upload işlemi burada yapılır
             }
             await _userManager.UpdateAsync(user);
             await _signInManager.RefreshSignInAsync(user);
