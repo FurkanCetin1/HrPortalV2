@@ -774,9 +774,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="col-md-3 col-sm-6 col-xs12 footer-block">
                                 <h2>E-posta Aboneliği</h2>
                                 <div class="subscribe-form">
-                                    <form asp-action="AddSubscription" asp-controller="Home" asp-area="">
+                                    <form asp-action="AddSubscription" asp-controller="Home" asp-area="" onsubmit="var regex = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/; if (!regex.test($('#subscriptionMail').val())) { alert('Girdiğiniz e-posta adresi geçersiz!'); return false;};">
                                         <div class="input-group">
-                                            <input type="email" placeholder="mail@email.com" class="form-control" name="email">
+                                            <input type="email" placeholder="mail@email.com" class="form-control" name="email" id="subscriptionMail" required>
                                             <span class="input-group-btn">
                                                 <button type="submit" class="btn btn-sm btn-primary">Gönder</button>
                                             </span>
@@ -857,6 +857,11 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="~/js/jquery.inputmask.bundle.js"></script>
     <script>
         Inputmask({ "mask": "0599 9999999" }).mask("[type='tel']");
+        @if (Context.Request.Query["subscribtion"].ToString() == "ok") {
+            <text>
+        alert("E-posta aboneliğiniz gerçekleşti...");
+        </text>
+        }
     </script>
     <!-- END THEME LAYOUT SCRIPTS -->
     @RenderSection("Scripts", required: false)

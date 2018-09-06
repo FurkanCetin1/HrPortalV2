@@ -36,7 +36,7 @@
 
                 </div>
                 <div class="col-sm-2 extra-buttons">
-                    <button class="btn grey-steel uppercase bold" type="reset">Sıfırla</button>
+                    <button class="btn grey-steel uppercase bold" type="submit" onclick="$('#search').val('')">Sıfırla</button>
                 </div>
 
             </div>
@@ -65,31 +65,48 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in (IEnumerable<HrPortalV2.Models.Job>)ViewBag.FeaturedJobs)
+            @if (((IEnumerable<HrPortalV2.Models.Job>)ViewBag.FeaturedJobs).Count() > 0)
+            {
+                @foreach (var item in (IEnumerable<HrPortalV2.Models.Job>)ViewBag.FeaturedJobs)
+                {
+                    <tr>
+                        <td>
+                            <a href="javascript:;">
+                                <img src="~/Uploads/@item.Company?.Logo" alt="@item.Company?.Name" width="80" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@item.Company?.Website" target="_blank">@item.Company?.Name</a>
+                        </td>
+                        <td>
+                            <strong>
+                                <a asp-action="Details" asp-controller="Jobs" asp-route-id="@item.Id">@item.Title</a>
+                            </strong>
+                        </td>
+                        <td> @item.Company?.County?.Name </td>
+                        <td>
+                            <a asp-action="Apply" asp-controller="Jobs" asp-route-jobid="@item.Id" class="btn btn-sm btn-primary">
+                                Başvur
+                            </a>
+                            <a asp-action="Create" asp-controller="Messages" asp-route-companyid="@item.CompanyId" class="btn btn-sm btn-success">
+                                Mesaj Gönder
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else if (!string.IsNullOrEmpty(ViewBag.search))
             {
                 <tr>
-                    <td>
-                        <a href="javascript:;">
-                            <img src="~/Uploads/@item.Company?.Logo" alt="@item.Company?.Name" width="80" />
-                        </a>
-                    </td>
-                    <td>
-                        <a href="@item.Company?.Website" target="_blank">@item.Company?.Name</a>
-                    </td>
-                    <td>
-                        <strong>
-                            <a asp-action="Details" asp-controller="Jobs" asp-route-id="@item.Id">@item.Title</a>
-                        </strong>
-                    </td>
-                    <td> @item.Company?.County?.Name </td>
-                    <td>
-                        <a asp-action="Apply" asp-controller="Jobs" asp-route-jobid="@item.Id" class="btn btn-sm btn-primary">
-                            Başvur
-                        </a>
-                        <a asp-action="Create" asp-controller="Messages" asp-route-companyid="@item.CompanyId" class="btn btn-sm btn-success">
-                            Mesaj Gönder
-                        </a>
-                    </td>
+                    <td colspan="5">Aradığınız ilan bulunamadı! Farklı kelimelerle aramayı deneyebilirsiniz...</td>
+                </tr>
+
+            }
+            else
+            {
+
+                <tr>
+                    <td colspan="5">Öne çıkan herhangi bir ilan bulunamadı...</td>
                 </tr>
             }
         </tbody>
